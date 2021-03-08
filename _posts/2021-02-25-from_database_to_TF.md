@@ -3,7 +3,6 @@ layout: post
 title:  "TensorFlow IO'dan PostgreSQL veritabanını okuma"
 author: "MMA"
 comments: true
-tags: [TensorFlow, TensorFlow-IO, PostgreSQL, Turkish]
 ---
 
 [PostgreSQL ve pgAdmin4 Grafik Ara yüzü Kurulumu](https://mmuratarat.github.io/turkish/2020-11-18/how_to_install_postgresql_pgadmin4){:target="_blank"} isimli yazımda kişisel bilgisayarınızda `localhost` üzerinde nasıl kendi PostgreSQL sunucunuzu yaratacağınızdan ve kendi veri tabanlarınızı oluşturup, bu veri tabanlarına nasıl veri yükleyeceğinizden bahsetmiştim. Bu kısa eğiticide ise  kişisel bilgisayarınızdaki veri tabanına verilerinizi girip, Python ortamına bu verileri nasıl aktaracağınızı TensorFlow ve [TensorFlow-IO](https://www.tensorflow.org/io){:target="_blank"} kütüphanelerini kullanarak göstereceğim. Yaparak öğrenme veri biliminde kendinizi geliştirmeniz için en iyi yöntemdir. Artık bir veri tabanından verilerinizi çekip tf.data.Dataset kullanarak elde edeceğiniz veri iletim hattını, eğitim veya çıkarsama amacıyla doğrudan tf.keras’a aktararak istediğiniz derin öğrenme algoritmasını uygulayabilirsiniz.

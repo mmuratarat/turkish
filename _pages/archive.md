@@ -8,8 +8,6 @@ permalink: /archive/
 years:
 - 2021
 - 2020
-- 2019
-- 2018
 ---
 
 {% for year in page.years %}

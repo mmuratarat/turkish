@@ -3,7 +3,6 @@ layout: post
 title:  "MLOps Serisi I - Baştan-Sona Makine Öğrenmesi İş Akışının Tanıtılması"
 author: "MMA"
 comments: true
-tags: [MLOps, Machine Learning, Software Development, Turkish]
 ---
 
 Bir makine öğrenmesi modelini elde etmek çoğu zaman kolay olabilir. Ancak bu modelin gerçek hayatta kullanılabilirliği ve üretimde (prodüksiyonda) son kullanıcıya sunulması zahmetli bir süreçtir. 
