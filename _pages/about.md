@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "About Me"
+title: "Hakkımda"
 author: MMA
 social: true
 comments: false
