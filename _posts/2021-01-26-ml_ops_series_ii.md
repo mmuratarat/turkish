@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "[TR] MLOps Serisi II - Burada çözmeye çalıştığımız iş sorunu nedir?"
+title:  "MLOps Serisi II - Burada çözmeye çalıştığımız iş sorunu nedir?"
 author: "MMA"
 comments: true
 tags: [MLOps, Machine Learning, Software Development, Turkish]

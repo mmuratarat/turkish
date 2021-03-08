@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "[TR] TensorFlow IO'dan PostgreSQL veritabanını okuma"
+title:  "TensorFlow IO'dan PostgreSQL veritabanını okuma"
 author: "MMA"
 comments: true
 tags: [TensorFlow, TensorFlow-IO, PostgreSQL, Turkish]

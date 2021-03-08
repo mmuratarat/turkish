@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "[TR] MLOps Serisi III - Bir Makine Öğrenmesi Yazılımının Üç Aşaması"
+title:  "MLOps Serisi III - Bir Makine Öğrenmesi Yazılımının Üç Aşaması"
 author: "MMA"
 comments: true
 tags: [MLOps, Machine Learning, Software Development, Turkish]

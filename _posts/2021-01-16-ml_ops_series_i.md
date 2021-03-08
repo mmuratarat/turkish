@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "[TR] MLOps Serisi I - Baştan-Sona Makine Öğrenmesi İş Akışının Tanıtılması"
+title:  "MLOps Serisi I - Baştan-Sona Makine Öğrenmesi İş Akışının Tanıtılması"
 author: "MMA"
 comments: true
 tags: [MLOps, Machine Learning, Software Development, Turkish]

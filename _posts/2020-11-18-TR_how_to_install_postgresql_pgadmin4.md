@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "[TR] PostgreSQL ve pgAdmin4 Grafik Ara yüzü Kurulumu"
+title: "PostgreSQL ve pgAdmin4 Grafik Ara yüzü Kurulumu"
 author: "MMA"
 comments: true
 ---

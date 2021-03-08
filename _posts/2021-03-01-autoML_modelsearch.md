@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "[TR] Model Aramaya Yönelik Uygulamalı Kılavuz: AutoML için Tensorflow tabanlı bir Yazılım İskeleti"
+title:  "Model Aramaya Yönelik Uygulamalı Kılavuz: AutoML için Tensorflow tabanlı bir Yazılım İskeleti"
 author: "MMA"
 comments: true
 tags: [TensorFlow, AutoML, Turkish]
