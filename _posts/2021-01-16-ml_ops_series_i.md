@@ -67,5 +67,5 @@ Bir makine öğrenmesi modelini eğittikten sonra bu modeli bir mobil veya masa�
 ## Serinin diğer yazıları
 
 * MLOps Serisi I - Baştan-Sona Makine Öğrenmesi İş Akışının Tanıtılması
-* [MLOps Serisi II - Burada çözmeye çalıştığımız iş sorunu nedir?](https://mmuratarat.github.io/2021-01-26/ml_ops_series_ii){:target="_blank"}
-* [MLOps Serisi III - Bir Makine Öğrenmesi Yazılımının Üç Aşaması](https://mmuratarat.github.io/2021-02-15/ml_ops_series_iii){:target="_blank"}
+* [MLOps Serisi II - Burada çözmeye çalıştığımız iş sorunu nedir?](https://mmuratarat.github.io/turkish/2021-01-26/ml_ops_series_ii){:target="_blank"}
+* [MLOps Serisi III - Bir Makine Öğrenmesi Yazılımının Üç Aşaması](https://mmuratarat.github.io/turkish/2021-02-15/ml_ops_series_iii){:target="_blank"}

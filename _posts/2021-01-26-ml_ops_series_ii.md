@@ -220,6 +220,6 @@ Daha fazla okuma
 
 ## Serinin diğer yazıları
 
-* [MLOps Serisi I - Baştan-Sona Makine Öğrenmesi İş Akışının Tanıtılması](https://mmuratarat.github.io/2021-01-16/ml_ops_series_i){:target="_blank"}
+* [MLOps Serisi I - Baştan-Sona Makine Öğrenmesi İş Akışının Tanıtılması](https://mmuratarat.github.io/turkish/2021-01-16/ml_ops_series_i){:target="_blank"}
 * MLOps Serisi II - Burada çözmeye çalıştığımız iş sorunu nedir?
-* [MLOps Serisi III - Bir Makine Öğrenmesi Yazılımının Üç Aşaması](https://mmuratarat.github.io/2021-02-15/ml_ops_series_iii){:target="_blank"}
+* [MLOps Serisi III - Bir Makine Öğrenmesi Yazılımının Üç Aşaması](https://mmuratarat.github.io/turkish/2021-02-15/ml_ops_series_iii){:target="_blank"}
