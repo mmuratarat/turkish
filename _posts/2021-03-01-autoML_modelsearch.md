@@ -333,15 +333,15 @@ Bu klasörde, her şeyi doğru yaptıysanız aşağıdaki şekilde görünmesi g
 
 Hepsi bu kadar! Artık `venv` sanal ortamını Jupyter'de çekirdek olarak seçebilirsiniz. JupyterLab'de bunun nasıl görüneceği aşağıda görülmektedir:
 
-![](https://github.com/mmuratarat/mmuratarat.github.io/blob/master/_posts/images/venv_kernel.png?raw=true)
+![](https://github.com/mmuratarat/turkish/blob/master/_posts/images/venv_kernel.png?raw=true)
 
 Yeni bir Jupyter not defteri başlattığınızda, sağ üst köşedeki daire içerisinde çekirdeğinizin ismi yazmalıdır:
 
-![](https://github.com/mmuratarat/mmuratarat.github.io/blob/master/_posts/images/venv_kernel_empty_Jupyternotebook.png?raw=true)
+![](https://github.com/mmuratarat/turkish/blob/master/_posts/images/venv_kernel_empty_Jupyternotebook.png?raw=true)
 
 Sistemimiz hazır. Şimdi Google'ın Model Search paketinin uygulamasını görebilir ve JupyterLab üzerinde çalışmaya başlayabiliriz. 
 
-![](https://github.com/mmuratarat/mmuratarat.github.io/blob/master/_posts/images/automl_model_search.png?raw=true)
+![](https://github.com/mmuratarat/turkish/blob/master/_posts/images/automl_model_search.png?raw=true)
 
 Son yıllarda, otomatikleştirilmiş makine öğrenmesi veya kısaca AutoML, araştırmacıların ve geliştiricilerin insan müdahalesi olmadan yüksek kaliteli derin öğrenme modelleri oluşturmalarına ve kullanılabilirliğini genişletmelerine gerçekten yardımcı oldu. Bu nedenle, Google, `Model Search` (Model Arama) adlı yeni bir iskelet geliştirdi.
 
@@ -365,7 +365,7 @@ Ancak, maalesef, bu paketin halen bir kaç kısıtlaması vardır. Bu kısıtlam
 
 Ayrıca mevcut modül şimdilik sadece sınıflandırma problemlerini desteklemektedir.
 
-![](https://github.com/mmuratarat/mmuratarat.github.io/blob/master/_posts/images/protobuf.png?raw=true)
+![](https://github.com/mmuratarat/turkish/blob/master/_posts/images/protobuf.png?raw=true)
 
 Farklı dilleri konuşan insanlar bir araya gelip konuştuklarında, gruptaki herkesin anlayacağı bir dil kullanmaya çalışırlar.
 
@@ -443,7 +443,7 @@ dataset.shape
 dataset
 ```
 
-![](https://github.com/mmuratarat/mmuratarat.github.io/blob/master/_posts/images/dataset_modelsearch.png?raw=true)
+![](https://github.com/mmuratarat/turkish/blob/master/_posts/images/dataset_modelsearch.png?raw=true)
 
 Bu veri seti 20 gözlemden ve 3 bağımsız değişkenden oluşmaktadır. İki sınıflandırma problemi için kullanılır. İlk sütun (yani indeksi 0) sınıfların bulunduğu değişkendir.
 
@@ -601,7 +601,7 @@ Tensorboard kullanarak, bir `.pbtxt` formatlı dosyadan TensorFlow grafiğini g�
 6. Şimdi şu mesajı almalısınız: `TensorBoard 2.2.2 at http://localhost:6006/ (Press CTRL+C to quit)`.
 7. `http://localhost:6006/`'yı web tarayıcısına girin. Artık `graph.pbtxt` dosyasını tüm modeller için görüntüleyebilirsiniz!
 
-![](https://github.com/mmuratarat/mmuratarat.github.io/blob/master/_posts/images/Screen%20Shot%202021-03-01%20at%2009.19.01.png?raw=true)
+![](https://github.com/mmuratarat/turkish/blob/master/_posts/images/Screen%20Shot%202021-03-01%20at%2009.19.01.png?raw=true)
 
 ### Sanal ortamı devre dışı bırakmak ve silmek
 
