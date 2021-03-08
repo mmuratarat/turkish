@@ -1,1 +1,1 @@
-My personal website https://mmuratarat.github.io
+Turkish version of my personal website https://mmuratarat.github.io
