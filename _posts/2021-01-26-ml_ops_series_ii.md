@@ -17,7 +17,7 @@ Herhangi bir yazılım projesinde en önemli aşama, iş problemini (business Pr
 Yapılacak tahminin (Makine Öğrenmesi modelinin) nerede uygulanabileceğini görmek için tüm iş sürecinin her bir görevinin kurucu unsurlarına parçalanması gerekir
 
 <figure>
-  <img src="https://github.com/mmuratarat/mmuratarat.github.io/blob/master/_posts/images/ml_workflow_decomposition.png?raw=true" alt="my alt text"/>
+  <img src="https://github.com/mmuratarat/turkish/blob/master/_posts/images/ml_workflow_decomposition.png?raw=true" alt="my alt text"/>
   <figcaption><small>Bu diagram Dr. Larysa Visengeriyeva tarafından yaratılmış olup, kendisinin izniyle tarafımdan Türkçe'ye çevrilmiştir. İzinsiz kullanılması yasaktır.</small></figcaption>
 </figure>
 
@@ -37,7 +37,7 @@ Yapay Zeka Şablonu veya alternatifi Makine Öğrenmesi Şablonu, parçalanma s�
 
 Yapay Zeka Şablonu, A. Agrawal ve arkadaşları tarafından 2018 yılında yayınlanan “Prediction Machines. The Simple Economics of Artificial Intelligence.” isimli kitapta önerilmiştir ve "Yapay Zeka araçlarını düşünmek, oluşturmak ve değerlendirmek için bir destek görevi görür." Bu tür bir şablon örneği ve her bileşeninin açıklaması aşağıdaki Şekilde verilmiştir:
 
-![](https://github.com/mmuratarat/mmuratarat.github.io/blob/master/_posts/images/AI-Canvas.jpg?raw=true)
+![](https://github.com/mmuratarat/turkish/blob/master/_posts/images/AI-Canvas.jpg?raw=true)
 
 [Şekil Kaynağı](https://hbr.org/2018/04/a-simple-tool-to-start-making-decisions-with-the-help-of-ai){:target="_blank"}
 
@@ -50,7 +50,7 @@ Başlangıçta, "tahmini sistemin son kullanıcıları için neyi başarmak isti
 
 Şablonun gerı kalanı üç geniş kategoriye ayrılmıştır: _Öğrenme_, _Tahmin_ ve _Değerlendirme_. Öğrenme kategorisi, Makine Öğrenmesi modelinin nasıl öğrenileceğini belirlemekten sorumludur. Tahmin bölümü tahminin nasıl yapıldığını açıklar. Son olarak, Değerlendirme kategorisi, makine öğrenmesi modelinde ve sistem değerlendirmesinde kullanılacak yöntemleri ve metrikleri içerir. Aşağıdaki Makine Öğrenmesi Şablonu, Louis Dorard tarafından sağlanan bir örnektir:
 
-![](https://github.com/mmuratarat/mmuratarat.github.io/blob/master/_posts/images/ML_canvas_v04.jpg?raw=true)
+![](https://github.com/mmuratarat/turkish/blob/master/_posts/images/ML_canvas_v04.jpg?raw=true)
 
 Yukarıda bahsedilen Makine Öğrenmesi Şablonu toplamda, _Değer Önerisi_, _Veri Kaynakları_, _Tahmin Görevi_, _Öznitelikler (Mühendisliği)_, _Çevrimdışı Değerlendirme_, _Kararlar_, _Tahminlerde Bulunma_, _Veri Toplama_, _Model Oluşturma_ ve _Anlık Değerlendirme ve İzleme_ gibi on bileşik blok olarak yapılandırılmıştır. Bu blokların her biri, ileride gerçekleştirilecek olan bir makine öğrenmesi uygulamasının bir yönüne odaklanmıştır:
 
@@ -206,7 +206,7 @@ Bu aşamadaki çıktı, tamamlanmış Makine Öğrenmesi Şablonu'dur. Bu şablo
 Sorulması gereken başka bir soru da gerçekleştirilen Yapay Zeka / Makine Öğrenmesi uygulamasının ne zaman dağıtılması gerektiğidir. Aşağıdaki Şekil, bir Makine Öğrenmesi modelinin erken ve geç dağıtımının dengesini göstermektedir.
 
 <figure>
-  <img src="https://github.com/mmuratarat/mmuratarat.github.io/blob/master/_posts/images/When-to-deploy-ai.png?raw=true" alt="my alt text"/>
+  <img src="https://github.com/mmuratarat/turkish/blob/master/_posts/images/When-to-deploy-ai.png?raw=true" alt="my alt text"/>
   <figcaption><small>Bu diagram Dr. Larysa Visengeriyeva tarafından yaratılmış olup, kendisinin izniyle tarafımdan Türkçe'ye çevrilmiştir. İzinsiz kullanılması yasaktır.</small></figcaption>
 </figure>
 
