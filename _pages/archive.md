@@ -17,7 +17,7 @@ years:
 {% for post in site.posts %}
 {% assign y2 = post.date | date: '%Y' | plus: 0 %}
 {% if y1 == y2 %}
-<li style="line-height:1.5em">{% assign m = post.date | date: "%-m" %}
+<li style="line-height:1.5em">{% assign m = post.date | date: "%d %-m" %}
 {{ page.date | date: "%-d" }}
 {% case m %}
   {% when '1' %}Ocak
