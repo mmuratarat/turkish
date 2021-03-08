@@ -17,7 +17,22 @@ years:
 {% for post in site.posts %}
 {% assign y2 = post.date | date: '%Y' | plus: 0 %}
 {% if y1 == y2 %}
-<li style="line-height:1.5em">{{ post.date | date:"%d %b" }} &middot; <a href="{{ post.url| prepend: site.baseurl }}" target="_blank">{{ post.title }}</a></li>
+<li style="line-height:1.5em">{% assign m = post.date | date: "%-m" %}
+{{ page.date | date: "%-d" }}
+{% case m %}
+  {% when '1' %}Ocak
+  {% when '2' %}Şubat
+  {% when '3' %}Mart
+  {% when '4' %}Nisan
+  {% when '5' %}Mayıs
+  {% when '6' %}Haziran
+  {% when '7' %}Temmuz
+  {% when '8' %}Ağustos
+  {% when '9' %}Eylül
+  {% when '10' %}Ekim
+  {% when '11' %}Kasım
+  {% when '12' %}Aralık
+{% endcase %} &middot; <a href="{{ post.url| prepend: site.baseurl }}" target="_blank">{{ post.title }}</a></li>
 {% endif %}
 {% endfor %}
 </ul>
