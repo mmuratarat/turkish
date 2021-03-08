@@ -9,7 +9,7 @@ Bir yaşam boyu öğrenci ve bir akademisyen olarak, her zaman, 'yaparak öğren
 
 PostgreSQL seçmek benim kendi tercihim. Siz isterseniz, Oracle, MySQL, MariaDB, Microsoft's SQL Server/Access v.s. kurabilirsiniz. Ancak, PostgreSQL veri yönetim sistemi, ANSI/ISO standartlarına çoğunlukla uyan bir dildir. Sizin de kolay pratik yapabilmeniz için, PostgreSQL veri tabanı yönetim sistemi ve PostgreSQL grafik ara yüzü pgAdmin4'un nasıl kurulduğunu anlatan Türkçe bir yönerge hazırladım. Ben MacOS (Mac İşletim Sistemi) kullansam da bu dokümanı, tamamıyla Windows 10 işletim sistemli bilgisayarlar için hazırladım. Sanırım, Windows 7 kullananlar da faydalanabilirler.
 
-<embed src="https://mmuratarat.github.io/files/PostgreSQL_pgAdmin4_Setup.pdf" width="800" height="700" frameborder="0" allowfullscreen>
+<embed src="https://mmuratarat.github.io/turkish/files/PostgreSQL_pgAdmin4_Setup.pdf" width="800" height="700" frameborder="0" allowfullscreen>
 
 SQL öğrenirken kullanılabilecek bir kaç önemli kaynağı da aşağıda paylaşıyorum:
 

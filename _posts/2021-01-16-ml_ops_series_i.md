@@ -8,7 +8,7 @@ tags: [MLOps, Machine Learning, Software Development, Turkish]
 
 Bir makine öğrenmesi modelini elde etmek çoğu zaman kolay olabilir. Ancak bu modelin gerçek hayatta kullanılabilirliği ve üretimde (prodüksiyonda) son kullanıcıya sunulması zahmetli bir süreçtir. 
 
-![](https://github.com/mmuratarat/mmuratarat.github.io/blob/master/_posts/images/Screen%20Shot%202021-01-16%20at%2022.39.30.png?raw=true)
+![](https://github.com/mmuratarat/turkish/blob/master/_posts/images/Screen%20Shot%202021-01-16%20at%2022.39.30.png?raw=true)
 
 Bu nedenle makine öğrenmesi ile ilgilenenler için MLOps (makine öğrenmesi operasyonları) isminde bir seri başlatıyorum. Her hafta MLOps ile ilgili İngilizce yazılmış çok başarılı bir internet günlüğünü Türkçe'ye çevirip paylaşacağım. Böylelikle bir makine öğrenmesi modelini servis ederken ve dağıtırken veya makine öğrenmesi tabanlı bir yazılım geliştirirken nelere dikkat edilmesi gerektiği ile MLOps ilkelerini ve alt yapısını daha iyi anlayabiliriz.
 
@@ -29,7 +29,7 @@ Bu bölümde, makine öğrenmesi tabanlı bir yazılım geliştirmek için gerç
 Aşağıdaki şekil tipik bir makine öğrenmesi iş akışında olan temel adımları göstermektedir.
 
 <figure>
-  <img src="https://github.com/mmuratarat/mmuratarat.github.io/blob/master/_posts/images/ml_engineering.png?raw=true" alt="my alt text"/>
+  <img src="https://github.com/mmuratarat/turkish/blob/master/_posts/images/ml_engineering.png?raw=true" alt="my alt text"/>
   <figcaption><small>Bu diagram Dr. Larysa Visengeriyeva tarafından yaratılmış olup, kendisinin izniyle tarafımdan Türkçe'ye çevrilmiştir. İzinsiz kullanılması yasaktır.</small></figcaption>
 </figure>
 
