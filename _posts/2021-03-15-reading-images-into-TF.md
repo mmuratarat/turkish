@@ -136,7 +136,7 @@ flower_photos/
 .............................
 ```
 
-İlk olarak yükleyici için yukarıda bahsettiğim bazı parametreleri tanımlayın:
+İlk olarak yükleyici için yukarıda bahsedilen bazı parametreleri tanımlayalım:
 
 ```python
 train_ds = tf.keras.preprocessing.image_dataset_from_directory(
