@@ -154,7 +154,7 @@ train_ds
 #<BatchDataset shapes: ((None, 180, 180, 3), (None,)), types: (tf.float32, tf.int32)>
 ```
 
-Toplamda 3670 görüntü vardı ve `image_dataset_from_directory` fonksiyonu doğru şekilde bu görüntüleri okuyabildi. 5 tane alt dizin bulunduğu için 5 tane sınıf olduğunu bulabildi çünkü `labels = 'inferred'` olarak ayarlandı, diğer bir deyiş ile etiketler dizin yapısından üretildi. 
+Toplamda 3670 görüntü vardır ve `image_dataset_from_directory` fonksiyonu doğru şekilde bu görüntüleri okuyabildi. 5 tane alt dizin bulunduğu için 5 tane sınıf olduğunu bulabildi çünkü `labels = 'inferred'` olarak ayarlandı, diğer bir ifade ile etiketler dizin yapısından üretildi. 
 
 Burada `label_mode='int'` olarak ayarlandığı için etiket değişkeninin boyutu  `(None,)` olmuştur. `None`, yığın büyüklüğünü temsil etmektedir. Bu `tf.data.Dataset` nesnesi her seferinde 32 tane (180 x 180) boyutlu görüntüyü size geri döndürecektir çünkü `batch_size = 32` olarak ayarlanmıştır.
 
@@ -233,7 +233,7 @@ for image, label in train_ds.take(1):
 #  [0. 0. 0. 1. 0.]], shape=(32, 5), dtype=float32)
 ```
 
-Kolaylıkla anlaşılacağı üzere görüntüler 3 kanallı 180 x 180lik görüntülerden oluşmaktadır ve etiketler kategorik vektörler olarak yani bir-elemanı-bir olan vektörler olarak kodlanmıştır (one-hot encoding). Bu nedenle her bir resmin etiketinin boyutu 5'tir, çünkü elimizde 5 sınıf vardır. 
+Kolaylıkla anlaşılacağı üzere görüntüler 3 kanallı 180 x 180 boyutundadır ve etiketler bir-elemanı-bir olan vektörler olarak kodlanmıştır (one-hot encoding). Bu nedenle her bir resmin etiketinin boyutu 5'tir, çünkü elimizde 5 sınıf vardır. 
 
 ```
 [1. 0. 0. 0. 0.] -> daisy
@@ -353,7 +353,7 @@ for images, labels in train_ds.take(1):
 
 ## tf.keras.preprocessing.image.ImageDataGenerator().flow_from_directory kullanarak görüntüleri okumak
 
-TensorFlow ortamına görüntüleri okumak için diğer bir yöntem ise `.flow_from_directory()`  metodunu kullanmaktır. `flow_from_directory` bir `ImageDataGenerator` metodudur. `ImageDataGenerator` görüntüler için bir üreticidir (generator) ve gerçek zamanlı veri çeşitlendirme (real-time data augmentation) yaparak görüntü verilerini yığınlar olarak oluşturur. Veri çeşitlendirme, görüntü sınıflandırma (image classification), nesne algılama (object detection) veya görüntü bölütleme (image segmentation) gibi bir çok yöntem için için küçük bir görüntü kümesinden zengin, çeşitli bir görüntü kümesi oluşturur. Bunu, kırpma, doldurma, çevirme vb. görüntü tekniklerini kullanarak veri miktarını arttırarak gerçekleştiren bir stratejidir. Veri çeşitlendirme, modeli küçük varyasyonlara kadar daha sağlam (robust) hale getirir ve dolayısıyla modelin aşırı uyum sağlamasını önler. Çeşitlendirilmiş görüntü verilerini bellekte depolamak ne pratik ne de etkilidir ve işte burada Keras'tan `ImageDataGenerator` sınıfı devreye girer. Üretici tarafından üretilen çıktı görüntüleri, girdi görüntüleriyle aynı çıktı boyutlarına sahip olacaktır. `tf.keras.preprocessing.image.ImageDataGenerator()` kullanarak tek bir satır kod ile anında görüntü çeşitlendirmeyi bir sonraki yazıda göreceğiz. Şimdilik bu sınıfın sözdizimine bakalım:
+TensorFlow ortamına görüntüleri okumak için diğer bir yöntem ise `.flow_from_directory()`  metodunu kullanmaktır. `flow_from_directory` bir `ImageDataGenerator` metodudur. `ImageDataGenerator` görüntüler için bir üreticidir (generator) ve gerçek zamanlı veri çeşitlendirme (real-time data augmentation) yaparak görüntü verilerini yığınlar olarak oluşturur. Veri çeşitlendirme, görüntü sınıflandırma (image classification), nesne algılama (object detection) veya görüntü bölütleme (image segmentation) gibi bir çok yöntem için için küçük bir görüntü kümesinden zengin, çeşitli bir görüntü kümesi oluşturur. Bunu, kırpma, doldurma, çevirme vb. görüntü tekniklerini kullanarak gerçekleştirir ve böylelikle veri miktarını arttırılır. Veri çeşitlendirme, modeli küçük varyasyonlara kadar daha sağlam (robust) hale getirir ve dolayısıyla modelin aşırı uyum sağlamasını (overfitting) önler. Çeşitlendirilmiş görüntü verilerini bellekte depolamak ne pratik ne de verimlidir ve işte tam burada Keras'ın `ImageDataGenerator` sınıfı devreye girer. Üretici tarafından üretilen çıktı görüntüleri, girdi görüntüleriyle aynı çıktı boyutlarına sahip olacaktır. `tf.keras.preprocessing.image.ImageDataGenerator()` kullanarak tek bir satır kod ile anında görüntü çeşitlendirmeyi bir sonraki yazıda göreceğiz. Şimdilik bu sınıfın sözdizimine bakalım:
 
 ```
 tf.keras.preprocessing.image.ImageDataGenerator(
@@ -541,9 +541,3 @@ Burada `train_data_dir` ve `val_data_dir`, eğitim ve doğrulama kümelerinde ai
 `image_dataset_from_directory` ve `flow_from_directory` arasındaki fark ise şu şekildedir: `image_dataset_from_directory` bir dizindeki görüntü dosyalarından bir `tf.data.Dataset` oluşturur. `ImageDataGenerator().flow_from_directory` ise bir dizine giden yolu alır ve çeşitlendirilmiş veri (augmented data) yığınları oluşturur.
 
 Döndürdükleri obje tipi farklı olsa da, temel fark, `flow_from_directory` bir `ImageDataGenerator` yöntemidir, `image_dataset_from_directory` ise görüntülerin olduğu dizini okumak için kullanılan bir ön işleme fonksiyonudur. Ancak `image_dataset_from_directory`, anında (on-the-fly) çeşitlendirilmiş görüntü oluşturma özelliği ile size kolaylık sağlamayacaktır. O halde, hangisini kullanmalısınız? CNN ile çalışırken çeşitlendirilmiş görüntüler oluşturmak oldukça yaygındır, bu nedenle `flow_from_directory` kullanmak daha iyidir. Çeşitlendirilmiş görüntüye ihtiyacınız yoksa, `ImageDataGenerator` parametreleriyle aynı şeyi kontrol edebilirsiniz.
-
-
-
-
-
-
