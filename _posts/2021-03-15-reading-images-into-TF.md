@@ -155,7 +155,7 @@ train_ds
 #<BatchDataset shapes: ((None, 180, 180, 3), (None,)), types: (tf.float32, tf.int32)>
 ```
 
-Toplamda 3670 görüntü vardır ve `image_dataset_from_directory` fonksiyonu doğru şekilde bu görüntüleri okuyabildi. 5 tane alt dizin bulunduğu için 5 tane sınıf olduğunu bulabildi çünkü `labels = 'inferred'` olarak ayarlandı, diğer bir ifade ile etiketler dizin yapısından üretildi. 
+Toplamda 3670 görüntü vardır ve `image_dataset_from_directory` fonksiyonu doğru şekilde bu görüntüleri okuyabildi. 5 tane alt dizin bulunduğu için 5 tane sınıf olduğunu çıkarabildi çünkü `labels = 'inferred'` olarak ayarlandı, diğer bir ifade ile etiketler dizin yapısından üretildi. 
 
 Burada `label_mode='int'` olarak ayarlandığı için etiket değişkeninin boyutu  `(None,)` olmuştur. `None`, yığın büyüklüğünü temsil etmektedir. Bu `tf.data.Dataset` nesnesi her seferinde 32 tane (180 x 180) boyutlu görüntüyü size geri döndürecektir çünkü `batch_size = 32` olarak ayarlanmıştır.
 
