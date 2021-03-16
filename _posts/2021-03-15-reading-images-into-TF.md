@@ -31,12 +31,13 @@ Aşağıdaki kodu çalıştırdıktan sonra oluşacak `flower_photos` klasörün
 `flowers`, veri kümesinin indirildiği yolu (benim durumumda - `/Users/mustafamuratarat/.keras/datasets`) içerir. Veri kümesinin yapısı aşağıdaki gibi olacaktır:
 
 ```
-├── daisy [633 görüntü]
-├── dandelion [898 görüntü]
-├── roses [641 görüntü]
-├── sunflowers [699 görüntü]
-├── tulips [799 görüntü]
-└── LICENSE.txt
+flower_photos
+      ├── daisy [633 görüntü]
+      ├── dandelion [898 görüntü]
+      ├── roses [641 görüntü]
+      ├── sunflowers [699 görüntü]
+      ├── tulips [799 görüntü]
+      └── LICENSE.txt
 ```
 
 ```python
@@ -80,11 +81,11 @@ tf.keras.preprocessing.image_dataset_from_directory(
 )
 ```
 
-Bu fonksiyon ile desteklenen resim formatları: jpeg, png, bmp, gif. Animasyonlu gifler ilk kareye kesilir.
+Bu fonksiyon ile desteklenen resim formatları: jpeg, png, bmp, gif'dir. Animasyonlu gifler ilk kareye kesilir.
 
 Buradaki bazı argümanlara göz atalım. 
 
-`directory`, verinin yer aldığı dizindir. Eğer `labels` argümanı  "inferred" olarak ayarlanmış ise, ana dizinde her biri bir sınıfa ait görüntüleri içeren alt dizinler olmalıdır. `flower_photos` ana dizinin altında `daisy`, `roses`, `sunflowers`, `dandelion`, ve `tulips` isimli 5 alt dizin olması gibi). Aksi takdirde, dizin yapısı göz ardı edilir.
+`directory`, verinin yer aldığı dizindir. Eğer `labels` argümanı  `inferred` olarak ayarlanmış ise, ana dizin altında her biri bir sınıfa ait görüntüleri içeren alt dizinler olmalıdır. `flower_photos` ana dizinin altında `daisy`, `roses`, `sunflowers`, `dandelion`, ve `tulips` isimli 5 alt dizin olması gibi). Aksi takdirde, dizin yapısı göz ardı edilir.
 
 `labels` argümanı ya `inferred` olarak değer alır (etiketler, dizin yapısından üretilir, örneğin, ) veya dizinde bulunan görüntü dosyalarının sayısıyla aynı boyutta tamsayı etiketlerinin bir listesi (list) veya demetidir (tuple). Etiketler, görüntü dosyası yollarının alfasayısal sırasına göre sıralanmalıdır (Python'da `os.walk(directory)` aracılığıyla elde edilir).
 
@@ -110,7 +111,7 @@ Eğer `label_mode` argümanı `categorial` olarak ayarlandıysa, etiketler, `(y�
 
 `validation_split` ve `subset` argümanlarının ne işe yaradığını aşağıdaki "Veri Kümesini Parçalamak" isimli alt bölümde göreceğiz.
 
-O halde, elimizdeki görüntüleri `image_dataset_from_directory` kullanarak diskten yükleyelim. Alt dizinleri (sınıf) ve görüntü dosyalarının adlarını (.jpg) içeren dizin yapısı şu şekildedir:
+O halde, elimizdeki görüntüleri `image_dataset_from_directory` kullanarak diskten yükleyelim. Alt dizinleri (sınıf) ve görüntü dosyalarının adlarını (`.jpg`) içeren dizin yapısı şu şekildedir:
 
 ```
 flower_photos/
