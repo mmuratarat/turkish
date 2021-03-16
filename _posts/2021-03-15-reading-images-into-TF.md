@@ -67,7 +67,7 @@ print(image_count)
 
 ## tf.keras.preprocessing.image_dataset_from_directory kullanarak görüntüleri okumak
 
-`tf.keras.preprocessing.image_dataset_from_directory` kullanarak görüntü veri kümenizi direkt olarak herhangi bir dizinden okutabilirsiniz. Dökümantasyonu [burada](https://www.tensorflow.org/api_docs/python/tf/keras/preprocessing/image_dataset_from_directory) bulabilirsiniz. Bu fonksiyon dizindeki görüntü dosyalarından bir `tf.data.Dataset` oluşturur.
+`tf.keras.preprocessing.image_dataset_from_directory` kullanarak görüntü veri kümenizi direkt olarak herhangi bir dizinden okutabilirsiniz. Dökümantasyonunu [burada](https://www.tensorflow.org/api_docs/python/tf/keras/preprocessing/image_dataset_from_directory) bulabilirsiniz. Bu fonksiyon dizindeki görüntü dosyalarından bir `tf.data.Dataset` oluşturur.
 
 Sözdizimi aşağıdaki gibidir:
 
