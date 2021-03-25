@@ -278,7 +278,7 @@ Bağımlılık-Olarak-Model, bir makine öğrenmesi modelini paketlemenin muhtem
 Bu tür bir makine öğrenmesi modeli hizmeti, Tahmin MÖ iş akışıyla sıkı bir şekilde ilişkilidir. Önhesaplamalı servis kalıbıyla, önceden eğitilmiş bir makine öğrenmesi modeli kullanır ve gelen veri yığını için tahminleri önceden hesaplarız. Elde edilen tahminler veritabanında saklanır. Bu nedenle, herhangi bir girdi isteği için, tahmin sonucunu almak üzere veritabanını sorgularız.
 
 <figure>
-  <img src="https://github.com/mmuratarat/turkish/blob/master/_posts/images/model_serving_patterns.png?raw=true" alt="my alt text"/>
+  <img src="https://github.com/mmuratarat/turkish/blob/master/_posts/images/precompute-serving-pattern.png?raw=true" alt="my alt text"/>
   <figcaption><small>Bu diagram Dr. Larysa Visengeriyeva tarafından yaratılmış olup, kendisinin izniyle tarafımdan Türkçe'ye çevrilmiştir. İzinsiz kullanılması yasaktır.</small></figcaption>
 </figure>
 
