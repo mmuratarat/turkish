@@ -55,4 +55,4 @@ Bu yaklaşımın bir avantajı, otomatik yedekleme çalışmaları için ihtiya�
 
 Temel fikir, aralarında geçiş yapmak için kolayca değiştirilebilir iki ortama sahip olmaktır, ayrıntıları değiştirmenin birçok yolu vardır.
 
-<a name="myfootnote1">1</a>: https://stackoverflow.com/questions/45259589/whats-the-difference-between-red-black-deployment-and-blue-green-deployment
+<a name="myfootnote1">1</a>:https://stackoverflow.com/questions/45259589/whats-the-difference-between-red-black-deployment-and-blue-green-deployment
