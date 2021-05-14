@@ -31,7 +31,7 @@ Büyük, dağıtımlı (distributed) senaryolarda, hangi kullanıcıların yeni 
 
 Kanarya sürümleri, teknik uygulamadaki benzerlikler nedeniyle A/B testini gerçekleştirmenin bir yolu olarak kullanılabilir. Ancak, bu iki yöntemi karıştırarak kullanmamak tercih edilir: kanarya sürümleri sorunları ve gerilemeleri tespit etmenin iyi bir yolu iken, A/B testi, varyant uygulamaları kullanarak bir hipotezi test etmenin bir yoludur. Bir kanarya dağıtım stratejisi ile gerilemeleri tespit etmek için bir iş ölçütünü (metric) izlerseniz, bu ölçütü, A/B testi için kullanmak da sonuçları etkileyebilir. Daha pratik bir not olarak, bir A/B testi için istatistiksel önemi göstermek üzere yeterli veri toplamak günler sürebilirken, bir kanarya sunumunun dakikalar veya saatler içinde tamamlanmasını isteyebilirsiniz.
 
-Kanarya sürümlerini kullanmanın bir dezavantajı, yazılımınızın birden çok sürümünü aynı anda yönetmeniz gerekmesidir. Üretimde aynı anda ikiden fazla sürüm çalıştırmaya bile karar verebilirsiniz, ancak en iyisi eşzamanlı sürümlerin sayısını minimumda tutmaktır.
+Kanarya sürümlerini kullanmanın bir dezavantajı, yazılımınızın birden çok sürümünü aynı anda yönetmenizi gerektirmesidir. Üretimde aynı anda ikiden fazla sürüm çalıştırmaya bile karar verebilirsiniz, ancak en iyisi eşzamanlı sürümlerin sayısını minimumda tutmaktır.
 
 Kanarya sürümlerini kullanmanın zor olduğu başka bir senaryo, kullanıcıların bilgisayarlarına veya mobil cihazlarına yüklenen yazılımı dağıttığınız zamandır. Bu durumda, yeni sürüme yükseltmenin ne zaman yapılacağı üzerinde daha az kontrole sahip olursunuz.
 
