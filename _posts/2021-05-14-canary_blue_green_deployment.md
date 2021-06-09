@@ -43,7 +43,7 @@ Dağıtımı otomatikleştirmedeki zorluklardan biri, yazılımı testin son aş
 
 ![](https://github.com/mmuratarat/turkish/blob/master/_posts/images/blue_green1.png?raw=true)
 
-Yazılımınızın yeni bir sürümünü hazırlarken, yeşil ortamda ise testlerinizin son aşamasını yaparsınız (yani, yeni modelin hem teknik hem de iş ölçütlerinin tamamını karşılayıp karşılamadığını kontrol edersiniz.) Tüm testler başarılı bir şekilde çalıştıktan sonra yazılımınızın yeni sürümü yeşil ortamda çalışmaya başlar ve böylelikle yönlendiriciyi (router), gelen tüm isteklerin yeşil ortama gitmesi için değiştirirsiniz - mavi olan artık boşta (Bir süre herhangi bir sorun bulunmazsa, mavi ortamı kaldırabilirsiniz.)
+Yazılımınızın yeni bir sürümünü hazırlarken, yeşil ortamda ise testlerinizin son aşamasını yaparsınız (yani, yeni modelin hem teknik hem de iş ölçütlerinin tamamını karşılayıp karşılamadığını kontrol edersiniz.) Tüm testler başarılı bir şekilde çalıştıktan sonra yazılımınızın yeni sürümü yeşil ortamda çalışmaya başlar ve böylelikle yönlendiriciyi (router), gelen tüm isteklerin (requests) yeşil ortama gitmesi için değiştirirsiniz - mavi olan artık boşta (Bir süre herhangi bir sorun bulunmazsa, mavi ortamı kaldırabilirsiniz.)
 
 ![](https://github.com/mmuratarat/turkish/blob/master/_posts/images/blue_green2.png?raw=true)
 
