@@ -56,3 +56,21 @@ Bu yaklaşımın bir avantajı, otomatik yedekleme çalışmaları için ihtiya�
 Temel fikir, aralarında geçiş yapmak için kolayca değiştirilebilir iki ortama sahip olmaktır, ayrıntıları değiştirmenin birçok yolu vardır.
 
 <a name="myfootnote1">1</a>:https://stackoverflow.com/questions/45259589/whats-the-difference-between-red-black-deployment-and-blue-green-deployment
+
+Literatürde farklı dağıtım stratejileri daha vardır. Yeniden Oluşturma (Recreate) isimli dağıtım stratejisi, bir yazılımın A versiyonunun yayından kaldırılıp, direkt B versiyonuna geçişi ifade eder. Aşağıdaki şema, yeniden oluşturma dağıtımının bir uygulama için nasıl çalıştığını gösterir.
+
+![](https://cloud.google.com/architecture/images/application-deployment-and-testing-strategies-recreate-deployment.svg)
+
+Yeniden oluşturma yöntemi, güncelleme işlemi sırasında kapalı kalma süresini (downtime) içerir. Arıza süresi, bakım aralıklarını veya kesintileri kaldırabilen uygulamalar için bir sorun teşkil etmez. Ancak, yüksek hizmet düzeyi anlaşmaları (high service level agreements-SLA'lar) ve kullanılabilirlik gereksinimleri olan görev açısından kritik uygulamalarınız varsa, farklı bir dağıtım stratejisi seçebilirsiniz.
+
+Rampalı (ramped) (sürekli güncelleme (rolling-update) veya artımlı (increamental) olarak da anılır) olarak bilinen dağıtım stratejisinde ise bir yazılımın B versiyonu yavaş yavaş kullanıma sunulur ve A sürümünün yerini alır. Bu dağıtım yönteminde her uygulama örneğini aynı anda güncellemek yerine çalışan uygulama örneklerinin bir alt kümesini güncellersiniz
+
+![](https://cloud.google.com/architecture/images/application-deployment-and-testing-strategies-rolling-update-deployment.svg)
+
+Bu dağıtım yaklaşımında, aynı anda güncellediğiniz örneklerin (instances) sayısına pencere boyutu (window size) denir. Yukarıdaki şemada, yavaş yavaş yapılan güncellemenin pencere boyutu 1'dir. Bir seferde bir uygulama örneği güncellenir. Büyük bir kümeniz varsa, pencere boyutunu artırabilirsiniz.
+
+Literatürde A/B testi de bir dağıtım stratejisi (deployment strategy) olarak gösterilmektedir. Ancak, tam anlamıyla bu durum doğru değildir. A/B testi bir yayınlama stratejisidir (release strategy). İkisi arasındaki farkı daha iyi anlayabilmek için [şu Stackoverflow cevabını](https://stackoverflow.com/a/62096278){:target="_blank"} okuyabilirsiniz.
+
+# KAYNAKLAR
+
+1. https://cloud.google.com/architecture/application-deployment-and-testing-strategies
