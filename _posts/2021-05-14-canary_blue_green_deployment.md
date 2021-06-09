@@ -39,7 +39,7 @@ Veritabanı değişikliklerini yönetmek, kanarya sürümleri yapılırken de di
 
 # Mavi-Yeşil Dağıtım Stratejisi (Blue-Green Deployment Strategy)
 
-Dağıtımı otomatikleştirmedeki zorluklardan biri, yazılımı testin son aşamasından canlı üretime alan geçişisin (cutover) kendisidir. Arıza süresini (downtime) en aza indirmek için genellikle bunu hızlı bir şekilde yapmanız gerekir. Mavi-yeşil dağıtım yaklaşımı (kırmızı-siyah dağıtım olarak da bilinir - literatüre baktığınızda, bazen, kırmızı - siyah dağıtım  stratejisinin farklı bir strateji olduğunu görebilirsiniz. Kırmızı-siyah dağıtım, Netflix, Istio ve konteyner düzenlemeyi destekleyen diğer yazılım iskeletleri ve platformlar tarafından kullanılan daha yeni bir terimdir. Her iki terim de aynı şeyi ifade eder ve ikisi arasındaki herhangi bir teknik fark muhtemelen yalnızca belirli bir ekip veya şirket içinde anlamlı olacaktır <sup>[1](#myfootnote1)</sup>), mümkün olduğunca aynı iki üretim ortamına sahip olmanızı sağlayarak bunu gerçekleştirir. Örneğin, herhangi bir zamanda, mavi ortam, yazılımınızın n'inci versiyonunu çalıştıran canlı bir prodüksiyon ortamı olsun. Yeşim ortam ise yazılımınızın n+1'inci versiyonunu çalıştıran ve mavi ortamın tam bir kopyası olsun.
+Dağıtımı otomatikleştirmedeki zorluklardan biri, yazılımı testin son aşamasından canlı üretime alan geçişisin (cutover) kendisidir. Arıza süresini (downtime) en aza indirmek için genellikle bunu hızlı bir şekilde yapmanız gerekir. Mavi-yeşil dağıtım yaklaşımı (kırmızı-siyah dağıtım olarak da bilinir - literatüre baktığınızda, bazen, kırmızı - siyah dağıtım  stratejisinin farklı bir strateji olduğunu görebilirsiniz. Kırmızı-siyah dağıtım, Netflix, Istio ve konteyner düzenlemeyi destekleyen diğer yazılım iskeletleri ve platformlar tarafından kullanılan daha yeni bir terimdir. Her iki terim de aynı şeyi ifade eder ve ikisi arasındaki herhangi bir teknik fark muhtemelen yalnızca belirli bir ekip veya şirket içinde anlamlı olacaktır - https://stackoverflow.com/questions/45259589/whats-the-difference-between-red-black-deployment-and-blue-green-deployment), mümkün olduğunca aynı iki üretim ortamına sahip olmanızı sağlayarak bunu gerçekleştirir. Örneğin, herhangi bir zamanda, mavi ortam, yazılımınızın n'inci versiyonunu çalıştıran canlı bir prodüksiyon ortamı olsun. Yeşim ortam ise yazılımınızın n+1'inci versiyonunu çalıştıran ve mavi ortamın tam bir kopyası olsun.
 
 ![](https://github.com/mmuratarat/turkish/blob/master/_posts/images/blue_green1.png?raw=true)
 
@@ -54,8 +54,6 @@ Yeşil ortamınızı hayata geçirdikten ve istikrarından memnun olduğunuzda, 
 Bu yaklaşımın bir avantajı, otomatik yedekleme çalışmaları için ihtiyaç duyduğunuzla aynı temel mekanizma olmasıdır. Dolayısıyla bu, olağanüstü durum kurtarma prosedürünüzü (disaster-recovery procedure) her sürümde test etmenize olanak tanır. 
 
 Temel fikir, aralarında geçiş yapmak için kolayca değiştirilebilir iki ortama sahip olmaktır, ayrıntıları değiştirmenin birçok yolu vardır.
-
-<a name="myfootnote1">1</a>:https://stackoverflow.com/questions/45259589/whats-the-difference-between-red-black-deployment-and-blue-green-deployment
 
 Literatürde farklı dağıtım stratejileri daha vardır. Yeniden Oluşturma (Recreate) isimli dağıtım stratejisi, bir yazılımın A versiyonunun yayından kaldırılıp, direkt B versiyonuna geçişi ifade eder. Aşağıdaki şema, yeniden oluşturma dağıtımının bir uygulama için nasıl çalıştığını gösterir.
 
