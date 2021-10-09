@@ -9,7 +9,9 @@ Daha yaygın olarak JSON kısaltmasıyla bilinen JavaScript Nesne Gösterimi (**
  
 JSON yalnızca iki veri yapısını tanımlar: nesneler (object) ve diziler (array). Bir nesne, bir ad-değer (veya anahtar-değer (key-value)) çiftleri kümesidir (Python'da sözlüğe (dictionary) karşılık gelir). Sol ({) ve sağ (}) ayraçlar içinde bir nesne tanımlanır. Her ad-değer çifti, adla başlar, ardından iki nokta üst üste ve ardından değer gelir. Ad-değer çiftleri virgülle ayrılır. Bir dizi, bir değerler listesidir. Sol ([) ve sağ (]) parantez içinde bir dizi tanımlanır. Dizideki öğeler virgülle ayrılır. Bir dizideki her öğe, başka bir dizi veya bir nesne dahil olmak üzere farklı bir türde olabilir.
 
-JSON yedi değer türü tanımlar: dizgi (string), sayı (number), nesne (object), dizi (array), doğru (true), yanlış (false) ve boş (null). Python nesneleri ve bunların JSON'a eşdeğer dönüşümü aşağıda verilmiştir:
+JSON yedi farklı değer türü tanımlar: dizgi (string), sayı (number), nesne (object), dizi (array), doğru (true), yanlış (false) ve boş (null). Python nesneleri ve bunların JSON'a eşdeğer dönüşümü aşağıda verilmiştir:
+
+<br>
 
 |    **Python**   | **JSON Karşılığı** |
 |:-----------:|:---------------:|
@@ -20,6 +22,8 @@ JSON yedi değer türü tanımlar: dizgi (string), sayı (number), nesne (object
 |     True    |       true      |
 |    False    |      false      |
 |     None    |       null      |
+
+<br>
 
 Aşağıdaki örnek, ad-değer çiftlerini içeren bir örnek nesne için JSON verilerini gösterir. `phoneNumbers` adının değeri, öğeleri iki nesne olan bir dizidir.
 
