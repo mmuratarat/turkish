@@ -1,5 +1,9 @@
-# JSON nedir?
-
+---
+layout: post
+title:  "JSON nedir?"
+author: "MMA"
+comments: true
+---
 
 Daha yaygın olarak JSON kısaltmasıyla bilinen JavaScript Nesne Gösterimi (**J**ava**S**cript **O**bject **N**otation), hem insan hem de makine tarafından okunabilen bir açık veri değişim biçimidir. Genellikle web uygulamalarında veri iletimini sağlamak için kullanılır (örneğin, bir web sayfasında görüntülenebilmesi için sunucudan (server) istemciye (client) bazı verilerin gönderilmesi veya tersi). Douglas Crockford, JSON veri formatını popüler hale getirdi. İsminin içerisinde JavaScript geçmesine rağmen, JSON herhangi bir programlama dilinden bağımsızdır ve çok çeşitli uygulamalarda ortak bir API çıktısıdır.
  
