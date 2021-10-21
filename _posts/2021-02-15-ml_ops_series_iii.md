@@ -164,7 +164,7 @@ Aşağıdaki şekil, eğitilmiş modelleri dağıtılabilir hizmetler olarak sar
 
 Bir makine öğrenmesi modelini bir üretim sistemine yerleştirmenin en dinamik yolu, gerçek zamanlı akış analitiği (real-time streaming analytics) olarak da bilinen çevrimiçi öğrenmeyi uygulamaktır. Lütfen çevrimiçi öğrenmenin kafa karıştırıcı bir isim olabileceğini unutmayın çünkü bir makine öğrenmesi modelinin eğitimi genellikle canlı bir sistemde gerçekleştirilmez. Buna _artımlı öğrenme_ (incremental learning) demeliyiz; ancak, _çevrimiçi öğrenme_ terimi Makine Öğrenmesi camiaasında uzun süredir kullanılan oturmuş bir terimdir.  
 
-Bu tür bir makine öğrenmesi iş akışında, bir öğrenme algoritması, veri noktalarını tek tek veya min-yığın olarak adlandırılan küçük gruplar halinde alacak şekilde sürekli bir veri akışına (data stream) sahiptir. Sistem, yeni veriler gelir gelmez anında bu verileri analiz eder, böylece makine öğrenmesi modeli yeni verilerle aşamalı olarak yeniden eğitilir. Bu sürekli olarak yeniden eğitilen model, bir web hizmeti olarak anında kullanılabilir.
+Bu tür bir makine öğrenmesi iş akışında, bir öğrenme algoritması, veri noktalarını tek tek veya mini-yığın olarak adlandırılan küçük gruplar halinde alacak şekilde sürekli bir veri akışına (data stream) sahiptir. Sistem, yeni veriler gelir gelmez anında bu verileri analiz eder, böylece makine öğrenmesi modeli yeni verilerle aşamalı olarak yeniden eğitilir. Bu sürekli olarak yeniden eğitilen model, bir web hizmeti olarak anında kullanılabilir.
 
 Teknik olarak, bu tür bir makine öğrenmesi sistemi, büyük veri sistemlerinde _lambda mimarisiyle_ (lambda architecture) iyi çalışır.
 
