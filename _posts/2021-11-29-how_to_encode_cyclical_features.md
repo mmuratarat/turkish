@@ -5,7 +5,7 @@ author: "MMA"
 comments: true
 ---
 
-Doğası gereği bazı veriler döngüsel (cyclical) bir yapıya sahiptir.  Zaman (time) bunun çok güzel bir örneğidir: dakika, saat, saniye, haftanın günü, ayın haftası, ay, mevsim vb. tüm değişkenler bir döngüyü (cycle) takip etmektedir. Gelgit gibi ekolojik değişkenler, yörüngedeki konum gibi astrolojik değişkenler, rotasyon veya boylam gibi uzamsal değişkenler, renk çarkları gibi görsel değişkenler gibi özniteliklerin tümü doğal olarak döngüseldir. Peki, makine öğrenimi modelimizin bir özelliğin döngüsel olduğunu bilmesini nasıl sağlayabiliriz?
+Doğası gereği bazı veriler döngüsel (cyclical) bir yapıya sahiptir.  Zaman (time) bunun çok güzel bir örneğidir: dakika, saat, saniye, haftanın günü, ayın haftası, ay, mevsim vb. tüm değişkenler bir döngüyü (cycle) takip etmektedir. Gelgit gibi ekolojik değişkenler, yörüngedeki konum gibi astrolojik değişkenler, rotasyon veya boylam gibi uzamsal değişkenler, renk çarkları gibi görsel değişkenler doğal olarak döngüseldir. Peki, makine öğrenimi modelimizin bir özelliğin döngüsel olduğunu bilmesini nasıl sağlayabiliriz?
 
 Elimizde bir tarih-zaman (datetime) değişkeni olduğunda, yıl, ay, ve gün olarak parçalanan değişkenlere literatürde en çok kullanılan bir-elemanı-bir kodlama (one-hot encoding) yöntemi uygulanır. Bu yöntem kimi zaman iyi cevap verse de bilgi kaybına neden olmaktadır. Saat değişkenine sahip olduğumu varsayalım, bu değişkeni nasıl ele alırdık? Sonuçta girdilerimizin döngüsel yapısını korumak istiyoruz. Aynı zamanda, verinin boyutunu arttırmak istemiyoruz...
 
@@ -103,7 +103,7 @@ plt.savefig('plot2.png')
 
 ![](https://github.com/mmuratarat/turkish/blob/master/_posts/images/plot2.png?raw=true)
 
-Kolaylıkla görüldüğü üzere, iki nokta arasındaki mesafe, 24 saatlik bir döngüden beklediğimiz gibi zaman farkına karşılık gelir. Artık bu iki değişken makine öğrenmesi modelimiz için rahatlıkla kullanılabilir. Buna ek olarak, değişkenler [-1, 1] aralığına ölçeklendiğinden, herhangi bir şekilde modeli domine etmeyecektir. Ek olarak, sin/cos tekniği bilgileri saat cinsinden korumaktadır (yani 23:00, 21:00'a göre, 00:00'a daha yakındır). Benzer şekilde, bu tekniği haftanın günlerine uyguladığımızda, Pazar gününün Pazartesi'ye daha yakın olduğu bilgisini modelimizde işleyebileceğiz. 
+Kolaylıkla görüldüğü üzere, iki nokta arasındaki mesafe, 24 saatlik bir döngüden beklediğimiz gibi zaman farkına karşılık gelir. Artık bu iki değişken makine öğrenmesi modelimiz için rahatlıkla kullanılabilir. Buna ek olarak, değişkenler [-1, 1] aralığına ölçeklendiğinden, herhangi bir şekilde modeli domine etmeyecektir. Ek olarak, sin/cos tekniği bilgileri saat cinsinden korumaktadır (yani 23:00, 21:00'a göre, 00:00'a daha yakındır). Benzer şekilde, bu tekniği haftanın günlerine uyguladığımızda, Pazar gününün Pazartesi'ye daha yakın olduğu bilgisini modelimizde kolaylıkla işleyebiliriz. 
 
 # Referanslar
 
@@ -115,12 +115,3 @@ Kolaylıkla görüldüğü üzere, iki nokta arasındaki mesafe, 24 saatlik bir 
 6. https://datascience.stackexchange.com/questions/2368/machine-learning-features-engineering-from-date-time-data
 7. https://medium.com/ai%C2%B3-theory-practice-business/top-6-errors-novice-machine-learning-engineers-make-e82273d394db
 8. https://datascience.stackexchange.com/questions/5990/what-is-a-good-way-to-transform-cyclic-ordinal-attributes
-
-
-
-
-
-
-
-
-
