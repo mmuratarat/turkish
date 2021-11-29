@@ -63,7 +63,7 @@ plt.savefig('plot1.png')
 
 ![](https://github.com/mmuratarat/turkish/blob/master/_posts/images/plot1.png?raw=true)
 
-Grafiğin başına ve sonuna bakalım. Gece yarısından 5 dakika öncesi (`23:55`) ve 5 dakika (`00:05`) sonrası gibi iki nokta arasındaki mesafenin çok büyük olduğuna dikkat ediniz. Bu istenmeyen bir durumdur: makine öğrenmesi modelimizin 23:55 ve 00:05 arasındaki farkın sadece 10 dakika olduğunu görmesini istiyoruz, ancak bu durumda bu saatler 23 saat 50 dakika arayla görünecektir! İşte bunu elde etmek üzere iki yeni değişken oluşturacağız. Yukarıda elimizde bulunan gece-yarısından-sonraki-saniye değişkenine sinüs ve kosinüs dönüşümleri uygulayacağız.
+Grafiğin başına ve sonuna bakalım. Gece yarısından 5 dakika öncesi (`23:55`) ve 5 dakika (`00:05`) sonrası gibi iki nokta arasındaki mesafenin çok büyük olduğuna dikkat ediniz. Bu istenmeyen bir durumdur: makine öğrenmesi modelimizin 23:55 ve 00:05 arasındaki farkın sadece 10 dakika olduğunu görmesini istiyoruz, ancak bu durumda bu saatler 23 saat 50 dakika arayla görünecektir! İşte bunu elde etmek üzere iki yeni değişken oluşturacağız. Yukarıda oluşturduğumuz gece-yarısından-sonraki-saniye değişkenine sinüs ve kosinüs dönüşümleri uygulayacağız.
 
 ```python
 seconds_in_day = 24*60*60
@@ -97,6 +97,7 @@ Kolaylıkla görüldüğü üzere, iki nokta arasındaki mesafe, 24 saatlik bir 
 5. https://datascience.stackexchange.com/questions/4967/quasi-categorical-variables-any-ideas
 6. https://datascience.stackexchange.com/questions/2368/machine-learning-features-engineering-from-date-time-data
 7. https://medium.com/ai%C2%B3-theory-practice-business/top-6-errors-novice-machine-learning-engineers-make-e82273d394db
+8. https://datascience.stackexchange.com/questions/5990/what-is-a-good-way-to-transform-cyclic-ordinal-attributes
 
 
 
