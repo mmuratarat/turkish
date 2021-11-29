@@ -36,6 +36,7 @@ data['hour_cos'] = np.cos(2 * np.pi * data['hour']/23.0)
 %matplotlib inline
 import matplotlib.pyplot as plt
 plt.style.use('ggplot')
+plt.rcParams["figure.figsize"] = (12,8)
 import pandas as pd
 import numpy as np
 
@@ -57,7 +58,10 @@ Oluşturduğumuz bu sütunu çizdirdiğimizde elde edeceğimiz grafik şu şekil
 ```python
 plt.figure(0)
 df.seconds.plot()
+plt.savefig('plot1.png')
 ```
+
+![](https://github.com/mmuratarat/turkish/blob/master/_posts/images/plot1.png?raw=true)
 
 Grafiğin başına ve sonuna bakalım. Gece yarısından 5 dakika öncesi (`23:55`) ve 5 dakika (`00:05`) sonrası gibi iki nokta arasındaki mesafenin çok büyük olduğuna dikkat ediniz. Bu istenmeyen bir durumdur: makine öğrenmesi modelimizin 23:55 ve 00:05 arasındaki farkın sadece 10 dakika olduğunu görmesini istiyoruz, ancak bu durumda bu saatler 23 saat 50 dakika arayla görünecektir! İşte bunu elde etmek üzere iki yeni değişken oluşturacağız. Yukarıda elimizde bulunan gece-yarısından-sonraki-saniye değişkenine sinüs ve kosinüs dönüşümleri uygulayacağız.
 
@@ -75,8 +79,12 @@ df.head()
 Bu iki değişkeni birlikte 24-saatlik bir saat olarak çizdirirsek aşağıdaki grafiği elde ederiz:
 
 ```python
+plt.figure(1)
 df.sample(50).plot.scatter('sin_time','cos_time').set_aspect('equal');
+plt.savefig('plot2.png')
 ```
+
+![](https://github.com/mmuratarat/turkish/blob/master/_posts/images/plot2.png?raw=true)
 
 Kolaylıkla görüldüğü üzere, iki nokta arasındaki mesafe, 24 saatlik bir döngüden beklediğimiz gibi zaman farkına karşılık gelir. Artık bu iki değişken makine öğrenmesi modelimiz için rahatlıkla kullanılabilir. Buna ek olarak, değişkenler [-1, 1] aralığına ölçeklendiğinden, herhangi bir şekilde modeli domine etmeyecektir. Ek olarak, sin/cos tekniği bilgileri saat cinsinden korumaktadır (yani 23:00, 21:00'a göre, 00:00'a daha yakındır). Benzer şekilde, bu tekniği haftanın günlerine uyguladığımızda, Pazar gününün Pazartesi'ye daha yakın olduğu bilgisini modelimizde işleyebileceğiz. 
 
