@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Döngüsel Yapıya Sahip Verileri Nasıl Kodlarız?"
+title:  "Döngüsel Yapıya Sahip Değişkenleri Nasıl Kodlarız?"
 author: "MMA"
 comments: true
 ---
