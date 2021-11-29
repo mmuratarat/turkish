@@ -7,7 +7,7 @@ comments: true
 
 Doğası gereği bazı veriler döngüsel (cyclical) ve zamansal (temporal) yapıya sahiptir.  Zaman (time) bunun çok güzel bir örneğidir: dakika, saat, saniye, haftanın günü, ayın haftası, ay, mevsim vb. tüm değişkenler bir döngüyü (cycle) takip etmektedir. Gelgit gibi ekolojik değişkenler, yörüngedeki konum gibi astrolojik değişkenler, rotasyon veya boylam gibi uzamsal değişkenler, renk çarkları gibi görsel değişkenler gibi özniteliklerin tümü doğal olarak döngüseldir. Peki, makine öğrenimi modelimizin bir özelliğin döngüsel olduğunu bilmesini nasıl sağlayabiliriz?
 
-Elimizde bir tarih-zaman (datetime) değişkeni olduğunda, yıl, ay, ve gün olarak parçalanan değişkenlere literatürde en çok kullanılan bir-elemanı-bir kodlama (one-hot encoding) yöntemi uygulanır. Bu yöntem çoğunlukla iyi cevap vermektedir. Fakat, saat değişkeni olsaydı, bu değişkeni nasıl ele alırdık? Sonuçta girdilerimizin döngüsel yapısını korumak istiyoruz...
+Elimizde bir tarih-zaman (datetime) değişkeni olduğunda, yıl, ay, ve gün olarak parçalanan değişkenlere literatürde en çok kullanılan bir-elemanı-bir kodlama (one-hot encoding) yöntemi uygulanır. Bu yöntem kimi zaman iyi cevap verse de bilgi kaybına neden olmaktadır. Saat değişkenine sahip olduğumu varsayalım, bu değişkeni nasıl ele alırdık? Sonuçta girdilerimizin döngüsel yapısını korumak istiyoruz. Aynı zamanda, verinin boyutunu arttırmak istemiyoruz...
 
 Döngüsel verileri kodlamak için yaygın bir yöntem, sinüs ve konsinüs dönüşümü kullanarak verileri iki boyuta dönüştürmektir. Bunu aşağıdaki dönüşümleri kullanarak yapabiliriz:
 
