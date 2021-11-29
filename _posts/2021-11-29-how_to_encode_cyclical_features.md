@@ -51,6 +51,17 @@ df = rand_times(n_rows)
 # sort for the sake of graphing
 df = df.sort_values('seconds').reset_index(drop=True)
 df.head(n=10)
+#   seconds
+# 0	 139
+# 1	 245
+# 2	 282
+# 3	 294
+# 4	 354
+# 5	 451
+# 6	 482
+# 7	 518
+# 8	 543
+# 9	 846
 ```
 
 Oluşturduğumuz bu sütunu çizdirdiğimizde elde edeceğimiz grafik şu şekildedir:
@@ -74,6 +85,12 @@ df['cos_time'] = np.cos(2*np.pi*df.seconds/seconds_in_day)
 df.drop('seconds', axis=1, inplace=True)
 
 df.head()
+#	sin_time	cos_time
+#0	0.010108	0.999949
+#1	0.017816	0.999841
+#2	0.020506	0.999790
+#3	0.021379	0.999771
+#4	0.025741	0.999669
 ```
 
 Bu iki değişkeni birlikte 24-saatlik bir saat olarak çizdirirsek aşağıdaki grafiği elde ederiz:
