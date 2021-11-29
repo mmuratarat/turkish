@@ -51,7 +51,7 @@ df = rand_times(n_rows)
 # sort for the sake of graphing
 df = df.sort_values('seconds').reset_index(drop=True)
 df.head(n=10)
-#   seconds
+#    seconds
 # 0	 139
 # 1	 245
 # 2	 282
