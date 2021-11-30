@@ -6,6 +6,17 @@ url:            "https://mmuratarat.github.io/turkish"
 # Google Analytics
 google_analytics: UA-105252522-2 # out your google-analytics code
 
+defaults:
+  -
+    scope:
+      path: "_slides"  #__
+    values:
+      layout: "iframe"
+
+collections:
+  slides:
+    output: true
+     
 # Author
 author:
   name:         Mustafa Murat ARAT
