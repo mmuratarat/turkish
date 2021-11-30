@@ -12,5 +12,5 @@ permalink: /slides/my-pics1.html
 Bu eğitime katılan toplamda 45 katılımcıyla gerçekleştirdiğimiz eğitiminde eğitimci olmanın mutluluğunu yaşıyorum. Aynı eğitimin ikinci oturumunu çevrim iç gerekleştirmiştik ve toplamda 15 katılımcı başarıyla eğitimi tamamlayıp katılım belgelerini almaya hak kazanmıştı. 
 Bu eğitimler proje paydaşlarının Python programlama dili temelinde araştırma kapasitesini geliştirmeyi amaçlamaktadır.
 
-<iframe class="slideshow-iframe" src="https://MarkusThill.github.io/slides/my-pics1.html"
+<iframe class="slideshow-iframe" src="https://mmuratarat.github.io/turkish/slides/my-pics1.html"
 style="width:100%" frameborder="0" scrolling="no" onload="resizeIframe(this)"></iframe>`
