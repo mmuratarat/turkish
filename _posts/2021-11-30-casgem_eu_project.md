@@ -3,7 +3,6 @@ layout: post
 title:  "ÇAŞGEM Eğitim ve Araştırma Kapasitesinin Güçlendirilmesi 3. Oturumu"
 author: "MMA"
 comments: true
-permalink: /slides/my-pics1.html
 ---
 
 Çalışma ve Sosyal Güvenlik Eğitim ve Araştırma Merkezi (ÇASGEM)'in TREESP1.3.CASGEM/P-01 ve EuropeAid/140073/IH/SER/TR kodlu Avrupa Birliği Projesi kapsamında
