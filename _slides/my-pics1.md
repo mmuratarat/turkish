@@ -1,6 +1,6 @@
 ---
 layout: iframe
-title: My slideshow
+title: ÇAŞGEM Training 3
 item: 1
 auto: true
 loop: true
