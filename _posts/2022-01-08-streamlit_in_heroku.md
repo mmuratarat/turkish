@@ -55,10 +55,10 @@ Artık bu ortamda istediğiniz paketleri ve bu paketlerin versiyonlarını globa
 
 ## Web uygulaması için gerekli kütüphaneleri sanal ortama kurmak
 
-Web uygulaması için kullanacağımız paketler `pandas`, `streamlit`, `plotly`, `plotly-express` ve `Pillow`'dur. Bu kütüphaneleri sanal ortamımıza yüklememiz gerekmektedir. Bunun için pip Python paket yöneticisini kullanabilirsiniz (Anaconda kullanıyorsanız, gerekli komutları tercih ediniz.)
+Web uygulaması için kullanacağımız paketler `pandas`, `streamlit`, `plotly`, ve `plotly-express`'dir. Bu kütüphaneleri sanal ortamımıza yüklememiz gerekmektedir. Bunun için pip Python paket yöneticisini kullanabilirsiniz (Anaconda kullanıyorsanız, gerekli komutları tercih ediniz.)
 
 ```
-(myEnvironment) (base) Arat-MacBook-Pro-2:ExcelStreamlit_WebApp mustafamuratarat$ pip3 install plotly plotly-express pandas streamlit Pillow
+(myEnvironment) (base) Arat-MacBook-Pro-2:ExcelStreamlit_WebApp mustafamuratarat$ pip3 install plotly plotly-express pandas streamlit
 ```
 
 Bu komut satırı çalıştıktan sonra gerekli kütüphaneler sanal ortamınızda kullanılmaya hazır olacaktır. 
@@ -322,7 +322,7 @@ Saçılım grafiği, "kişi başına GSYİH (logged GDP per capita)" değişkeni
 Çubuk grafiği ise merdiven skoru (ladder score) ve ülke isimleri (country name) değişkenleri arasında olsun.
 
 ```python
-# Saçılım Grafiği
+# Saçılım Grafiği (Scatter Plot)
 fig_gdp_lifeExpect = px.scatter(data_frame = data_regions,
 x="Logged GDP per capita",
 y="Healthy life expectancy",
@@ -333,7 +333,7 @@ size_max=10,
 title='Kişi başına GSYİH ve Yaşam Beklentisi',
 template='ggplot2')
 
-# Çubuk grafiği
+# Çubuk grafiği (Bar Plot)
 fig_ladderByCountry = px.bar(data_frame= data_regions, x='Ladder score', y='Country name', orientation='h', title='Ülkeler bazında merdiven skorları', template='ggplot2')
 
 left_column, right_column = st.columns(2)
@@ -371,7 +371,7 @@ st.markdown(hide_st_style, unsafe_allow_html=True)
 
 ## Temayı Kişileştirme 
 
-Streamlit Temalar ile  uygulamaların görünümünü değiştirme olanağına sahipsiniz (https://docs.streamlit.io/library/advanced-features/theming). Özel temalar, yapılandırma dosyasında da tanımlanabilir: `./.streamlit/config.toml`. `[theme]` bölümünün altında, özel bir tema oluşturmak için renk değişkenleri tanımlanabilir:
+Streamlit Themes (Temalar) ile  uygulamaların görünümünü değiştirme olanağına sahipsiniz (https://docs.streamlit.io/library/advanced-features/theming). Özel temalar, yapılandırma dosyasında da tanımlanabilir: `./.streamlit/config.toml`. `[theme]` bölümünün altında, özel (customized - kişileştirilmiş) bir tema oluşturmak için renk değişkenleri tanımlanabilir:
 
 ```
 [theme]
@@ -412,7 +412,9 @@ Daha sonra `.streamlit` dizine gidilir ve `config.toml` dosyası `touch` komutu 
 
 ## requirements.txt dosyasını oluşturma
 
-Web uygulaması böylelikle sonlandı. Artık, tüm Python bağımlılıklarının (dependencies) olduğu `requirements.txt` dosyasını oluşturalım. Bunun için `pipreqs` kütüphanesini kullanabiliriz. Bu kütüphane yüklü değilse, `pip3 install pipreqs` komutu ile kişisel bilgisayarınıza yükleyebilirsiniz.
+Uygulamayı dağıtmak üzere Heroku kullanacağız. Bu nedenle, uygulama kodundaki tüm içe aktarmaların olduğu bir `requirements.txt` metin dosyasına ihtiyacımız var. Bu dosyayı elinizle oluşturabilirsiniz. Ancak, uygulama kodunuz komplikeleştikçe, bu süreç zaman alıcı olabilir. Bu nedenle, bu dosyayı otomatik oluşturan Python kütüphanelerini kullanabilirsiniz.
+
+Tüm Python bağımlılıklarının (dependencies) olduğu `requirements.txt` dosyasını oluşturmak için `pipreqs` kütüphanesini kullanabiliriz. Bu kütüphane yüklü değilse, `pip3 install pipreqs` komutu ile kişisel bilgisayarınıza yükleyebilirsiniz.
 
 Daha sonra bir Terminal penceresinden, `app.py` dosyamızın olduğu klasöre gidelim. Daha sonra sanal ortamımızı aktive edelim. Aktivasyondan sonra, `pipreqs ./` komutu ile kullanılan tüm paketleri `requirements` isimli metin dosyasına yazdıralım:
 
@@ -513,7 +515,6 @@ Burada web uygulamasının adını `worldhappiness-streamlit` olarak ayarladım.
 ```
 
 Daha sonra `git push heroku master` komutu ile uygulama dosyalarımızı Heroku'ya push edebiliriz.
-
 
 ```
 (base) Arat-MacBook-Pro-2:ExcelStreamlit_WebApp mustafamuratarat$ git push heroku master
