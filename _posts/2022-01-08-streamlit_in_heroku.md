@@ -172,7 +172,7 @@ Bu kod satırını da ekledikten sonra, Visual Studio Code penceresindeki Termin
 
 ![](https://github.com/mmuratarat/turkish/blob/master/_posts/images/streamlitHeroku_images/sc9.png?raw=true)
 
-Bu komut satırını çalıştırdığınızda, sayfa ismini (page title), sayfa ikonunu (page ikon) ve `DataFrame'i içeren web uygulaması http://localhost:8501 lokal URL'inde web tarayıcınızda açılacaktır. 
+Bu komut satırını çalıştırdığınızda, sayfa ismini (page title), sayfa ikonunu (page ikon) ve `DataFrame`'i içeren web uygulaması http://localhost:8501 lokal URL'inde web tarayıcınızda açılacaktır. 
 
 ![](https://github.com/mmuratarat/turkish/blob/master/_posts/images/streamlitHeroku_images/sc10.png?raw=true)
 
@@ -233,7 +233,7 @@ Aşağıdaki ekran görüntüsünde görüldüğü üzere, tüm bölgeler (regio
 
 ![](https://github.com/mmuratarat/turkish/blob/master/_posts/images/streamlitHeroku_images/sc11.png?raw=true)
 
-Filtreleme gerçekleştirip, örneğin sadece Batı Avrupa'da bulunan ülkelere ait verinin `DataFrame'ini gösterebiliriz:
+Filtreleme gerçekleştirip, örneğin sadece Batı Avrupa'da bulunan ülkelere ait verinin `DataFrame`'ini gösterebiliriz:
 
 ![](https://github.com/mmuratarat/turkish/blob/master/_posts/images/streamlitHeroku_images/sc12.png?raw=true)
 
@@ -249,7 +249,7 @@ Peki, `Ladder score` sütunu nedir? Dünya Mutluluk Raporundaki değerler bir Ca
 
 İşte veri kümesindeki `Ladder score` merdiven skoru olarak adlandırılabilir. Filtreleme olarak minimum değer 5, ve maximum değer 10 seçilebilir (bu sütunun alabileceği değerlere göre `min_value` ve `max_value` argümanlarına karar verilir). Uygulama ilk başladığında, `value` argümanına atanan değer gösterilecektir. Ben bu argümanının değerini `10` olarak ayarladım.
 
-Bölge filtrelemede yaptığımıza benzer şekilde sekilde, bu filtreleme için de bir `DataFrame yazdırabiliriz:
+Bölge filtrelemede yaptığımıza benzer şekilde sekilde, bu filtreleme için de bir `DataFrame` yazdırabiliriz:
 
 ```python
 data_ladderScore = data[data['Ladder score'] <= score] 
