@@ -9,7 +9,6 @@ Bu eğiticide, bir Python kütüphanesi olan Streamlit'i kullanarak Excel dosyal
 
 İlk olarak Masaüstü'nde (Desktop) `ExcelStreamlit_WebApp` isimli bir klasör oluşturalım. 
 
-
 ## Sanal Ortam Oluşturmak
 
 Bu eğiticiye başlamadan önce bilgisayarınızdaki düzeni bozmamak adına, aşağıda yapacağımız tüm işlemleri sanal bir ortam içerisinde gerçekleştirelim. Basitçe ifade etmek gerekirse, bir sanal ortam, diğer projeleri etkileme endişesi olmadan belirli bir proje üzerinde çalışmanıza izin veren, Python’un yalıtılmış bir çalışma kopyasıdır. Her proje için birden çok Python versiyonunun aynı makineye kurulumuna olanak tanır. Aslında Python’un ayrı kopyalarını kurmaz, ancak ortam değişkenlerini ve paketleri izole ettiği için farklı proje ortamlarını izole tutmanın akıllıca bir yolunu sağlar. Yanlış paket versiyonlarindan şikayet eden hata mesajlarının bir çaresidir 
@@ -65,7 +64,9 @@ Bu komut satırı çalıştıktan sonra gerekli kütüphaneler sanal ortamınız
 
 ## Veri Seti
 
-Burada kullanacağımız veri seti, Kaggle (www.kaggle.com)'da bulunan Dünya Mutluluk Raporu 2021 veri dosyasıdır. Aşağıdaki bağlantıya giderek 21.69 kB büyüklüğündeki bu csv dosyasını indiriniz ve dosyayı, oluşturduğumuz `ExcelStreamlit_WebApp` klasörüne taşıyınız. 
+Burada kullanacağımız veri seti, [Kaggle](www.kaggle.com){:target="_blank"}'da bulunan Dünya Mutluluk Raporu 2021 veri dosyasıdır. Aşağıdaki bağlantıya giderek 21.69 kB büyüklüğündeki bu csv dosyasını indiriniz ve dosyayı, oluşturduğumuz `ExcelStreamlit_WebApp` klasörüne taşıyınız.
+
+https://www.kaggle.com/ajaypalsinghlo/world-happiness-report-2021
 
 ## Visual Studio Code
 
