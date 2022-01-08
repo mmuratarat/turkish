@@ -1,11 +1,11 @@
 ---
 layout: post
-title:  "Streamlit ile Heroku'da Uygulama Dağıtımı"
+title:  "Streamlit ile Heroku'da Bir Web Uygulaması Dağıtımı"
 author: "MMA"
 comments: true
 ---
 
-Bu eğiticide, bir Python kütüphanesi olan Streamlit'i kullanarak Excel Dosyalarını bir Web Uygulamasına nasıl dönüştüreceğinizi göstereceğim. Streamlit, makine öğrenmesi ve veri bilimi projeleri için güzel, özel web uygulamaları oluşturmayı ve paylaşmayı kolaylaştıran açık kaynaklı bir Python kitaplığıdır. Streamlit'in güzelliği, HTML, CSS veya JavaScript bilmenize gerek kalmadan doğrudan Python'da web uygulamaları oluşturabilmenize olanak sağlamasıdır. Web Uygulaması tamamen etkileşimlidir ve Excel dosyasında her değişiklik yaptığınızda güncellenecektir.
+Bu eğiticide, bir Python kütüphanesi olan Streamlit'i kullanarak Excel dosyalarını bir web uygulamasına nasıl dönüştüreceğinizi göstereceğim. Streamlit, makine öğrenmesi ve veri bilimi projeleri için güzel, özel web uygulamaları oluşturmayı ve paylaşmayı kolaylaştıran açık kaynaklı bir Python kütüphanesidir. Streamlit'in güzelliği, HTML, CSS veya JavaScript bilmenize gerek kalmadan doğrudan Python'da web uygulamaları oluşturabilmenize olanak sağlamasıdır. Web Uygulaması tamamen etkileşimlidir ve Excel dosyasında her değişiklik yaptığınızda güncellenecektir.
 
 İlk olarak Masaüstü'nde (Desktop) `ExcelStreamlit_WebApp` isimli bir klasör oluşturalım. 
 
