@@ -93,7 +93,7 @@ Daha sonra, açılacak boşluğa `app.py` yazalım ve `Enter` tuşuna basalım:
 
 ![](https://github.com/mmuratarat/turkish/blob/master/_posts/images/streamlitHeroku_images/sc5.png?raw=true)
 
-Bunu yapmak, `ExcelStreamlit_WebApp` klasörünün içinde, `app` isimde bir Python kaynak kodunu içine yazabileceğiniz `.py` uzantılı bir dosya yaratacaktır.
+Bunu yapmak, `ExcelStreamlit_WebApp` klasörünün içinde, Python kaynak kodunu içerisine yazabileceğiniz, `app` isimde `.py` uzantılı bir dosya yaratacaktır.
 
 ![](https://github.com/mmuratarat/turkish/blob/master/_posts/images/streamlitHeroku_images/sc6.png?raw=true)
 
