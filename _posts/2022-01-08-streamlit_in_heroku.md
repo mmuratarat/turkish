@@ -25,7 +25,7 @@ which virtualenv
 veya
 
 ```
-virtualenv --version
+virtualenv --version`
 ```
 
 Eğer bu paket kurulu değilse, `virtualenv` paketini `pip3 install virtualenv` komutunu kullanarak yüklemeniz gerekmektedir.
@@ -144,7 +144,7 @@ st.markdown("Hoş geldiniz! Aramanızı daraltmak için lütfen ekranınızın s
 
 NOT: Birazdan kenar çubuğunu (sidebar) da ekleyeceğiz!
 
-Streamlit web uygulamasını çalıştırmadan önce, DataFrame'i konsolda yazdırmak yerine sayfa üzerinde görüntüleyeceğim. Bunun için `streamlit` kütüphanesindeki `dataframe` fonksiyonunu kullanırız.
+Streamlit web uygulamasını çalıştırmadan önce, `DataFrame`'i konsolda yazdırmak yerine sayfa üzerinde görüntüleyeceğim. Bunun için `streamlit` kütüphanesindeki `dataframe` fonksiyonunu kullanırız.
 
 ```python
 import pandas as pd
@@ -172,7 +172,7 @@ Bu kod satırını da ekledikten sonra, Visual Studio Code penceresindeki Termin
 
 ![](https://github.com/mmuratarat/turkish/blob/master/_posts/images/streamlitHeroku_images/sc9.png?raw=true)
 
-Bu komut satırını çalıştırdığınızda, sayfa ismini (page title), sayfa ikonunu (page ikon) ve DataFrame'i içeren web uygulaması http://localhost:8501 lokal URL'inde web tarayıcınızda açılacaktır. 
+Bu komut satırını çalıştırdığınızda, sayfa ismini (page title), sayfa ikonunu (page ikon) ve `DataFrame'i içeren web uygulaması http://localhost:8501 lokal URL'inde web tarayıcınızda açılacaktır. 
 
 ![](https://github.com/mmuratarat/turkish/blob/master/_posts/images/streamlitHeroku_images/sc10.png?raw=true)
 
@@ -209,19 +209,19 @@ region_selected = st.sidebar.multiselect(label = "Bölge seçiniz:",
 ```
 
 
-Web uygulamasının başında tüm DataFrame'i
+Web uygulamasının başında tüm `DataFrame`'i
 
 ```python
 st.dataframe(data=data)
 ```
 
-kod satırı ile yazdırmıştık. Bunun yerine yaptığımız bölge seçimlerine göre DataFrame'i web uygulaması üzerinde gösterelim. Bunu gerçekleştirmek oldukça kolaydır. Yapmanız gereken `pandas` kütüphanesindeki `query` fonksiyonunu kullanmaktır.
+kod satırı ile yazdırmıştık. Bunun yerine yaptığımız bölge seçimlerine göre `DataFrame`'i web uygulaması üzerinde gösterelim. Bunu gerçekleştirmek oldukça kolaydır. Yapmanız gereken `pandas` kütüphanesindeki `query` fonksiyonunu kullanmaktır.
 
 ```python
 data_regions = data.query("`Regional indicator` == @region_selected")
 ```
 
-pandas'ın 0.25 ve sonrası versiyonlarında, kesme işareti (backtick yani ` `` `) kullanarak arasında boşluk bulunan sütun isimlerine sahip sütunları kullanabilirsiniz.
+`pandas` kütüphanesinin 0.25 ve sonrası versiyonlarında, kesme işareti (backtick yani ` `` `) kullanarak arasında boşluk bulunan sütun isimlerine sahip sütunları kullanabilirsiniz.
 
 `@` ile bir değişkene referans verebilirsiniz.
 
@@ -233,7 +233,7 @@ Aşağıdaki ekran görüntüsünde görüldüğü üzere, tüm bölgeler (regio
 
 ![](https://github.com/mmuratarat/turkish/blob/master/_posts/images/streamlitHeroku_images/sc11.png?raw=true)
 
-Filtreleme gerçekleştirip, örneğin sadece Batı Avrupa'da bulunan ülkelere ait verinin DataFrame'ini gösterebiliriz:
+Filtreleme gerçekleştirip, örneğin sadece Batı Avrupa'da bulunan ülkelere ait verinin `DataFrame'ini gösterebiliriz:
 
 ![](https://github.com/mmuratarat/turkish/blob/master/_posts/images/streamlitHeroku_images/sc12.png?raw=true)
 
@@ -249,7 +249,7 @@ Peki, `Ladder score` sütunu nedir? Dünya Mutluluk Raporundaki değerler bir Ca
 
 İşte veri kümesindeki `Ladder score` merdiven skoru olarak adlandırılabilir. Filtreleme olarak minimum değer 5, ve maximum değer 10 seçilebilir (bu sütunun alabileceği değerlere göre `min_value` ve `max_value` argümanlarına karar verilir). Uygulama ilk başladığında, `value` argümanına atanan değer gösterilecektir. Ben bu argümanının değerini `10` olarak ayarladım.
 
-Bölge filtrelemede yaptığımıza benzer şekilde sekilde, bu filtreleme için de bir DataFrame yazdırabiliriz:
+Bölge filtrelemede yaptığımıza benzer şekilde sekilde, bu filtreleme için de bir `DataFrame yazdırabiliriz:
 
 ```python
 data_ladderScore = data[data['Ladder score'] <= score] 
