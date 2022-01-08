@@ -538,7 +538,7 @@ To https://git.heroku.com/worldhappiness-streamlit.git
 Scaling dynos... done, now running web at 1:Free
 ```
 
-Son olarak, `heroku open` komutu ile uygulamayı açabilirsiniz. Bu, varsayılan tarayıcınızı kullanarak uygulamayı açacaktır: https://worldhappiness-streamlit.herokuapp.com/
+Son olarak, `heroku open` komutu ile uygulamayı açabilirsiniz. Bu, varsayılan tarayıcınızı kullanarak uygulamayı açacaktır.
 
 ![](https://github.com/mmuratarat/turkish/blob/master/_posts/images/streamlitHeroku_images/sc21.png?raw=true)
   
