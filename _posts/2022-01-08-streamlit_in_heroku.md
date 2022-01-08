@@ -442,9 +442,9 @@ web: sh setup.sh && streamlit run app.py
   
   Procfile yazma hakkında daha fazla bilgi için dokümantasyona bakınız: https://devcenter.heroku.com/articles/preparing-a-codebase-for-heroku-deployment
 
-2. `setup.sh`: `setup.sh` dosyasında, bir `config.toml` dosyası ile bir `streamlit` gizli klasörü oluşturacağız.
+2. `setup.sh`: `setup.sh` dosyasında, içerisinde bir `config.toml` dosyası olan bir `streamlit` gizli klasörü oluşturacağız.
 
-```
+```bash
 mkdir -p ~/.streamlit/
 
 echo "[general]
