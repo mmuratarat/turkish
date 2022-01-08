@@ -544,4 +544,4 @@ Son olarak, `heroku open` komutu ile uygulamayı açabilirsiniz. Bu, varsayılan
   
 Oluşturduğumuz web uygulamasına [https://worldhappiness-streamlit.herokuapp.com/](https://worldhappiness-streamlit.herokuapp.com/){:target="_blank"} bağlantısından erişilebilir.
 
-Oluşturduğumuz tüm dosyaları [burada](https://github.com/mmuratarat/WorldHappinessApp_Streamlit){:target="_blank"} bulunan Github deposunda bulabilirsiniz
+Oluşturduğumuz tüm dosyaları [burada](https://github.com/mmuratarat/WorldHappinessApp_Streamlit){:target="_blank"} bulunan Github deposunda bulabilirsiniz.
