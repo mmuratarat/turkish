@@ -435,14 +435,16 @@ Uygulamalarınızı Heroku'da veya digital ocean, AWS veya Google Cloud gibi her
 Heroku'da barındırmak için, `requirements.txt` dosyasına ihtiyacınız olacaktır. Bunun yanı sıra, 2 ek dosyaya ihtiyacınız olacak:
 
 1. `Procfile`: `Procfile`, önce setup.sh dosyasını yürütmek ve ardından uygulamayı çalıştırmak için Streamlit run'ı çağırmak için kullanılır.
-  ```
-  web: sh setup.sh && streamlit run app.py
-  ```
+  
+```
+web: sh setup.sh && streamlit run app.py
+```
   
   Procfile yazma hakkında daha fazla bilgi için dokümantasyona bakınız: https://devcenter.heroku.com/articles/preparing-a-codebase-for-heroku-deployment
 
 2. `setup.sh`: `setup.sh` dosyasında, bir `config.toml` dosyası ile bir `streamlit` gizli klasörü oluşturacağız.
-   ```
+
+```
 mkdir -p ~/.streamlit/
 
 echo "[general]
@@ -455,7 +457,7 @@ enableCORS=false
 port = $PORT
 enableCORS = false
 " > ~/.streamlit/config.toml
-   ```
+```
 
 `setup.sh` ve `Procfile` dosyalarını kullanarak Heroku'ya uygulamayı başlatmak için gerekli komutları söyleyebilirsiniz.
 
