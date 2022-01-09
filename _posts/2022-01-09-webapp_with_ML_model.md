@@ -190,7 +190,7 @@ Kaggle'a üye olup, `train_u6lujuX_CVtuZ9i (1).csv` isimli veri dosyasını indi
 |     `LoanAmount`    |            Verilen kredinin tutarı (bin)           |  Nümerik  |                                                             |
 |  `Loan_Amount_Term` |              Ay cinsinden kredi vadesi             |  Nümerik  |                                                             |
 |   `Credit_History`  |                    Kredi geçmişi                   |  Nümerik  |                          1.0 / 0.0                          |
-|   `Property_Area`   |        Kredi istenilen mülk alanının konumu      | Kategorik | Semiurban (Yarı Kentsel) / Urban (Kentsel) / Rural (Kırsal) |
+|   `Property_Area`   |        Kredi istenilen mülk alanının yeri      | Kategorik | Semiurban (Yarı Kentsel) / Urban (Kentsel) / Rural (Kırsal) |
 |    `Loan_Status`    |                 Kredinin onaylanıp onaylanmadığı bilgisi               | Kategorik |                     Y (Evet) / N (Hayır)                    |
 
 Artık modelleme aşamasına geçmeye hazırız.
