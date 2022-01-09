@@ -433,7 +433,7 @@ Artık uygulamamıza sahip olduğumuza göre, uygulamayı dağıtmaya başlamaya
 
 ## Heroku aracılığıyla dağıtım
 
-Uygulamalarınızı Heroku'da veya digital ocean, AWS veya Google Cloud gibi herhangi bir özel bulut sistemi dağıtıcısında barındırabilirsiniz. Burada, ücretsiz bir çözüm olduğu için Heroku'da (https://www.heroku.com/) barındırma (hosting) yöntemini kullanabiliriz. Heroku, uygulamaları bulutta çalıştırmanıza izin veren bir Hizmet-olarak-Platform (Platform-as-a-Service - PaaS)'dır.
+Uygulamalarınızı Heroku, digital ocean, AWS veya Google Cloud gibi herhangi bir özel bulut sistemi dağıtıcısında barındırabilirsiniz. Burada, ücretsiz bir çözüm olduğu için Heroku'da (https://www.heroku.com/) barındırma (hosting) yöntemini kullanabiliriz. Heroku, uygulamaları bulutta çalıştırmanıza izin veren bir Hizmet-olarak-Platform (Platform-as-a-Service - PaaS)'dır.
 
 Heroku'da barındırmak için, `requirements.txt` dosyasına ihtiyacınız olacaktır. Bunun yanı sıra, 2 ek dosyaya ihtiyacınız olacak:
 
