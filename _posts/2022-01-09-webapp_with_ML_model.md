@@ -184,7 +184,7 @@ Kaggle'a üye olup, `train_u6lujuX_CVtuZ9i (1).csv` isimli veri dosyasını indi
 |      `Married`      |               Başvuru sahibi evli olup olmadığı bilgisi             | Kategorik |                   Yes (Evet) / No (Hayır)                   |
 |     `Dependents`    |         Başvuru sahibinin bakmakla yükümlü olduğu kişi sayısı        | Kategorik |                        0 / 1 / 2 / 3+                       |
 |     `Education`     |          Başvuru sahibinin eğitim seviyesi         | Kategorik |       (Graduate (Lisansüstü) / Under Graduate (Lisans)      |
-|   `Self_Employed`   |       Başvuru Sahibi kendi işini mi yapıyor?       | Kategorik |                  Yes (Evet) / No (Hayır)                    |
+|   `Self_Employed`   |       Başvuru sahibinin kendi işini yapıp yapmadığının bilgisi       | Kategorik |                  Yes (Evet) / No (Hayır)                    |
 |  `ApplicantIncome`  |              Başvuru sahibinin geliri              |  Nümerik  |                                                             |
 | `CoapplicantIncome` | Başvuru sahibiyle birlikte başvuran kişinin geliri |  Nümerik  |                                                             |
 |     `LoanAmount`    |            Verilen kredinin tutarı (bin)           |  Nümerik  |                                                             |
