@@ -170,10 +170,10 @@ Bu komut satırı çalıştıktan sonra gerekli kütüphaneler sanal ortamınız
 
 ## Veri Kümesi
 
-Model oluşturabilmek için bir veri setine ihtiyacımız var. Bu eğitici için seçtiğim veri kümesi, kredi uygunluk sürecini otomatikleştirmek üzerinedir. Bu nedenle aşağıdaki Kaggle bağlantısında bulunan Loan Predication (Kredi Tahmin) veri kümesi kullanılacaktır.
+Model oluşturabilmek için bir veri setine ihtiyacımız var. Bu eğitici için kredi uygunluk sürecini otomatikleştirmek istediğimizden, aşağıdaki Kaggle bağlantısında bulunan Loan Prediction (Kredi Tahmin) veri kümesi kullanılacaktır.
 https://www.kaggle.com/ninzaami/loan-predication/home
 
-Kaggle'a üye olup, `train_u6lujuX_CVtuZ9i (1).csv` isimli veri dosyasını indiriniz. Daha sonra, `LoanPredictionApp` klasörünün altında `data` isimli yeni bir klasör yaratalım. İndirdiğimiz csv dosyasını, `data` klasörünün içerisine taşıyalım. `train_u6lujuX_CVtuZ9i (1).csv` dosyasının ismini `full_dataset.csv` olarak değiştirelim.
+Kaggle'a üye olup, `train_u6lujuX_CVtuZ9i (1).csv` isimli veri dosyasını indiriniz. Ardından, `LoanPredictionApp` klasörünün altında `data` isimli yeni bir klasör yaratalım. İndirdiğimiz csv dosyasını, `data` klasörünün içerisine taşıyınız. `train_u6lujuX_CVtuZ9i (1).csv` dosyasının ismini `full_dataset.csv` olarak değiştiriniz.
 
 `full_dataset.csv` dosyasında 12 tane sütun vardır:
 
@@ -195,7 +195,7 @@ Kaggle'a üye olup, `train_u6lujuX_CVtuZ9i (1).csv` isimli veri dosyasını indi
 
 Artık modelleme aşamasına geçmeye hazırız.
 
-İlk olarak, `full_dataset.csv` veri kümesi $\%80 - \%20$ oranı kullanılarak iki kısıma ayrılacaktır. $\%80$'lik kısıma eğitim veri kümesi (training dataset) denilecek ve bu küme, model eğitimi (model training) için, $\%20$'lik kısıma test veri kümesi (testing dataset) denilecek ve bu kümes, model değerlendirme (model evaluation) olarak kullanılacaktır. Test veri kümesine modelleme boyunca kesinlikle dokunulmayacaktır ve bu veri kümesi modelimizin görmediği verileri (unseen data) içermelidir. Model doğrulaması (model validation), hiperparametre seçimi (hyperparameter selection) ve çapraz doğrulama (cross validation) adımları `train_ctrUa4K.csv` veri kümesinden ayrılan $\%80$'lik kısım kullanılarak gerçekleştirilecektir. 
+İlk olarak, `full_dataset.csv` veri kümesi $\%80 - \%20$ oranı kullanılarak iki kısıma ayrılacaktır. $\%80$'lik kısıma eğitim veri kümesi (training dataset) denilecek ve bu küme model eğitimi (model training) için, $\%20$'lik kısıma ise test veri kümesi (testing dataset) denilecek ve bu küme model değerlendirme (model evaluation) aşamasında kullanılacaktır. Test veri kümesine modelleme boyunca kesinlikle dokunulmayacaktır ve bu veri kümesi modelimizin görmediği verileri (unseen data) içermelidir. Model doğrulaması (model validation), hiperparametre seçimi (hyperparameter selection) ve çapraz doğrulama (cross validation) adımları `train_ctrUa4K.csv` veri kümesinden ayrılan $\%80$'lik kısım kullanılarak gerçekleştirilecektir. 
 
 ## Model Oluşturma
 
@@ -215,7 +215,7 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import  accuracy_score, precision_score, recall_score, f1_score, roc_auc_score
 ```
 
-Daha sonra `pandas` kümesi kullanılarak, verilerimizi inceleyelim. Burada, `read_csv` fonksiyonu, verileri Python ortamına okutmak için yeterlidir. 
+Daha sonra, `pandas` kütüphanesini kullanarak verilerimizi inceleyelim. Burada, `read_csv` fonksiyonu, verileri Python ortamına okutmak için yeterlidir. 
 
 ```python
 # Tam Veri Kümesi (Full Dataset)
@@ -252,9 +252,9 @@ print(full_set.shape)
 # (614, 13)
 ```
 
-Etiketli (labelled) veri kümesinde 614 gözlem (observation) ve 13 sütun vardır. Burada `Loan_ID` sütunu modelimiz için herhangi bir bilgi taşımamaktadır, bu  nedenle, bu sütunu elimine edebiliriz. `Loan_Status` değişkeni bağımlı değişkendir. Bu bir tarihi veridir (historical data). Geçmişte, müşterilerin kredi başvurusunun onaylanıp onaylanmadığı bilgisini taşımaktadır. Müşterilerin (yani gözlemlerin) bilgisi ise `Gender`, `Married`, `Dependents`, `Education`, `Self_Emplyed`, `ApplicantIncome`, `CoapplicantIncome`, `LoanAmount`, `Loan_Amount_Term`, `Credit_History` ve `Property_Area` değişkenleri ile verilmektedir.
+Etiketli (labelled) veri kümesinde 614 gözlem (observation) ve 13 sütun vardır. Burada `Loan_ID` sütunu modelimiz için herhangi bir bilgi taşımamaktadır, bu  nedenle, bu sütunu elimine edebiliriz. `Loan_Status` değişkeni yapacağımız analiz için bağımlı değişkendir ve 2 sınıftan oluşmaktadır. Elimizdeki veri kümesi tarihi bir veridir (historical data). Geçmişte, müşterilerin kredi başvurusunun onaylanıp onaylanmadığı bilgisini taşımaktadır. Burada iki sınıflı sınıflandırma problemi ile karşı karşıyayız. Müşterilerin (yani gözlemlerin veya deneklerin) bilgisi ise `Gender`, `Married`, `Dependents`, `Education`, `Self_Emplyed`, `ApplicantIncome`, `CoapplicantIncome`, `LoanAmount`, `Loan_Amount_Term`, `Credit_History` ve `Property_Area` değişkenleri ile verilmektedir.
 
-İlk olarak bu tam veri kümesinden, analizimizde kullanmayacağımız, `Loan_ID` sütununu düşürelim:  
+İlk olarak bu tam veri kümesinden, analizimizde kullanmayacağımız `Loan_ID` sütununu düşürelim:  
 
 ```python
 full_set.drop(['Loan_ID'], axis=1, inplace=True)
@@ -272,7 +272,7 @@ full_set.head()
 
 ![](https://github.com/mmuratarat/turkish/blob/master/_posts/images/webappML/sc5.png?raw=true)
 
-Şimdi, elimizdeki tam veri kümesinde kayıp gözlem olup olmadığını kontrol edelim:
+Ayrıca, elimizdeki tam veri kümesinde kayıp gözlem (missing value) olup olmadığını kontrol edelim:
 
 ```python
 full_set.isnull().sum()
@@ -292,9 +292,9 @@ full_set.isnull().sum()
 # dtype: int64
 ```
 
-Görüldüğü üzere bir kaç değişkende kayıp gözlem (missing value) vardır. Ancak, kayıp gözlem imputasyonunu (missing value imputation) tam veri kümesine uygulamak veri sızıntısına (data leakage) neden olacaktır. Bu nedenle, öncelikle tam veri kümesini, $\%80 - \%20$ oranı kullanılarak iki kısıma ayıralım. $\%80$'lik kısıma eğitim veri kümesi (training dataset), $\%20$'lik kısıma test veri kümesi (testing dataset) olacaktır. İşte, eğitim veri kümesi parametreleri kullanılarak, test veri kümesi üzerinde veri imputasyonu gerçekleştirebilir.
+Görüldüğü üzere bir kaç değişkende kayıp gözlem vardır. Ancak, kayıp gözlem imputasyonunu (missing value imputation) tam veri kümesine uygulamak veri sızıntısına (data leakage) neden olacaktır. Bu nedenle, öncelikle tam veri kümesini, $\%80 - \%20$ oranı kullanılarak iki kısıma ayıralım. $\%80$'lik kısım eğitim veri kümesi (training dataset), $\%20$'lik kısıma test veri kümesi (testing dataset) olacaktır. İşte şimdi doğru bir şekilde eğitim veri kümesindeki parametreleri kullanarak test veri kümesi üzerinde veri imputasyonu gerçekleştirebiliriz.
 
-Veri kümesine ayırma işlemi Scikit-Learn kütüphanesindeki `train_test_split` fonksiyonu kullanılarak yapılır. Ancak, bu fonksiyon, bağımlı değişken(ler) ile bağımsız değişken(ler)i ayrı ayrı kabul etmektedir. Bu nedenle, bağımlı değişken olan `Loan_Status` değişkeni başka bir değişkene atılalım:
+Veri kümesine ayırma işlemi Scikit-Learn kütüphanesindeki `train_test_split` fonksiyonu kullanılarak yapılır. Ancak, bu fonksiyon, bağımlı değişken(ler) ile bağımsız değişken(ler)i ayrı ayrı kabul etmektedir. Bu nedenle, bağımlı değişken olan `Loan_Status` değişkenini başka bir değişkene atılalım:
 
 ```python
 X_full = full_set.drop(["Loan_Status"], axis=1)
@@ -350,7 +350,7 @@ cat_features
 
 Benzer şekilde, `Gender`, `Married`, `Dependents`, `Education`, `Self_Employed`, ve `Property_Area` değişkenleri kategorik veri yapısına sahiptir.
 
-Yukarıda da bahsedildiği gibi, nümerik ve kategorik değişkenlere ayrı ayrı veri ön-işleme adımları gerçekleştirilecektir. Nümerik değişkenler aynı birime sahip olmaları için ölçeklenecektir ve varsa kayıp gözlemler ortalam ile impute edilecektir. Benzer şekilde, kategorik değişkenler, makine öğrenmesi modelinin anlayabileceği şekilde bire-bir-kodlama (one-hot-encoding) kullanılarak nümerikleştirilecektir ve kayıp gözlem varsa sabit bir değer ile (örneğin, `missing` yani bilinmiyor bilgisi) ile impute edilecektir. Bu iki farklı değişken türü için gerçekleştirilecek işlemler, iki farklı iletim hattı ile gerçekleştirilecektir.
+Yukarıda da bahsedildiği gibi, nümerik ve kategorik değişkenlere ayrı ayrı veri ön-işleme adımları gerçekleştirilecektir. Nümerik değişkenler aynı birime sahip olmaları için Minimum-Maximum Ölçekleme (Mix-Max Scaling) yöntemi ile ölçeklenecektir ve varsa kayıp gözlemler ortalama (mean) ile impute edilecektir. Benzer şekilde, kategorik değişkenler, makine öğrenmesi modelinin anlayabileceği şekilde bire-bir-kodlama (one-hot-encoding) yöntemi kullanılarak nümerikleştirilecektir ve bu değişkenlerde kayıp gözlem varsa, bu kayıp gözlem sabit bir değer ile (örneğin, `missing` yani bilinmiyor bilgisi) ile impute edilecektir. Bu iki farklı değişken türü için gerçekleştirilecek işlemler, iki farklı iletim hattı (pipeline) ile gerçekleştirilecektir.
 
 ```python
 # Sayısal değişkenlere uygulanacak veri ön-işleme adımları için iletim hattı (pipeline)
@@ -401,7 +401,7 @@ preprocessor = ColumnTransformer(transformers = [('num', num_transformer, num_fe
 
 Artık veri ön-işleme hattımız hazır!
 
-Şimdi, bu veri önişleme adımı ile oluşturacağımız Rastgele Ormanlar (random forest) algoritmasını bir araya getirebilir, kolaylıkla çapraz doğrulama uygulayabiliriz. Böylelikle, yukarıda bahsedilen veri sızıntısından da kaçınırız. 
+Şimdi, bu veri önişleme adımı ile, oluşturacağımız Rastgele Ormanlar (random forest) algoritmasını bir araya getirebilir, kolaylıkla çapraz doğrulama uygulayabiliriz. Böylelikle, yukarıda bahsedilen veri sızıntısından da kaçınırız. 
 
 ```python
 pipe = Pipeline(steps = [('preprocess', preprocessor),
@@ -409,12 +409,12 @@ pipe = Pipeline(steps = [('preprocess', preprocessor),
                 verbose=False)         
 ```
 
-Daha sonra, ızgara arama gerçekleştirirken kullanacağımız parametreler için olası değerleri içerek bir sözlük hazırlayalım:
+Izgara arama gerçekleştirirken kullanacağımız parametreler için olası değerleri içeren bir sözlük hazırlayalım:
 
 ```python
 parameters_grid = [{'RF_model__n_estimators':[10, 20, 50],
                     'RF_model__max_features': ['sqrt', 'log2', 0.25, 0.5, 0.75],
-                    'RF_model__max_depth' : [2, 4,5,6,7,8]}
+                    'RF_model__max_depth' : [2, 4, 5, 6, 7, 8]}
                   ]
 ```
 
@@ -424,13 +424,13 @@ Gerekli tanımlamaları yaptıktan sonra artık çapraz doğrulamalı ızgara ar
 search = GridSearchCV(estimator = pipe, param_grid = parameters_grid, cv = 10, scoring = 'accuracy', return_train_score=False, verbose=1, n_jobs=-1)
 ```
 
-Artık elimizdeki eğitim verisini modellerimize uyum sağlatmaya (fitting) başlayabiliriz:
+Artık elimizdeki eğitim verisini modellerimize uydurmaya (fitting) başlayabiliriz:
 
 ```python
 best_model = search.fit(X_train, y_train)
 ```
 
-Tam tamına 7056 farklı moel denenecektir. Bu modellerden en iyisi `max_depth=2`, `max_features=0.75`, ve `n_estimators=20` hiperparametrelerine sahip bir Rastgele Ağaç modelidir.
+Tam tamına 90 farklı moel denenecektir. Bu modellerden en iyisi `max_depth=2`, `max_features=0.75`, ve `n_estimators=20` hiperparametrelerine sahip bir Rastgele Ağaç modelidir.
 
 Bazı değerlendirme ölçütleri ile bu modelin eğitim kümesi ve test kümesi üzerinde performanslarını kontrol edebiliriz. Oluşturabileceğimiz fonksiyon şu şekilde olabilir:
 
@@ -496,7 +496,7 @@ Web uygulaması oluştururken de yapacağımız şey de budur!
 
 ## Web Uygulaması
 
-Modelimizi elde edip, pickle nesnesi olarak kaydettikten sonra, web uygulaması geliştirmeye geçebiliriz. Bu web uygulamasını Streamlit kütüphanesi kullanarak gerçekleştireceğiz. 
+Modelimizi elde edip, pickle nesnesi olarak kaydettikten sonra, web uygulaması geliştirmeye geçebiliriz. Bu web uygulamasının kodunu Streamlit kütüphanesi kullanarak yazacağız.
 
 Streamlit, makine öğrenmesi ve veri bilimi ekipleri tarafından model dağıtımı için kullanılan popüler bir açık kaynaklı yazılım çerçeves,dir. Ve en iyi yanı, ücretsiz ve tamamen Python tabanlı olmasıdır
 
@@ -504,7 +504,7 @@ Burada JupyterLab yerine Visual Studio Code kullanacağız. Siz istediğiniz Ent
 
 Visual Studio Code’u çalıştırdıktan sonra `LoanPredictionApp` klasörünü pencereye sürükleyiniz. Burada önemli olan Visual Studio Code’un oluşturduğunuz sanal ortamı tanımasıdır.
 
-İlk olarak `app` isimli ve `.py` uzantılı bir Python yürütülebilir dosyası yaratalım:
+İlk olarak `app` isimli ve `.py` uzantılı boş bir Python yürütülebilir dosyası (Python executable file) yaratalım:
 
 ![](https://github.com/mmuratarat/turkish/blob/master/_posts/images/webappML/sc7.png?raw=true)
 
@@ -517,8 +517,6 @@ import numpy as np
 import sklearn
 import pickle
 ```
-
-Daha sonra, o
 
 İlk adım olarak, `streamlit` kütüphanesindeki `set_page_config` fonksiyonunu kullanarak web uygulamasının bazı yapılandırmasını ayarlayacağız. Oluşturacağınız web uygulamasının başlığını ve kullanacağınız favicon'u bu şekilde yerleştirebilirsiniz:
 
@@ -534,13 +532,15 @@ st.markdown("<h1 style='text-align: center; font-size: 20px;'>Aşağıda verilen
 st.markdown("##")
 ```
 
-Daha sonra, pickle nesnesi olarak kaydettiğimiz modelimizi, `pickle` kütüphanesindeki `load` fonksiyonunu kullanarak yükleyelim. Burada önemli olan, `app.py` dosyası ile `classifier.pkl` dosyasının aynı dizin içinde yer alması. 
+Ardından, pickle nesnesi olarak kaydettiğimiz modelimizi, `pickle` kütüphanesindeki `load` fonksiyonunu kullanarak yükleyelim. Burada önemli olan, `app.py` dosyası ile `classifier.pkl` dosyasının aynı dizin içinde yer alması. 
 
 ```python
+# Eğitilmiş modeli yüklemek
+pickle_in = open('classifier.pkl', 'rb') 
+model = pickle.load(pickle_in)
+```
 
-``` 
-
-Daha sonra, kullanıcıdan elimizdeki değişkenlere göre girdi talep ederiz. Nümerik değişkenler için bir kaydırıcı (`slider`), kategoril değişkenler için bir seçim kutusu (`selectbox`) kullanabiliriz:
+Daha sonra, kullanıcıdan elimizdeki değişkenlere göre girdi talep ederiz. Nümerik değişkenler için bir kaydırıcı (`slider`), kategorik değişkenler için bir seçim kutusu (`selectbox`) kullanabiliriz:
 
 ```python
 # Kullanıcı girdisi
@@ -557,7 +557,7 @@ Credit_History_input = st.selectbox(label = 'Başvuru sahibinin kredi geçmişi 
 Property_Area_input = st.selectbox(label = 'Kredi istenilen mülk alanı nerededir?', options = ("Yarı Kentsel", "Kentsel", "Kırsal"))
 ```
 
-Kullanıcı girdilerini aldıktan sonra, bu girdileri bir sözlüğe (dictionary) taşıyalım ve bu sözlüğü web uygulamamız üzerinde bir `DataFrame` olarak yazdıralım. Bu `DataFrame` bize, başvuru sahibi ile ilgili özet bilgileri göstersin:
+Kullanıcı girdilerini aldıktan sonra, bu girdileri bir sözlüğe (dictionary) taşıyalım ve bu sözlüğü web uygulamamız üzerinde bir `DataFrame` olarak yazdıralım. Bu `DataFrame` bize başvuru sahibi ile ilgili özet bilgileri göstersin:
 
 ```python
 st.markdown("<h1 style='text-align: center; font-size: 40px;'>Başvuru Sahibinin Özet Bilgileri:</h1>", unsafe_allow_html=True)
@@ -569,7 +569,7 @@ summary_df  = pd.DataFrame([summary_dictionary])
 st.table(summary_df)
 ```
 
-Kullanıcının girdiği verileri kullanarak tahmin yapacak bir fonksiyonu tanımlamamız gerekmektedir. Bu fonksiyona `predict_` adını verelim. Burada, aynı zamanda, Scikit-Learn kütüphanesi kullanarak oluşturduğumuz ve kaydettiğimiz makine öğrenmesi modelimizin pickle nesnesinin `predict` metodunu kullanmaktayız.
+Kullanıcının girdiği verileri kullanarak tahmin yapacak bir fonksiyonu tanımlamamız gerekmektedir. Bu fonksiyona `predict_` adını verelim. Burada, aynı zamanda, Scikit-Learn kütüphanesi kullanarak oluşturduğumuz, pickle nesnesi olarak kaydettiğimiz ve `app.py` dosyası içerisinde geri yüklediğimiz makine öğrenmesi modelimizin `predict` metodunu kullanmalıyız.
 
 Ayrıca, kullanıcıdan bazı girdileri Türkçe almamızdan dolayı, bu Türkçe girdileri, elimizdeki verilere göre uyarlamamız gerekmektedir. 
 
@@ -621,18 +621,23 @@ def predict_(model, Gender_input, Married_input, Dependents_input, Education_inp
     return pred
 ```
 
-Daha sonra bu `predict_` fonksiyonunu kullanarak, kullanıcı girdileriyle birlikte tahmini elde ederiz ve gerekli şekilde ekrana yazdırırız:
+Daha sonra bu `predict_` fonksiyonunu kullanarak, kullanıcı girdileriyle birlikte canlı tahminleri (live predictions) elde ederiz ve gerekli şekilde ekrana yazdırırız:
 
 ```python
-if st.button('Predict'):
+# Tahmin butonuna tıklandığında, kaydedilmiş modelden tahmin elde et ve yazdır
+st.markdown("---")
+
+st.markdown("<h1 style='text-align: left; font-size: 20px;'>Girilen bilgilere göre başvuru sahibine kredi verilip verilmemesini öğrenmek için aşağıdaki butona tıklayınız:</h1>", unsafe_allow_html=True)
+
+if st.button('Kredi verilsin mi?'):
     
     result_ = predict_(model, Gender_input, Married_input, Dependents_input, Education_input, Self_Employed_input, ApplicantIncome_input, CoapplicantIncome_input, LoanAmount_input, Loan_Amount_Term_input, Credit_History_input, Property_Area_input)
-    
+
     if result_ == 'red edildi.':
         st.error('Krediniz {}'.format(result_))
     else:
         st.success('Krediniz {}'.format(result_))
-        print(LoanAmount_input)
+        st.write(f'İstenilen kredi miktarı {LoanAmount_input * 1000: ,.2f} Türk lirasıdır.')
 ``` 
 
 Uygulama kodunun yazılması böylelikle sona ermiştir. Terminal penceresi üzerinde `streamlit run app.py` komutu çalıştırıldığında, web uygulaması http://localhost:8501 lokal URL’inde web tarayıcınızda açılacaktır.
