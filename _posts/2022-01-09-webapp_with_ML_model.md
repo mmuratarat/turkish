@@ -643,21 +643,23 @@ if st.button('Kredi verilsin mi?'):
 
 Uygulama kodunun yazılması böylelikle sona ermiştir. Terminal penceresi üzerinde `streamlit run app.py` komutu çalıştırıldığında, web uygulaması http://localhost:8501 lokal URL’inde web tarayıcınızda açılacaktır.
 
-Değişkenlere birkaç değer verelim ve bir kaç sonuç görelim.
+İstenilen değişkenlere girdi verdiğinizde arkaplanda çalışan makine öğrenme modeli hızlı bir şekilde yaptığı tahmini size sunacaktır. Değişkenlere değer verelim ve bir kaç sonuç görelim.
 
-Kredi kabul edildiğinde yeşil arkaplanıyla "Krediniz kabul edildi." ibaresi belirecektir. Bunu `st.success` fonksiyonuyla gerçekleştirebiliriz. Ardından ne kadar kredi verileceği bilgisi yazdırılacaktır.
+Kredi kabul edildiğinde (yani, model `Loan_Status = 1` tahmini yaptığında), yeşil arkaplanıyla "Krediniz kabul edildi." ibaresi belirecektir. Bunu `st.success` fonksiyonuyla gerçekleştirebiliriz. Bu bilginin ardından ne kadar kredi verileceği bilgisi yazdırılacaktır.
 
 ![](https://github.com/mmuratarat/turkish/blob/master/_posts/images/webappML/sc8.png?raw=true)
 
-Kredi red edildiğinde ise kırmızı arka planla "Krediniz red edildi." ibaresi ekrana yazdırılacaktır.
+Kredi red edildiğinde (yani, model `Loan_Status = 0` tahmini yaptığında) ise kırmızı arka planla "Krediniz red edildi." ibaresi ekrana yazdırılacaktır.
 
 ![](https://github.com/mmuratarat/turkish/blob/master/_posts/images/webappML/sc9.png?raw=true)
 
+Bu uygulamayı daha da detaylandırmak mümkün.
+
 ## requirements.txt dosyasını oluşturma
 
-Tüm Python bağımlılıklarının (dependencies) olduğu `requirements.txt` dosyasını oluşturmak için `pipreqs` kütüphanesini kullanabiliriz. Bu kütüphane yüklü değilse, `pip3 install pipreqs` komutu ile kişisel bilgisayarınıza yükleyebilirsiniz.
+Uygulama kodunun yazımı tamamlandığında tüm Python bağımlılıklarının (dependencies) olduğu `requirements.txt` dosyasını oluşturmak için `pipreqs` kütüphanesini kullanabiliriz. Bu kütüphane yüklü değilse, `pip3 install pipreqs` komutu ile kişisel bilgisayarınıza yükleyebilirsiniz.
 
-Daha sonra bir Terminal penceresinden, app.py dosyamızın olduğu klasöre gidelim ve `pipreqs ./` komutu ile kullanılan tüm paketleri requirements isimli metin dosyasına yazdıralım:
+Daha sonra bir Terminal penceresinden, `app.py` dosyamızın olduğu klasöre gidelim ve `pipreqs ./` komutu ile kullanılan tüm paketleri requirements isimli metin dosyasına yazdıralım:
 
 ```
 (base) Arat-MacBook-Pro-2:~ mustafamuratarat$ cd Desktop/LoanPredictionApp/
