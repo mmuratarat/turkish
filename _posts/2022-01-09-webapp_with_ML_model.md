@@ -685,6 +685,6 @@ ve "Deploy! (Dağıt!)" butonuna tıklayınız. Hatırlanması gereken önemli b
 
 ![](https://github.com/mmuratarat/turkish/blob/master/_posts/images/webappML/sc13.png?raw=true)
 
-Bir kaç dakika sonra uygulamanız canlı ortama dağıtılmış olacaktır! İşte, arkaplanında bir makine öğrenmesi modeli bulunan web uygulamanıza https://share.streamlit.io/mmuratarat/loanpredictionapp/main/app.py bağlantısından ulaşabilirsiniz!
+Bir kaç dakika sonra uygulamanız canlı ortama dağıtılmış olacaktır! İşte, arkaplanında bir makine öğrenmesi modeli bulunan web uygulamanıza [https://share.streamlit.io/mmuratarat/loanpredictionapp/main/app.py](https://share.streamlit.io/mmuratarat/loanpredictionapp/main/app.py){:target="_blank"} bağlantısından ulaşabilirsiniz!
 
 Oluşturduğumuz tüm dosyaları [burada](https://github.com/mmuratarat/LoanPredictionApp){:target="_blank"} bulunan Github deposunda bulabilirsiniz. Github sayfasındaki dosyaları her güncellemenizde, canlı uygulama da yeniden inşaa edilip, güncellenecektir.
