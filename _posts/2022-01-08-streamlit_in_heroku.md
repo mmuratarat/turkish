@@ -417,7 +417,7 @@ Uygulamayı dağıtmak üzere Heroku kullanacağız. Bu nedenle, uygulama kodund
 
 Tüm Python bağımlılıklarının (dependencies) olduğu `requirements.txt` dosyasını oluşturmak için `pipreqs` kütüphanesini kullanabiliriz. Bu kütüphane yüklü değilse, `pip3 install pipreqs` komutu ile kişisel bilgisayarınıza yükleyebilirsiniz.
 
-Daha sonra bir Terminal penceresinden, `app.py` dosyamızın olduğu klasöre gidelim. Daha sonra sanal ortamımızı aktive edelim. Aktivasyondan sonra, `pipreqs ./` komutu ile kullanılan tüm paketleri `requirements` isimli metin dosyasına yazdıralım:
+Daha sonra bir Terminal penceresinden, `app.py` dosyamızın olduğu klasöre gidelim ve`pipreqs ./` komutu ile kullanılan tüm paketleri `requirements` isimli metin dosyasına yazdıralım:
 
 ```
 (base) Arat-MacBook-Pro-2:~ mustafamuratarat$ cd Desktop/ExcelStreamlit_WebApp/
