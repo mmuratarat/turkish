@@ -179,19 +179,19 @@ Kaggle'a üye olup, `train_u6lujuX_CVtuZ9i (1).csv` isimli veri dosyasını indi
 
 |      Değişken     |                       Tanımı                       | Veri Tipi |                       Aldığı değerler                       |
 |:-----------------:|:--------------------------------------------------:|:---------:|:-----------------------------------------------------------:|
-|      Loan_ID      |                Kredi Banka Numarası                |           |                                                             |
-|       Gender      |             Başvuru sahibinin cinsiyeti            | Kategorik |                Male (Erkek) / Female (Kadın)                |
-|      Married      |               Başvuru sahibi evli mi?              | Kategorik |                   Yes (Evet) / No (Hayır)                   |
-|     Dependents    |         Bakmakla yükümlü olunan kişi sayısı        | Kategorik |                        0 / 1 / 2 / 3+                       |
-|     Education     |          Başvuru sahibinin eğitim seviyesi         | Kategorik |       (Graduate (Lisansüstü) / Under Graduate (Lisans)      |
-|   Self_Employed   |       Başvuru Sahibi kendi işini mi yapıyor?       | Kategorik |                  Yes (Evet) / No (Hayır)                    |
-|  ApplicantIncome  |              Başvuru sahininin geliri              |  Nümerik  |                                                             |
-| CoapplicantIncome | Başvuru sahibiyle birlikte başvuran kişinin geliri |  Nümerik  |                                                             |
-|     LoanAmount    |            Verilen Kredinin tutarı (bin)           |  Nümerik  |                                                             |
-|  Loan_Amount_Term |              Ay cinsinden kredi vadesi             |  Nümerik  |                                                             |
-|   Credit_History  |                    Kredi geçmişi                   |  Nümerik  |                          1.0 / 0.0                          |
-|   Property_Area   |        Kredi istenilen mülk alanı nerededir?       | Kategorik | Semiurban (Yarı Kentsel) / Urban (Kentsel) / Rural (Kırsal) |
-|    Loan_Status    |                 Kredi onaylandı mı?                | Kategorik |                     Y (Evet) / N (Hayır)                    |
+|      `Loan_ID`      |                Başvurulan Kredi için banka tarafından verilen numara                |           |                                                             |
+|       `Gender`      |             Başvuru sahibinin cinsiyeti            | Kategorik |                Male (Erkek) / Female (Kadın)                |
+|      `Married`      |               Başvuru sahibi evli olup olmadığı bilgisi             | Kategorik |                   Yes (Evet) / No (Hayır)                   |
+|     `Dependents`    |         Başvuru sahibinin bakmakla yükümlü olduğu kişi sayısı        | Kategorik |                        0 / 1 / 2 / 3+                       |
+|     `Education`     |          Başvuru sahibinin eğitim seviyesi         | Kategorik |       (Graduate (Lisansüstü) / Under Graduate (Lisans)      |
+|   `Self_Employed`   |       Başvuru Sahibi kendi işini mi yapıyor?       | Kategorik |                  Yes (Evet) / No (Hayır)                    |
+|  `ApplicantIncome`  |              Başvuru sahibinin geliri              |  Nümerik  |                                                             |
+| `CoapplicantIncome` | Başvuru sahibiyle birlikte başvuran kişinin geliri |  Nümerik  |                                                             |
+|     `LoanAmount`    |            Verilen kredinin tutarı (bin)           |  Nümerik  |                                                             |
+|  `Loan_Amount_Term` |              Ay cinsinden kredi vadesi             |  Nümerik  |                                                             |
+|   `Credit_History`  |                    Kredi geçmişi                   |  Nümerik  |                          1.0 / 0.0                          |
+|   `Property_Area`   |        Kredi istenilen mülk alanının konumu      | Kategorik | Semiurban (Yarı Kentsel) / Urban (Kentsel) / Rural (Kırsal) |
+|    `Loan_Status`    |                 Kredinin onaylanıp onaylanmadığı bilgisi               | Kategorik |                     Y (Evet) / N (Hayır)                    |
 
 Artık modelleme aşamasına geçmeye hazırız.
 
