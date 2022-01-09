@@ -675,9 +675,9 @@ Artık uygulamamıza sahip olduğumuza göre, uygulamayı dağıtmaya başlamaya
 
 ## Streamlit Sharing aracılığıyla dağıtım
 
-Uygulamalarınızı Heroku, digital ocean, AWS veya Google Cloud gibi herhangi bir özel bulut sistemi dağıtıcısında barındırabilirsiniz. Bir önceki yazımda bir Streamlit uygulamasını nasıl Heroku'da dağıltabileceğinizi göstermiştim. Burada ise biraz farklılık yaparak, Streamlit Sharing ile nasıl dağıtabileceğinizi öğreteceğim!
+Uygulamalarınızı Heroku, digital ocean, AWS veya Google Cloud gibi herhangi bir özel bulut sistemi dağıtıcısında barındırabilirsiniz. [Bir önceki yazımda](https://mmuratarat.github.io/turkish/2022-01-08/streamlit_in_heroku){:target="_blank"} bir Streamlit uygulamasını nasıl Heroku'da dağıtabileceğinizi göstermiştim. Burada ise biraz farklılık yaparak, Streamlit Sharing ile nasıl dağıtabileceğinizi öğreteceğim!
 
-Sonunda, kaydedilmiş modelimizin pickle nesnesini (`classifier.pkl`), web uygulama kodumuzun olduğu `app.py` dosyasını ve `requirements.txt` dosyasını hazır hale getirdikten sonra, bunları Github hesabımızdaki herkese açık bir depoya push edebiliriz. 
+Kaydedilmiş modelimizin pickle nesnesini (`classifier.pkl`), web uygulama kodumuzun olduğu `app.py` dosyasını ve `requirements.txt` dosyasını hazır hale getirdikten sonra, bunları Github hesabımızdaki herkese açık bir depoya (repository) push edebiliriz. 
 
 Ardından [Streamlit Sharing](https://streamlit.io/){:target="_blank"} web sitesini ziyaret edeceğiz. Bu web sayfasının sağ üst köşesinde bulunan `Sign in`butonuna tıklayarak,, tarafından kullanılmak üzere Streamlit Sharing'e erişim izni verilen Github hesabınızla oturum açın.
 
