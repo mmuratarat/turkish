@@ -679,7 +679,7 @@ Uygulamalarınızı Heroku, digital ocean, AWS veya Google Cloud gibi herhangi b
 
 Kaydedilmiş modelimizin pickle nesnesini (`classifier.pkl`), web uygulama kodumuzun olduğu `app.py` dosyasını ve `requirements.txt` dosyasını hazır hale getirdikten sonra, bunları Github hesabımızdaki herkese açık bir depoya (repository) push edebiliriz. 
 
-Ardından [Streamlit Sharing](https://streamlit.io/){:target="_blank"} web sitesini ziyaret edeceğiz. Bu web sayfasının sağ üst köşesinde bulunan `Sign in`butonuna tıklayarak,, tarafından kullanılmak üzere Streamlit Sharing'e erişim izni verilen Github hesabınızla oturum açın.
+Ardından [Streamlit Sharing](https://streamlit.io/){:target="_blank"} web sitesini ziyaret edeceğiz. Bu web sayfasının sağ üst köşesinde bulunan `Sign in`butonuna tıklayarak, tarafından kullanılmak üzere Streamlit Sharing'e erişim izni verilen Github hesabınızla oturum açın.
 
 Giriş yaptıktan sonra, New App (Yeni uygulama) butonuna tıklayacağız.
 
