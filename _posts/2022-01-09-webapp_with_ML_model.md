@@ -193,6 +193,7 @@ Kaggle'a üye olup, `train_u6lujuX_CVtuZ9i (1).csv` isimli veri dosyasını indi
 |   `Property_Area`   |        Kredi istenilen mülk alanının yeri      | Kategorik | Semiurban (Yarı Kentsel) / Urban (Kentsel) / Rural (Kırsal) |
 |    `Loan_Status`    |                 Kredinin onaylanıp onaylanmadığı bilgisi               | Kategorik |                     Y (Evet) / N (Hayır)                    |
 
+
 Artık modelleme aşamasına geçmeye hazırız.
 
 İlk olarak, `full_dataset.csv` veri kümesi $\%80 - \%20$ oranı kullanılarak iki kısıma ayrılacaktır. $\%80$'lik kısıma eğitim veri kümesi (training dataset) denilecek ve bu küme model eğitimi (model training) için, $\%20$'lik kısıma ise test veri kümesi (testing dataset) denilecek ve bu küme model değerlendirme (model evaluation) aşamasında kullanılacaktır. Test veri kümesine modelleme boyunca kesinlikle dokunulmayacaktır ve bu veri kümesi modelimizin görmediği verileri (unseen data) içermelidir. Model doğrulaması (model validation), hiperparametre seçimi (hyperparameter selection) ve çapraz doğrulama (cross validation) adımları `train_ctrUa4K.csv` veri kümesinden ayrılan $\%80$'lik kısım kullanılarak gerçekleştirilecektir. 
