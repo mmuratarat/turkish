@@ -689,7 +689,7 @@ Ve daha sonra gerekli alanların değerlerini giriniz:
 
 ![](https://github.com/mmuratarat/turkish/blob/master/_posts/images/webappML/sc12.png?raw=true)
 
-ve "Deploy! (Dağıt!)" butonuna tıklayınız. Hatırlanması gereken önemli bir nokta, `app.py` dosyanızın, modelin `.pkl` ve `requirements.txt` dosyalarıyla birlikte Streamlit Sharing'de dağıtmak istediğiniz dalda olması gerektiğidir.
+ve "Deploy! (Dağıt!)" butonuna tıklayınız. Hatırlanması gereken önemli bir nokta, `app.py` dosyanızın, modelin `.pkl` ve `requirements.txt` dosyalarıyla birlikte Streamlit Sharing'de dağıtmak istediğiniz dal (branch) üzerinde olması gerektiğidir.
 
 ![](https://github.com/mmuratarat/turkish/blob/master/_posts/images/webappML/sc13.png?raw=true)
 
