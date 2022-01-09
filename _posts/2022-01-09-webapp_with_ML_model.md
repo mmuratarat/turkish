@@ -179,9 +179,9 @@ Kaggle'a üye olup, `train_u6lujuX_CVtuZ9i (1).csv` isimli veri dosyasını indi
 
 |      Değişken     |                       Tanımı                       | Veri Tipi |                       Aldığı değerler                       |
 |:-----------------:|:--------------------------------------------------:|:---------:|:-----------------------------------------------------------:|
-|      `Loan_ID`      |                Başvurulan Kredi için banka tarafından verilen numara                |           |                                                             |
+|      `Loan_ID`      |                Başvurulan kredi için banka tarafından verilen numara                |           |                                                             |
 |       `Gender`      |             Başvuru sahibinin cinsiyeti            | Kategorik |                Male (Erkek) / Female (Kadın)                |
-|      `Married`      |               Başvuru sahibi evli olup olmadığı bilgisi             | Kategorik |                   Yes (Evet) / No (Hayır)                   |
+|      `Married`      |               Başvuru sahibinin evli olup olmadığı bilgisi             | Kategorik |                   Yes (Evet) / No (Hayır)                   |
 |     `Dependents`    |         Başvuru sahibinin bakmakla yükümlü olduğu kişi sayısı        | Kategorik |                        0 / 1 / 2 / 3+                       |
 |     `Education`     |          Başvuru sahibinin eğitim seviyesi         | Kategorik |       (Graduate (Lisansüstü) / Under Graduate (Lisans)      |
 |   `Self_Employed`   |       Başvuru sahibinin kendi işini yapıp yapmadığının bilgisi       | Kategorik |                  Yes (Evet) / No (Hayır)                    |
