@@ -9,7 +9,7 @@ PyCaret, Python'da makine öğrenmesi iş akışlarını otomatikleştiren açı
 
 Flask ise, Python ile yazılmış bir web uygulaması yazılım çerçevesidir. Flask, Werkzeug WSGI araç takımına ve Jinja2 şablon motoruna (template engine) dayanmaktadır.
 
-Bu eğiticide PyCaret kütüphanesini kullanarak Python'da makine öğrenimi iletim hattı oluşturacak ve bir makine öğrenmesi modelini eğiteceksiniz. Daha sonra, Flask kütüphanesini kullanarak bir web uygulaması kodu oluşturacaksınız ve bu uygulamayı Heroku'da üretim ortamına dağıtacaksınız. Bir makine öğrenmesi modellerinin dağıtılması veya modellerin üretime alınması, modellinizi son kullanıcılar veya sistemler için kullanılabilir hale getirmek anlamına gelir.
+Bu eğiticide PyCaret kütüphanesini kullanarak Python'da makine öğrenimi iletim hattı (#pipeline) oluşturacak ve birden çok makine öğrenmesi modelini aynı anda eğiteceksiniz. Daha sonra, Flask kütüphanesini kullanarak, arka planında eğittiğiniz makine öğrenmesi modeli bulunan bir web uygulamasının kodunu yazacaksınız ve bu uygulamayı Heroku'da üretim ortamına dağıtacaksınız. Bir makine öğrenmesi modellerinin dağıtılması veya modellerin üretime alınması, modellinizi son kullanıcılar veya sistemler için kullanılabilir hale getirmek anlamına gelir.
 
 ## Görevler
 
