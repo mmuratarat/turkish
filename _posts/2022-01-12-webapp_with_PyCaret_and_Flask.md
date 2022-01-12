@@ -7,7 +7,7 @@ comments: true
 
 PyCaret, Python'da makine öğrenmesi iş akışlarını otomatikleştiren açık kaynaklı, az-kodlu bir makine öğrenmesi kütüphanesidir. Deneme döngüsünü üstel bir biçimde hızlandıran ve sizi daha üretken kılan uçtan uca bir makine öğrenmesi ve model yönetimi aracıdır. Diğer açık kaynaklı makine öğrenmesi kütüphaneleriyle karşılaştırıldığında, PyCaret, yüzlerce kod satırını yalnızca birkaç satıra düşürmek için kullanılabilen alternatif bir kütüphanedir. PyCaret esasen scikit-learn, XGBoost, LightGBM, CatBoost, spaCy, Optuna, Hyperopt, Ray ve birkaç tane daha makine öğrenmesi kütüphanesi ve yazılım çerçevesi etrafında bir Python sarmalayıcıdır.
 
-Flask ise, Python ile yazılmış bir web uygulama çerçevesidir. Flask, Werkzeug WSGI araç takımına ve Jinja2 şablon motoruna (template engine) dayanmaktadır.
+Flask ise, Python ile yazılmış bir web uygulaması yazılım çerçevesidir. Flask, Werkzeug WSGI araç takımına ve Jinja2 şablon motoruna (template engine) dayanmaktadır.
 
 Bu eğiticide PyCaret kütüphanesini kullanarak Python'da makine öğrenimi iletim hattı oluşturacak ve bir makine öğrenmesi modelini eğiteceksiniz. Daha sonra, Flask kütüphanesini kullanarak bir web uygulaması kodu oluşturacaksınız ve bu uygulamayı Heroku'da üretim ortamına dağıtacaksınız. Bir makine öğrenmesi modellerinin dağıtılması veya modellerin üretime alınması, modellinizi son kullanıcılar veya sistemler için kullanılabilir hale getirmek anlamına gelir.
 
@@ -652,6 +652,6 @@ Web uygulama klasörümüz olan `DiamondApp`'in son hali şu şekildedir:
 
 ve BOOM! Uygulamanız üretim ortamına dağıtıldı ve kullanılma hazır!
 
-https://diamondpriceapp.herokuapp.com/
+[https://diamondpriceapp.herokuapp.com/](https://diamondpriceapp.herokuapp.com/){:target="_blank"}
 
 Oluşturduğumuz tüm dosyaları [burada](https://github.com/mmuratarat/DiamondApp){:target="_blank"} bulunan Github deposunda bulabilirsiniz. Github sayfasındaki dosyaları her güncellemenizde, canlı uygulama da yeniden inşaa edilip, güncellenecektir.
