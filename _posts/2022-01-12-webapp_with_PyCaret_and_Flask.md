@@ -7,7 +7,9 @@ comments: true
 
 PyCaret, Python'da makine öğrenmesi iş akışlarını otomatikleştiren açık kaynaklı, az-kodlu bir makine öğrenmesi kütüphanesidir. Deneme döngüsünü üstel bir biçimde hızlandıran ve sizi daha üretken kılan uçtan uca bir makine öğrenmesi ve model yönetimi aracıdır. Diğer açık kaynaklı makine öğrenmesi kütüphaneleriyle karşılaştırıldığında, PyCaret, yüzlerce kod satırını yalnızca birkaç satıra düşürmek için kullanılabilen alternatif bir kütüphanedir. PyCaret esasen scikit-learn, XGBoost, LightGBM, CatBoost, spaCy, Optuna, Hyperopt, Ray ve birkaç tane daha makine öğrenmesi kütüphanesi ve yazılım çerçevesi etrafında bir Python sarmalayıcıdır.
 
-Flask ise, Python ile yazılmış bir web uygulaması yazılım çerçevesidir. Flask, Web Server Gateway Interface (WSGI) araç takımına ve Jinja2 şablon motoruna (template engine) dayanmaktadır.
+Flask, Python'da API'ler oluşturmak için yaygın olarak kullanılan bir mikro web çerçevesidir. "Mikro", tüm web uygulamanızın tek bir Python dosyasına sığması gerektiği (kesinlikle sığabilmesine rağmen) veya Flask'ın işlevsellikten yoksun olduğu anlamına gelmez. "Mikro web çerçevesi" ifadesindeki "mikro", Flask'ın özünün basit ama genişletilebilir olduğu anlamına gelir.
+
+Karmaşık uygulamalara ölçekleme yeteneği ile hızlı ve kolay bir şekilde başlamak için tasarlanmış basit ama güçlü bir Python kütüphanesidir. Flask, Web Server Gateway Interface (WSGI) araç takımına ve Jinja2 şablon motoruna (template engine) dayanmaktadır. 
 
 Bu eğiticide PyCaret kütüphanesini kullanarak Python'da makine öğrenimi iletim hattı (#pipeline) oluşturacak ve birden çok makine öğrenmesi modelini aynı anda eğiteceksiniz. Daha sonra, Flask kütüphanesini kullanarak, arka planında eğittiğiniz makine öğrenmesi modeli bulunan bir web uygulamasının kodunu yazacaksınız ve bu uygulamayı Heroku'da üretim ortamına dağıtacaksınız. Bir makine öğrenmesi modellerinin dağıtılması veya modellerin üretime alınması, modellinizi son kullanıcılar veya sistemler için kullanılabilir hale getirmek anlamına gelir.
 
