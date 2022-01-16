@@ -122,7 +122,7 @@ $$
 
 Ayrıştırıcı, $\log \left( D_{\theta_{d}} (x) \right)$ maksimize etmelidir ve $\log$ fonksiyonu, monotonik bir fonksiyon olduğundan, Ayrıştırıcı $D_{\theta_{d}} (x)$'i maksimize ederse $\log \left( D_{\theta_{d}} (x) \right)$ otomatik olarak maksimize edilecektir.
 
-Öte yandan, girdi olarak $G_{\theta_{g}}(z)$ verildiğinde, bu girdi Ayrıştırıcı ağından geçtikten sonra tahmin edilen değeri $D_{\theta_{d}} \left( G_{\theta_{g}}(z)\right)$ olur ve $G_{\theta_{g}}(z)$ girdisinin üretilen veri olduğunu ve sahte olduğunu, dolayısıyla gerçek etiketinin $0$ olduğunu unutmayın. O halde,
+Öte yandan, girdi olarak $G_{\theta_{g}}(z)$ verildiğinde, bu girdinin Ayrıştırıcı sinir ağından geçtikten sonra tahmin edilen değeri $D_{\theta_{d}} \left( G_{\theta_{g}}(z)\right)$ olur. $G_{\theta_{g}}(z)$ girdisinin üretilen veri olduğunu ve sahte olduğunu, dolayısıyla gerçek etiketinin $0$ olduğunu unutmayın. O halde,
 
 $$
 \begin{split}
