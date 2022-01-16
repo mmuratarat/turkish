@@ -5,7 +5,7 @@ author: "MMA"
 comments: true
 ---
 
-Bu blog yazısında, Üretken Çekişmeli Ağları (Generative Discriminative Networks - GANs) keşfedeceğiz. Bu tip ağları daha önce duymadıysanız, şimdiye kadar kaçırdığınız her şeyi öğrenme fırsatınız bu. Bu algoritha, Ian Goodfellow ve çalışma arkadaşları tarafından 2014 yılında literatüre tanıtılmıştır (https://proceedings.neurips.cc/paper/2014/file/5ca3e9b122f61f8f06494c97b1afccf3-Paper.pdf). 2014'ten beri var olmalarına rağmen GAN'lar, uygulamalardaki çok yönlülüğü ve veri üretmedeki olağanüstü sonuçlarıyla geniş çapta yıllardır kullanılmaktadır.
+Bu blog yazısında, Üretken Çekişmeli Ağları (Generative Discriminative Networks - GANs) keşfedeceğiz. Bu tip ağları daha önce duymadıysanız, şimdiye kadar kaçırdığınız her şeyi öğrenme fırsatınız bu. Bu algoritha, Ian Goodfellow ve çalışma arkadaşları tarafından 2014 yılında literatüre tanıtılmıştır. 2014'ten beri var olmalarına rağmen GAN'lar, uygulamalardaki çok yönlülüğü ve veri üretmedeki olağanüstü sonuçlarıyla geniş çapta yıllardır kullanılmaktadır.
 
 Peki neden GAN'lar kullanılmaktadır?
 * Eğitim verileriniz yeterli değilse, hiç problem değil! GAN'lar verileriniz hakkında bilgi edinebilir ve veri kümenizi artıran sentetik görüntüler oluşturabilir.
@@ -233,3 +233,4 @@ Gradyan-tabanlı güncellemelerin herhangi bir standart gradyan-tabanlı öğren
 6. http://cs231n.stanford.edu/slides/2017/cs231n_2017_lecture13.pdf
 7. https://arxiv.org/pdf/1406.2661.pdf
 8. https://deepgenerativemodels.github.io/notes/gan/
+9. https://proceedings.neurips.cc/paper/2014/file/5ca3e9b122f61f8f06494c97b1afccf3-Paper.pdf
