@@ -20,7 +20,7 @@ Hepsi bu değil. GAN'lar daha fazlasını yapabilir. Bugün bu kadar güçlü ve
 
 ##  Üretken Çekişmeli Ağlar için Kayıp Fonksiyonu
 
-Denetimli Öğrenmede (Supervised Learning), Üretken Model  (Generative Model) ve Ayrımcı Modeller (Discriminative Model) olmak üzere iki farklı modelleme türü vardır. Ayrımcı Modeller, bir veri noktasının hangi sınıfa ait olduğunu tahmin etmek için modelin bir karar sınırını (decision boundary) öğrendiği Sınıflandırma görevini çözmek için kullanılır. Öte yandan, Üretken Modeller, eğitim verisinin olasılık dağılımıyla aynı olasılık dağılımını izleyen sentetik veri noktaları oluşturmak için kullanılır. Bu blog yazısının konusu olan Üretken Çekişmeli Ağlar (GAN'lar), Üretken Modeller olarak adlandırılan algoritmalar grubuna aittir.
+Denetimli Öğrenmede (Supervised Learning), Üretken Modeller (Generative Model) ve Ayrımcı Modeller (Discriminative Model) olmak üzere iki farklı modelleme türü vardır. Ayrımcı Modeller, bir veri noktasının hangi sınıfa ait olduğunu tahmin etmek için modelin bir karar sınırını (decision boundary) öğrendiği Sınıflandırma görevini çözmek için kullanılır. Öte yandan, Üretken Modeller, eğitim verisinin olasılık dağılımıyla aynı olasılık dağılımını izleyen sentetik veri noktaları oluşturmak için kullanılır. Bu blog yazısının konusu olan Üretken Çekişmeli Ağlar (GAN'lar), Üretken Modeller olarak adlandırılan algoritmalar grubuna aittir.
 
 GAN'lar, aynı anda eğitilmiş iki sinir ağından oluşan makine öğrenmesi yöntemlerinin bir sınıfıdır. GAN mimarisi, iki sinir ağı tarafından temsil edilen iki farklı aşamadan oluşmaktadır. Bu sinir ağlarından biri Üretici (generator), diğeri ise Ayrıştırıcı (discriminator) olarak adlandırılır. Üretici sahte veri üretmek için kullanılır. Ayrıştırıcı ise, kendisine verilen girdinin gerçek mi yoksa sahte mi olduğunu sınıflandırmak için kullanılır.
 
@@ -189,24 +189,24 @@ $$
 $V(G_{\theta_{g}}, D_{\theta_{d}})$ ifadesini açalım. Ayrıştırıcının ($D_{\theta_{d}})$) bu fonksiyonu $\theta_{d}$ parametrelerine göre maksimize ettiğini biliyoruz. Burada, sabit bir $G_{\theta_{g}}$ üretici verildiğinde, Ayrıştırıcı ikili sınıflandırma gerçekleştirmektedir. Ayrıştırıcı, $x \sim p_{data}$ olasılık fonksiyonuna sahip eğitim kümesindeki veri noktalarına $1$ olasılığını atar (yani bu örnekler gerçektir), ve Üreticiden gelmiş $x \sim p_{g}$ olasılık fonksiyonuna sahip üretilmiş örneklere $0$ olasılığını atar (yani bu örnekler sahtedir). Bu durumda, optimal Ayrıştırıcı şu şekildedir:
 
 $$
-D^{*}_{G}(x) = \frac{p_{data}(x)}{p_{data}(x) + p_{g}(x)}
+D_{G}^{\star} (x) = \frac{p_{data}(x)}{p_{data}(x) + p_{g}(x)}
 $$
 
 Öte yandan, Üretici ($G_{\theta_{g}}$) sabit bir $D_{\theta_{d}}$ ayrıştırıcısı için $V(G_{\theta_{g}}, D_{\theta_{d}})$ amaç fonksiyonunu minimize etmeye çalışır.
 
-Yukarıda elde edilen optimal ayrıştırıcı olan $D^{*}_{G}(x)$'i $V(G_{\theta_{g}}, D_{\theta_{d}})$ amaç fonksiyonuna yerleştirdiğimizde
+Yukarıda elde edilen optimal ayrıştırıcı olan $D_{G}^{\star} (x)$'i $V(G_{\theta_{g}}, D_{\theta_{d}})$ amaç fonksiyonuna yerleştirdiğimizde
 
 $$
 2D_{\textrm{JSD}}[p_{data}, p_{g}] - \log 4
 $$
 
-ifadesini elde ederiz. Burada, $D_{\textrm{JSD}}$ terimi, Kullback-Leibler ıraksamasının (Kullback-Leibler divergence) simetrik formu olarak da bilinen Jenson-Shannon ıraksamasıdır (Jenson-Shannon divergence) ve şu şekilde hesaplanır:
+ifadesini elde ederiz. Burada, $D_{\textrm{JSD}}$ terimi, Kullback-Leibler ıraksaması'nın (Kullback-Leibler divergence) simetrik formu olarak da bilinen Jenson-Shannon ıraksaması'dır (Jenson-Shannon divergence) ve şu şekilde hesaplanır:
 
 $$
 D_{\textrm{JSD}}[p, q] = \frac{1}{2} \left( D_{\textrm{KL}}\left[p, \frac{p+q}{2} \right] + D_{\textrm{KL}}\left[q, \frac{p+q}{2} \right] \right)
 $$
 
-JSD, KL'nin tüm özelliklerini karşılar ve ek avantajı vardır: $D_{\textrm{JSD}}[p,q] = D_{\textrm{JSD}}[q,p]$. Bu mesafe ölçütü (distance metric) ile, GAN amaç fonksiyonu için optimal Üretici $p_{data} = p_{g}$ olduğunda gerçekleşir, yani, veri üretme sürecini mükemmel bir şekilde kopyalayan bir üretken model vardır. Optimal üreticiler ($G^{*} (\cdot)$) ve ayrıştırıcılar ($D^{*}_{G^{*}}(\mathbf{x})$) ile elde edebileceğimiz amaç fonksiyonunun optimal değeri $-\log 4$'tür.
+Jenson-Shannon ıraksaması, Kullback-Leibler ıraksaması'nın tüm özelliklerini karşılar ve ek avantajı vardır: $D_{\textrm{JSD}}[p,q] = D_{\textrm{JSD}}[q,p]$. Bu mesafe ölçütü (distance metric) ile, GAN amaç fonksiyonu için optimal Üretici $p_{data} = p_{g}$ olduğunda gerçekleşir, yani, veri üretme sürecini mükemmel bir şekilde kopyalayan bir üretken model vardır. Optimal üreticiler ($G^{\star} (\cdot)$) ve ayrıştırıcılar ($D_{G^{\star}^{\star}}(\mathbf{x})$) ile elde edebileceğimiz amaç fonksiyonunun optimal değeri $-\log 4$'tür.
 
 ## Bir  Üretken Çekişmeli Ağı Eğitmek
 
