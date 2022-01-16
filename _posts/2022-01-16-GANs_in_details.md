@@ -66,6 +66,7 @@ Bu fonksiyonda,
 * $D_{\theta_{d}} \left( G_{\theta_{g}}(z)\right)$, sahte (Üretici tarafından üretilmiş) bir örneğin "gerçek" olarak sınıflandırma olasılığının Ayrıştırıcı tarafından yapılan bir kestirimidir.
 * $E_{z \sim p_{z}} $, Üretici tarafından üretilen tüm rastgele girdiler üzerinden beklenen değerdir (aslında, üretilen tüm sahte örnekler $G_{\theta_{g}}(z)$ üzerinden beklenen değerdir).
 * Bu formül, gerçek verilerin dağılımı ve üretilen verilerin dağılımı arasındaki çapraz entropiden türetilir.
+* Bu kayıp fonksiyonuna aynı zamanda, Minimax loss kaybı (Minimax loss) denilmektedir. 
 
 Formülü yorumlamak oldukça kolaydır. Ayrıştırıcı ($\theta_{d}$ parametreli bir sinir ağı), $D_{\theta_{d}} (x)$ olasılığı 1'e (gerçek) ve $D_{\theta_{d}} \left( G_{\theta_{g}}(z)\right)$ olasılığı 0'a (sahte) yakın olacak şekilde bu amaç fonksiyonunu maksimize etmek istemektedir. Üretici ($\theta_{g}$ parametreli bir sinir ağı) $D_{\theta_{d}} \left( G_{\theta_{g}}(z)\right)$ olasılığı 1'e yakın olacak şekilde bu amaç fonksiyonunu minimize etmek istemektedir (Ayrıştırıcı, üretici tarafından üretilen $G_{\theta_{g}}(z)$'nin gerçek olduğunu düşünerek kandırılmaktadır).
 
