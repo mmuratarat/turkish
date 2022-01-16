@@ -28,7 +28,7 @@ Görüntü üretimi (image generation) için kullanıldığında, Üretici sinir
 
 ![](https://github.com/mmuratarat/turkish/blob/master/_posts/images/vanilla_GAN.png?raw=true)
 
-Buradaki temel düşünce, $\\{x_{1}, x_{2}, \dots, x_{m} \\}$ gibi gerçek verilerden oluşan bir veri kümesi verildiğinde, bu veri kümesindekilere benzer (similar) veriler elde etmektir. GAN'ların kullanım amacı ise, veri üretmek için kullanılacak Üretici sinir ağının, gerçek verilerden ayırt edilemez örnekler oluşturmasıdır. Matematiksel olarak, bu, rastgele değişkenlerin dağılımlarının eşit olması demektir. Bunu söylemenin başka bir yolu, bu rastlantı değişkenlerinin olasılık yoğunluk fonksiyonlarının eşit olmasıdır: $p_g(x)=p_{data}(x)$. Burada, $p_g$ üreticiden çıkan örneklerin olasılık fonksiyonunu ve $p_{data}$ ise gerçek verilerin olasılık fonksiyonunu temsil etmektedir. Bu tam olarak GAN'ın mantığını oluşturmaktadır: optimal üretici olan $G_{\theta_{g}}$'nin $p_g(x)=p_{data}(x)$'i sağladığı bir optimizasyon problemi tanımlamaktadır. 
+Buradaki temel düşünce, $\\{x_{1}, x_{2}, \dots, x_{m} \\}$ gibi gerçek verilerden oluşan bir veri kümesi verildiğinde, bu veri kümesindekilere benzer (similar) veriler elde etmektir. GAN'ların kullanım amacı ise, veri üretmek için kullanılacak Üretici sinir ağının, gerçek verilerden ayırt edilemez örnekler oluşturmasıdır. Matematiksel olarak, bu, rastgele değişkenlerin dağılımlarının eşit olması demektir. Bunu söylemenin başka bir yolu, bu rastlantı değişkenlerinin olasılık yoğunluk fonksiyonlarının eşit olmasıdır: $p_g(x)=p_{data}(x)$. Burada, $p_g$ üreticiden çıkan örneklerin olasılık fonksiyonunu ve $p_{data}$ ise gerçek verilerin olasılık fonksiyonunu temsil etmektedir. Bu tam olarak GAN'ın mantığını oluşturmaktadır. Yani, optimal üretici olan $G_{\theta_{g}}$'nin $p_g(x)=p_{data}(x)$'i sağladığı bir optimizasyon problemi tanımlamamız ve bulmamız gerekmektedir.
 
 ![](https://github.com/mmuratarat/turkish/blob/master/_posts/images/gan0.png?raw=true)
 
@@ -46,7 +46,6 @@ Ayrıca, Üretici mümkün olduğunca gerçekçi veriler üreterek Ayrıştırı
 ![](https://github.com/mmuratarat/turkish/blob/master/_posts/images/gan1.png?raw=true)
 
 Adlarından da anlaşılacağı gibi, gerçek görünümlü görüntüler oluşturmak için bir üretici kullanılır ve ayrıştırıcının görevi hangi görüntünün sahte olduğunu belirlemektir. Biri (üretici) diğerini (ayrıştırıcı) kandırmaya çalışırken, diğeri (ayrıştırıcı) kandırılmamaya çalıştığı için bu iki sinir ağı sürekli savaş halindedir. En iyi görüntüleri oluşturmak için çok iyi bir üreticiye ve çok iyi bir ayrıştırıcıya ihtiyacınız  vardır. Bunun nedeni, Üretici yeterince iyi değilse, Ayrıştırıcı'yı asla kandıramayacak ve model asla yakınsamayacaktır. Ayrıştırıcı kötüyse, hiçbir anlamı olmayan görüntüler de gerçek olarak sınıflandırılacak ve bu nedenle modeliniz asla eğitilemeyecektir ve karşılığında asla istenen çıktıyı üretemeyeceksiniz. 
-
 
 Üretici, bir rastgele gürültü ile sahte bir veri oluşturur. Diğer bir deyişle, rastgele gürültü bir Gauss dağılımına sahip olabilir ve değerler bu dağılımdan örneklenebilir ve üretici ağına beslenebilir ve bir sahte görüntü oluşturulabilir. Oluşturulan bu görüntü, Ayrıştırıcı tarafından gerçek bir görüntü ile karşılaştırılır ve verilen görüntünün sahte mi gerçek mi olduğunu belirlenmeye çalışılır.
 
