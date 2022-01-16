@@ -206,7 +206,7 @@ $$
 D_{\textrm{JSD}}[p, q] = \frac{1}{2} \left( D_{\textrm{KL}}\left[p, \frac{p+q}{2} \right] + D_{\textrm{KL}}\left[q, \frac{p+q}{2} \right] \right)
 $$
 
-JSD, KL'nin tüm özelliklerini karşılar ve ek avantajı vardır: $D_{\textrm{JSD}}[p,q] = D_{\textrm{JSD}}[q,p]$. Bu mesafe ölçütü (distance metric) ile, GAN amaç fonksiyonu için optimal Üretici $p_{data} = p_{g}$ olduğunda gerçekleşir, yani, veri üretme sürecini mükemmel bir şekilde kopyalayan bir üretken model vardır. Optimal üreticiler ($G^*(\cdot)$) ve ayrıştırıcılar ($D^*_{G^*}(\mathbf{x})$) ile elde edebileceğimiz amaç fonksiyonunun optimal değeri $-\log 4$'tür.
+JSD, KL'nin tüm özelliklerini karşılar ve ek avantajı vardır: $D_{\textrm{JSD}}[p,q] = D_{\textrm{JSD}}[q,p]$. Bu mesafe ölçütü (distance metric) ile, GAN amaç fonksiyonu için optimal Üretici $p_{data} = p_{g}$ olduğunda gerçekleşir, yani, veri üretme sürecini mükemmel bir şekilde kopyalayan bir üretken model vardır. Optimal üreticiler ($G^{*} (\cdot)$) ve ayrıştırıcılar ($D^{*}_{G^{*}}(\mathbf{x})$) ile elde edebileceğimiz amaç fonksiyonunun optimal değeri $-\log 4$'tür.
 
 ## Bir  Üretken Çekişmeli Ağı Eğitmek
 
