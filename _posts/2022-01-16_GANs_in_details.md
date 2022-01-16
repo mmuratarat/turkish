@@ -5,8 +5,6 @@ author: "MMA"
 comments: true
 ---
 
-# 1. BÖLÜM
-
 Bu blog yazısında, Üretken Çekişmeli Ağları (Generative Discriminative Networks - GANs) keşfedeceğiz. Bu tip ağları daha önce duymadıysanız, şimdiye kadar kaçırdığınız her şeyi öğrenme fırsatınız bu. Bu algoritha, Ian Goodfellow ve çalışma arkadaşları tarafından 2014 yılında literatüre tanıtılmıştır (https://proceedings.neurips.cc/paper/2014/file/5ca3e9b122f61f8f06494c97b1afccf3-Paper.pdf). 2014'ten beri var olmalarına rağmen GAN'lar, uygulamalardaki çok yönlülüğü ve veri üretmedeki olağanüstü sonuçlarıyla geniş çapta yıllardır kullanılmaktadır.
 
 Peki neden GAN'lar kullanılmaktadır?
