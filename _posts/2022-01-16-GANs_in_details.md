@@ -5,7 +5,7 @@ author: "MMA"
 comments: true
 ---
 
-Bu blog yazısında, Üretken Çekişmeli Ağları (Generative Discriminative Networks - GANs) keşfedeceğiz. Bu tip ağları daha önce duymadıysanız, şimdiye kadar kaçırdığınız her şeyi öğrenme fırsatınız bu. Bu algoritha, Ian Goodfellow ve çalışma arkadaşları tarafından 2014 yılında literatüre tanıtılmıştır. 2014'ten beri var olmalarına rağmen GAN'lar, uygulamalardaki çok yönlülüğü ve veri üretmedeki olağanüstü sonuçlarıyla geniş çapta yıllardır kullanılmaktadır.
+Bu blog yazısında, Üretken Çekişmeli Ağları (Generative Discriminative Networks - GANs) keşfedeceğiz. Bu tip ağları daha önce duymadıysanız, şimdiye kadar kaçırdığınız her şeyi öğrenme fırsatınız bu. Bu algoritma, Ian Goodfellow ve çalışma arkadaşları tarafından 2014 yılında literatüre tanıtılmıştır. 2014'ten beri var olmalarına rağmen GAN'lar, uygulamalardaki çok yönlülüğü ve veri üretmedeki olağanüstü sonuçlarıyla geniş çapta yıllardır kullanılmaktadır.
 
 Peki neden GAN'lar kullanılmaktadır?
 * Eğitim verileriniz yeterli değilse, hiç problem değil! GAN'lar verileriniz hakkında bilgi edinebilir ve veri kümenizi artıran sentetik görüntüler oluşturabilir.
@@ -72,10 +72,13 @@ Formülü yorumlamak oldukça kolaydır. Ayrıştırıcı ($\theta_{d}$ parametr
 Ayrıştırıcı, amaç fonksiyonunu maksimize etmeye çalışır, bu nedenle amaç fonksiyonu üzerinde gradyan çıkış (gradient ascent) algoritmasını gerçekleştirebiliriz. Benzer şekilde, Üretici amaç fonksiyonunu minimize etmeye çalışır, bu nedenle amaç fonksiyonu üzerinde gradyan inişi (gradient descent) algoritmasını gerçekleştirebiliriz. Gradyan iniş ve çıkış algoritmaları arasında geçiş yaparak Üretken Çekişmeli Ağlar eğitilebilir:
 
 1. Ayrıştırıcıda gradyan çıkış algoritması:
+  
   $$
   \max_{\theta_{d}}\,\, E_{x \sim p_{data}} \left[ \log \left( D_{\theta_{d}} (x) \right) \right] + E_{z \sim p_{z}} \left[ \log \left(1 - D_{\theta_{d}} \left( G_{\theta_{g}}(z)\right) \right) \right] 
   $$
+  
 2. Üreticide gradyan iniş algoritması:
+  
   $$
   \min_{\theta_{g}}\,\, E_{z \sim p_{z}} \left[ \log \left(1 - D_{\theta_{d}} \left( G_{\theta_{g}}(z)\right) \right) \right]  
   $$
