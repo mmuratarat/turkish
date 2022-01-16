@@ -186,7 +186,7 @@ $$
 
 ## GAN kayıp fonksiyonunun optimal değeri
 
-$V(G_{\theta_{g}}, D_{\theta_{d}})$ ifadesini açalım. Ayrıştırıcının ($D_{\theta_{d}})$) bu fonksiyonu $\theta_{d}$ parametrelerine göre maksimize ettiğini biliyoruz. Burada, sabit bir $G_{\theta_{g}}$ üretici verildiğinde, Ayrıştırıcı ikili sınıflandırma gerçekleştirmektedir. Ayrıştırıcı, $x \sim p_{data}$ olasılık fonksiyonuna sahip eğitim kümesindeki veri noktalarına $1$ olasılığını atar (yani bu örnekler gerçektir), ve Üreticiden gelmiş $x \sim p_{g}$ olasılık fonksiyonuna sahip üretilmiş örneklere $0$ olasılığını atar (yani bu örnekler sahtedir). Bu durumda, optimal Ayrıştırıcı şu şekildedir:
+$V(G_{\theta_{g}}, D_{\theta_{d}}$ ifadesini açalım. Ayrıştırıcının ($D_{\theta_{d}})$) bu fonksiyonu $\theta_{d}$ parametrelerine göre maksimize ettiğini biliyoruz. Burada, sabit bir $G_{\theta_{g}}$ üretici verildiğinde, Ayrıştırıcı ikili sınıflandırma gerçekleştirmektedir. Ayrıştırıcı, $x \sim p_{data}$ olasılık fonksiyonuna sahip eğitim kümesindeki veri noktalarına $1$ olasılığını atar (yani bu örnekler gerçektir), ve Üreticiden gelmiş $x \sim p_{g}$ olasılık fonksiyonuna sahip üretilmiş örneklere $0$ olasılığını atar (yani bu örnekler sahtedir). Bu durumda, optimal Ayrıştırıcı şu şekildedir:
 
 $$
 D_{G}^{\star} (x) = \frac{p_{data}(x)}{p_{data}(x) + p_{g}(x)}
