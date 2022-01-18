@@ -7,7 +7,7 @@ comments: true
 
 Bu eğitici, bir Üretken Çekişmeli Ağı (Deep Convolutional Generative Adversarial Network - DCGAN) sıfırdan yazarak, el yazısı rakamların görüntülerinin nasıl oluşturulacağını TensorFlow kütüphanesi kullanarak göstermektedir. İlk defa https://arxiv.org/abs/1406.2661 bağlantısında bulunan makalede önerilen bir GAN modeli olan Vanilla GAN algoritmasını programlayacağız!
 
-İlk olarak, ihtiyacımız olan temel kütüphaneleri içe aktaracağız. Ağı ve çekişmeli süreçleri oluşturmak için TensorFlow 2.0'ı, gürültüyü oluşturmak için NumPy'yi ve görüntüleri kaydetmek için matplotlib'i kullanacağız. Ayrıca TensorFlow 2.0 kullandığınızdan emin olun — aşağıdaki kod daha eski bir TensorFlow versiyonuyla çalışmayacaktır.
+İlk olarak, ihtiyacımız olan temel kütüphaneleri içe aktaracağız. Ağı ve çekişmeli süreçleri oluşturmak için TensorFlow 2.0'ı ve görüntüleri kaydetmek için matplotlib'i kullanacağız. Ayrıca TensorFlow 2.0 kullandığınızdan emin olun — aşağıdaki kod daha eski bir TensorFlow versiyonuyla çalışmayacaktır.
 
 ```python
 import tensorflow as tf
