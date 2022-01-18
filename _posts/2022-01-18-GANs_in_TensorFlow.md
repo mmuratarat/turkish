@@ -140,12 +140,12 @@ $$
 Bu görev için kullanacağımız kayıp fonksiyonu İkili Çapraz Entropi Kaybı (Binary Cross Entopy Loss) olarak adlandırılır. İkili çapraz entropi kayıp fonksiyonunun denklemi aşağıda verilmiştir:
 
 $$a
-L(\theta) = - \frac{1}{n} \sum_{i=1}^{n}  \left[y_{i} \log (\hat{y}_{i}) + (1-y_{i}) \log (1- \hat{y}_{i}) \right]
+L(\theta) = - \frac{1}{n} \sum_{i=1}^{n}  \left[y_{i} \log (\hat{y_{i}}) + (1 - y_{i}) \log (1- \hat{y_{i}}) \right]
 $$
 
 Burada, $\hat{y}$, model tarafından tahmin edilen etikettir ve $y$, gerçek etikettir. Bu nedenle Hem Üretici hem de Ayrıştırıcı kayıp fonksiyonu için TensorFlow'un `tf.keras.losses.BinaryCrossentropy` fonksiyonunu kullanacağız. Spesifik olarak, her mini-yığın için hesaplanan kaybın ortalamasını alacağız.
 
-Yukarıdaki ikili çapraz entropi kaybı fonksiyonunda, $\hat{y}_{i} = D_{\theta_{d}} (x_{i})$ ve $y_{i} = 1$ olarak değiştirirsek, gerçek resimlere ait kaybı elde ederiz. Benzer şekilde, $\hat{y}_{i} = D_{\theta_{d}} \left( G_{\theta_{g}}(z_{i})\right)$ ve $y_{i} = 0$ olarak değiştirirsek, sahte resimlere ait kaybı elde ederiz. Böylelikle Ayrıştırıcı için kayıp fonksiyonu şu şekil yazılabilir:
+Yukarıdaki ikili çapraz entropi kaybı fonksiyonunda, $\hat{y_{i}} = D_{\theta_{d}} (x_{i})$ ve $y_{i} = 1$ olarak değiştirirsek, gerçek resimlere ait kaybı elde ederiz. Benzer şekilde, $\hat{y_{i}} = D_{\theta_{d}} \left( G_{\theta_{g}}(z_{i})\right)$ ve $y_{i} = 0$ olarak değiştirirsek, sahte resimlere ait kaybı elde ederiz. Böylelikle Ayrıştırıcı için kayıp fonksiyonu şu şekil yazılabilir:
 
 $$
 \frac{1}{n} \sum_{i=1}^{n} \left[ \log \left( D_{\theta_{d}} (x_{i}) \right) + \log \left(1 - D_{\theta_{d}} \left( G_{\theta_{g}}(z_{i})\right) \right) \right]
@@ -159,7 +159,7 @@ $$
 \frac{1}{n} \sum_{i=1}^{n} \left[ \log \left(1 - D_{\theta_{d}} \left( G_{\theta_{g}}(z_{i})\right) \right) \right]
 $$
 
-[Bir önceki blog yazısında](https://mmuratarat.github.io/turkish/2022-01-16/GANs_in_details) söylediğimiz gibi, $\log \left(1 - D_{\theta_{d}} \left( G_{\theta_{g}}(z_{i})\right) \right)$ fonksiyonunu minimize etmek yerine, $D_{\theta_{d}} \left( G_{\theta_{g}}(z_{i}) \right)$ fonksiyonunu maksimize ederek Üretici sinir ağını eğitmek, eğitimin başlarında çok daha güçlü gradyanlar sağlayacaktır. Bu nedenle, $D_{\theta_{d}} \left( G_{\theta_{g}}(z_{i}) \right)$ fonksiyonu gradyan çıkış (gradient ascent) algoritması ile maksimize edilmelidir. Yukarıda da bahsettiğimiz gibi, bir fonksiyonu maksimize etmek, onun negatifini minimize etmeye eşdeğerdir. İkili çapraz entropi kayıp fonksiyonunun başında bir negatif (`-`) işareti vardır. Bu nedenle, Üretici kayıp fonksiyonunu minimize ederken endişelenmemize gerek yoktur. Üretici tarafından üretilmiş resimlerin tahmini için $\hat{y}_{i} = D_{\theta_{d}} \left( G_{\theta_{g}}(z_{i})\right)$ ve Üretici gerçek görüntüler ürettiğini düşündüğü için $y_{i} = 1$ olarak yukarıdaki ikili çapraz entropi kayığ fonksiyonunda yerine yazarsak, minimize edilecek kayıp fonksiyonu kolaylıkla bulunabilir:
+[Bir önceki blog yazısında](https://mmuratarat.github.io/turkish/2022-01-16/GANs_in_details) söylediğimiz gibi, $\log \left(1 - D_{\theta_{d}} \left( G_{\theta_{g}}(z_{i})\right) \right)$ fonksiyonunu minimize etmek yerine, $D_{\theta_{d}} \left( G_{\theta_{g}}(z_{i}) \right)$ fonksiyonunu maksimize ederek Üretici sinir ağını eğitmek, eğitimin başlarında çok daha güçlü gradyanlar sağlayacaktır. Bu nedenle, $D_{\theta_{d}} \left( G_{\theta_{g}}(z_{i}) \right)$ fonksiyonu gradyan çıkış (gradient ascent) algoritması ile maksimize edilmelidir. Yukarıda da bahsettiğimiz gibi, bir fonksiyonu maksimize etmek, onun negatifini minimize etmeye eşdeğerdir. İkili çapraz entropi kayıp fonksiyonunun başında bir negatif (`-`) işareti vardır. Bu nedenle, Üretici kayıp fonksiyonunu minimize ederken endişelenmemize gerek yoktur. Üretici tarafından üretilmiş resimlerin tahmini için $\hat{y_{i}} = D_{\theta_{d}} \left( G_{\theta_{g}}(z_{i})\right)$ ve Üretici gerçek görüntüler ürettiğini düşündüğü için $y_{i} = 1$ olarak yukarıdaki ikili çapraz entropi kayığ fonksiyonunda yerine yazarsak, minimize edilecek kayıp fonksiyonu kolaylıkla bulunabilir:
 
 $$
 \frac{1}{n} \sum_{i=1}^{n} \left[ \log \left(D_{\theta_{d}} \left( G_{\theta_{g}}(z_{i})\right) \right) \right]
