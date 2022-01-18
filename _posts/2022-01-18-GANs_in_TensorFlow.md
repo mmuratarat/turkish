@@ -197,7 +197,7 @@ def discriminator_objective(d_x, g_z, smoothing_factor = 0.9):
     return total_loss
 ```
 
-Ayrıştırıcı ağ, Üretici ağa benzer bir şekilde gerçekleştirilir. Tek fark, 784 ($28\times 28 = 784$) boyutlu bir vektörü girdi olarak almamız ve girdinin sahte mi yoksa gerçek mi bir resim olduğunu bize söyleyen yalnızca bir nöron çıktısı vermemizdir.
+Ayrıştırıcı ağ, Üretici ağa benzer bir şekilde gerçekleştirilir. Tek fark, 784 ($28\times 28 = 784$) boyutlu bir vektörü girdi olarak almamız ve girdinin sahte mi yoksa gerçek mi bir resim olduğunu bize söyleyen yalnızca bir nöron (sinir hücresi - neuron) çıktısı vermemizdir.
 
 ```python
 class Discriminator(keras.Model):
