@@ -182,7 +182,7 @@ def generator_objective(dx_of_gx):
 
 Burada önemli olan, gerçek resimlerin etiketlerinin 1, sahte resimlerin etiketlerinin 0 olmasıdır. Buna ek olarak, bu iki Ayrıştırıcı kaybı birlikte toplayarak, Ayrıştırıcı için toplam mini-yığın kaybını elde ederiz. Uygulamada, gradyanları ayrı ayrı hesaplayacağız ve ardından bu gradyanları birlikte güncelleyeceğiz.
 
-Ek olarak, aşırı uyumu (overfitting) engellemek için gerçek resimlere ait kayıp fonksiyonuna bir yumuşatma çarpanı(smoothing factor) ekliyoruz.
+Ek olarak, aşırı uyumu (overfitting) engellemek için gerçek resimlere ait kayıp fonksiyonuna bir yumuşatma çarpanı (smoothing factor) ekliyoruz.
 
 ```python
 def discriminator_objective(d_x, g_z, smoothing_factor = 0.9):
@@ -307,5 +307,3 @@ training(dataset = train_dataset, epochs = 300)
 İşte sadece 300 epok eğiterek, Normal dağılımdan elde edilmiş saf bir gürültüdeden, gerçek bir el yazısı resmini elde edebileceksiniz:
 
 ![](https://github.com/mmuratarat/turkish/blob/master/_posts/images/results.png?raw=true)
-
-
