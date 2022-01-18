@@ -72,7 +72,7 @@ train_dataset = tf.data.Dataset.from_tensor_slices(train_images).shuffle(buffer_
 
 Hem Üretici sinir ağını hem de Ayrıştırıcı sinir ağını oluşturmak için `tf.keras` Model Alt-sınıflama API'si (Model Subclasssing API) kullanacağız, bu da bize modelleri oluştururken biraz daha esneklik sağlayacaktır. Subclassing API kullanmak, hem ayrıştırıcı (discriminator) hem de Üretici (generator) için bir sınıf (class) oluşturacağımız anlamına gelir. Bu sınıfların kurucusunda (constructor) sinir ağlarının katmanlarını ve çağrı (call) metodunda modelin ileri beslemesini (forward pass) tanımlayacağız.
 
-## üretici Sinir Ağı
+## Üretici Sinir Ağı
 
 Üretici sinir ağına, 100 boyutlu bir gürültüyü girdi olarak vereceğiz ve 784 boyutunda (düzleştirilmiş (flattened)) bir vektörü çıktı olarak alacağız. Analizin ilerleyen aşamasında bu çıktı vektörünü $28\times 28$ boyutunda (görüntülerin orijinal boyutu) bir matrise yeniden şekillendireceğiz.
 
@@ -108,7 +108,7 @@ class Generator(keras.Model):
         return tf.random.normal(shape = (batch_size, random_noise_size), mean=0.0, stddev=1.0)
  ```
  
- ### Sahte Bir Görüntü Oluşturma
+ ## Sahte Bir Görüntü Oluşturma
 
 İlk olarak `Generator` sınıfı için bir örnek oluşturalım. Daha sonra, bir sahte resim örneği oluşturmak üzere, Normal dağılımdan bir gürültü yaratalım ve bu gürültüyü Üretici Sinir ağına bir kereliğe ileri besleyelim (one forward pass) ve çıktısını görüntüleyelim.
 
