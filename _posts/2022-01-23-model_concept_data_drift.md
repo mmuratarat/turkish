@@ -84,13 +84,13 @@ Konsept kayması farklı türlerde gerçekleşebilir.
 
 ### Aşamalı konsept kayması (Gradual concept drift)
 
-Kademeli (gradual) veya artan (incremental) kayma, beklediğimiz şeydir. Dünya her geçen gün değişmekte, ve modeller yaşlanmaktadır. Bir modelin kalitesindeki düşüş, dış etkenlerdeki kademeli değişiklikleri takip etmektedir. Örneğin,
+Aşamalı (gradual) veya artan (incremental) kayma, beklediğimiz şeydir. Dünya her geçen gün değişmekte, ve modeller yaşlanmaktadır. Bir modelin kalitesindeki düşüş, dış etkenlerdeki kademeli değişiklikleri takip etmektedir. Örneğin,
 
 * Rakipler yeni ürünler piyasaya sürmeye başlayabilir. Böylelikle, tüketiciler daha fazla seçeneğe sahip olacak ve satın alma davranışları değişecektir. Tabii ki, satış öngörü (forecasting) modelleri de bundan etkilenecektir
 * Makroekonomik koşullar değişebilir. Bazı borçlular kredilerini temerrüde düşürdükçe, kredi riski yeniden tanımlanır. Skorlama modellerinin bunu öğrenmesi gerekmektedir.
 * Ekipmanın mekanik olarak aşınması. Aynı süreç parametreleri altında, örüntüler artık biraz daha farklıdır. Bu durum, imalatta kalite tahmin modellerini etkileyecektir.
 
-Bu üç örnek içinde, yaşanacak bireysel değişikliklerin hiçbiri dramatik gerçekleşmeyecektir. Her biri yalnızca küçük bir segmenti (yani belirli dilimi) etkileyebilir. Ancak gerekli müdehale gerçekleşme, bu durum yığılmaya neden olacaktır. 
+Bu üç örnek için, yaşanacak bireysel değişikliklerin hiçbiri dramatik gerçekleşmeyecektir. Her biri yalnızca küçük bir segmenti (yani belirli dilimi) etkileyebilir. Ancak gerekli müdehale gerçekleşme, bu durum yığılmaya neden olacaktır. 
 
 ### Ani konsept kayması (Sudden or abrupt  concept drift)
 
