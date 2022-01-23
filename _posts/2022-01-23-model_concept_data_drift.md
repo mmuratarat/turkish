@@ -30,7 +30,7 @@ Daha bilimsel açıklayacak olursak, oluşturduğunuz model, büyük ihtimalle, 
 
 Diğer bir deyişle, zamanla, bir makine öğrenmesi modeli, model kayması (model drift) olarak bilinen bir kavramı yaşayarak, tahmin gücünü kaybetmeye başlar.
 
-İşte bu blog yazısında, model kaymasını derinlemesine inceleyeceğiz ve en önemli iki nedenini keşfedeceğiz: konsept kayması (consept drift) ve veri kayması (data drift). Ayrıca, neden gerçekleştiklerine, etkilerine, onları nasıl tespit edebileceğimize ve nihayetinde etkilerinin nasıl üstesinden gelineceğine biraz ışık tutacağız.
+İşte bu blog yazısında, model kaymasını derinlemesine inceleyeceğiz ve en önemli iki nedenini keşfedeceğiz: konsept kayması (consept drift) ve veri kayması (data drift). Ayrıca, neden gerçekleştiklerine, etkilerine, onları nasıl tespit edebileceğimize ve nihayetinde etkilerinin nasıl üstesinden gelinebileceğine biraz ışık tutacağız.
 
 # Model Bozunması (Model Decay)
 
