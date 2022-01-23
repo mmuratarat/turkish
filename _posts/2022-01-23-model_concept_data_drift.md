@@ -48,7 +48,7 @@ Model Bozunması, kelimenin tam anlamıyla modelin daha da kötüye gittiğini s
 
 ## Veri kayması (Data drift)
 
-Veri kayması (data drift), öznitelik kayması (feature drift), ortak değişken kayması (covariate shift). Aslında aynı şeyi tanımlamak için birkaç isim bunlar. $P(X)$'deki değişiklik, modelin girdi verisinin altındaki dağılımında yaşanan bir kaymadır. 
+Veri kayması (data drift), öznitelik kayması (feature drift), ortak değişken kayması (covariate shift). Aslında aynı şeyi tanımlamak için birkaç isim bunlar. $P(X)$'deki değişiklik, modelin girdi verisinin altındaki dağılımda yaşanan bir kaymadır. 
 
 Veri kayması iki sebeple gerçekleşir:
 
