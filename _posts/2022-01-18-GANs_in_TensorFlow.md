@@ -22,7 +22,7 @@ import time
 
 ## Veri kümesini yükleme ve hazırlama
 
-Burada kullanacağımız veri seti, her biri $28\times 28$ piksel boyutunda, elle yazılmış rakamlardan oluşan yaklaşık $60.000$ siyah beyaz görüntüden oluşan Yann LeCunn'un [MNIST veri setidir](http://yann.lecun.com/exdb/mnist/). Bu veri seti, GAN'ların eğitimi için [faydalı olduğu kanıtlanmış bazı faydalı "hack'lere" göre](https://github.com/soumith/ganhacks) ön işleme tabi tutulacaktır. 
+Burada kullanacağımız veri seti, her biri $28\times 28$ piksel boyutunda, elle yazılmış rakamlardan oluşan yaklaşık $60.000$ siyah beyaz görüntüden oluşan Yann LeCunn'un [MNIST veri setidir](http://yann.lecun.com/exdb/mnist/){:target="_blank"}. Bu veri seti, GAN'ların eğitimi için [faydalı olduğu kanıtlanmış bazı faydalı "hack'lere" göre](https://github.com/soumith/ganhacks){:target="_blank"} ön işleme tabi tutulacaktır. 
 
 Üreteci ve Ayrıştırıcı sinir ağlarını eğitmek için MNIST veri setini kullanacaksınız. Üretici, MNIST verilerine benzeyen el yazısı rakamları üretmeyi öğrenecektir.
 
@@ -76,7 +76,7 @@ Hem Üretici sinir ağını hem de Ayrıştırıcı sinir ağını oluşturmak i
 
 Üretici sinir ağına, 100 boyutlu bir gürültüyü girdi olarak vereceğiz ve 784 boyutunda (düzleştirilmiş (flattened)) bir vektörü çıktı olarak alacağız. Analizin ilerleyen aşamasında bu çıktı vektörünü $28\times 28$ boyutunda (görüntülerin orijinal boyutu) bir matrise yeniden şekillendireceğiz.
 
-Rastgele gürültü yaratmamıza izin veren bir fonksiyona da ihtiyacımız var. Rastgele gürültü, [bu bağlantıda](https://github.com/soumith/ganhacks) önerildiği gibi ortalama 0 ve varyans 1 olan normal bir dağılımdan örneklenecektir.
+Rastgele gürültü yaratmamıza izin veren bir fonksiyona da ihtiyacımız var. Rastgele gürültü, [bu bağlantıda](https://github.com/soumith/ganhacks){:target="_blank"} önerildiği gibi ortalama 0 ve varyans 1 olan normal bir dağılımdan örneklenecektir.
 
 ```python
 class Generator(keras.Model):
@@ -151,7 +151,7 @@ $$
 \frac{1}{n} \sum_{i=1}^{n} \left[ \log \left( D_{\theta_{d}} (x_{i}) \right) + \log \left(1 - D_{\theta_{d}} \left( G_{\theta_{g}}(z_{i})\right) \right) \right]
 $$
 
-Bir GAN modelinin matematiksel modelinden bahsettiğimiz [bir önceki blog yazısında](https://mmuratarat.github.io/turkish/2022-01-16/GANs_in_details) dediğimiz gibi Ayrıştırıcı kayıp fonksiyonu gradyan çıkış (gradient ascent) algoritması ile maksimize edilmelidir. Ancak, TensorFlow ve diğer bir çok Derin Öğrenme kütüphanesi, bir fonksiyonu maksimize etmek yerine, genellikle minimize eder. Bir fonksiyonu maksimize etmek, onun negatifini minimize etmeye eşdeğerdir. Ancak, yukarıda da görüleceği üzere, ikili çapraz entropi kayıp fonksiyonunun başında bir negatif (`-`) işareti vardır. Bu nedenle, Ayrıştırıcı kayıp fonksiyonunu minimize ederken endişelenmemize gerek yoktur.
+Bir GAN modelinin matematiksel modelinden bahsettiğimiz [bir önceki blog yazısında](https://mmuratarat.github.io/turkish/2022-01-16/GANs_in_details){:target="_blank"} dediğimiz gibi Ayrıştırıcı kayıp fonksiyonu gradyan çıkış (gradient ascent) algoritması ile maksimize edilmelidir. Ancak, TensorFlow ve diğer bir çok Derin Öğrenme kütüphanesi, bir fonksiyonu maksimize etmek yerine, genellikle minimize eder. Bir fonksiyonu maksimize etmek, onun negatifini minimize etmeye eşdeğerdir. Ancak, yukarıda da görüleceği üzere, ikili çapraz entropi kayıp fonksiyonunun başında bir negatif (`-`) işareti vardır. Bu nedenle, Ayrıştırıcı kayıp fonksiyonunu minimize ederken endişelenmemize gerek yoktur.
 
 Üretici kayıp fonksiyonu ise aşağıdaki gibi verilmiştir:
 
@@ -159,7 +159,7 @@ $$
 \frac{1}{n} \sum_{i=1}^{n} \left[ \log \left(1 - D_{\theta_{d}} \left( G_{\theta_{g}}(z_{i})\right) \right) \right]
 $$
 
-[Bir önceki blog yazısında](https://mmuratarat.github.io/turkish/2022-01-16/GANs_in_details) söylediğimiz gibi, $\log \left(1 - D_{\theta_{d}} \left( G_{\theta_{g}}(z_{i})\right) \right)$ fonksiyonunu minimize etmek yerine, $D_{\theta_{d}} \left( G_{\theta_{g}}(z_{i}) \right)$ fonksiyonunu maksimize ederek Üretici sinir ağını eğitmek, eğitimin başlarında çok daha güçlü gradyanlar sağlayacaktır. Bu nedenle, $D_{\theta_{d}} \left( G_{\theta_{g}}(z_{i}) \right)$ fonksiyonu gradyan çıkış (gradient ascent) algoritması ile maksimize edilmelidir. Yukarıda da bahsettiğimiz gibi, bir fonksiyonu maksimize etmek, onun negatifini minimize etmeye eşdeğerdir. İkili çapraz entropi kayıp fonksiyonunun başında bir negatif (`-`) işareti vardır. Bu nedenle, Üretici kayıp fonksiyonunu minimize ederken endişelenmemize gerek yoktur. Üretici tarafından üretilmiş resimlerin tahmini için $\hat{y_{i}} = D_{\theta_{d}} \left( G_{\theta_{g}}(z_{i})\right)$ ve Üretici gerçek görüntüler ürettiğini düşündüğü için $y_{i} = 1$ olarak yukarıdaki ikili çapraz entropi kayığ fonksiyonunda yerine yazarsak, minimize edilecek kayıp fonksiyonu kolaylıkla bulunabilir:
+[Bir önceki blog yazısında](https://mmuratarat.github.io/turkish/2022-01-16/GANs_in_details){:target="_blank"} söylediğimiz gibi, $\log \left(1 - D_{\theta_{d}} \left( G_{\theta_{g}}(z_{i})\right) \right)$ fonksiyonunu minimize etmek yerine, $D_{\theta_{d}} \left( G_{\theta_{g}}(z_{i}) \right)$ fonksiyonunu maksimize ederek Üretici sinir ağını eğitmek, eğitimin başlarında çok daha güçlü gradyanlar sağlayacaktır. Bu nedenle, $D_{\theta_{d}} \left( G_{\theta_{g}}(z_{i}) \right)$ fonksiyonu gradyan çıkış (gradient ascent) algoritması ile maksimize edilmelidir. Yukarıda da bahsettiğimiz gibi, bir fonksiyonu maksimize etmek, onun negatifini minimize etmeye eşdeğerdir. İkili çapraz entropi kayıp fonksiyonunun başında bir negatif (`-`) işareti vardır. Bu nedenle, Üretici kayıp fonksiyonunu minimize ederken endişelenmemize gerek yoktur. Üretici tarafından üretilmiş resimlerin tahmini için $\hat{y_{i}} = D_{\theta_{d}} \left( G_{\theta_{g}}(z_{i})\right)$ ve Üretici gerçek görüntüler ürettiğini düşündüğü için $y_{i} = 1$ olarak yukarıdaki ikili çapraz entropi kayığ fonksiyonunda yerine yazarsak, minimize edilecek kayıp fonksiyonu kolaylıkla bulunabilir:
 
 $$
 \frac{1}{n} \sum_{i=1}^{n} \left[ \log \left(D_{\theta_{d}} \left( G_{\theta_{g}}(z_{i})\right) \right) \right]
