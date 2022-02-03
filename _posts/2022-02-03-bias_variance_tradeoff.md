@@ -190,7 +190,7 @@ $$
 Varyans, eğitim verilerinin farklı gerçekleşmeleri için, $\hat{f}(x)$'in, beklenen değeri  $\mathbb{E}[\hat{f}(x)]$'den ortalama kare sapması olarak tanımlanır.
 
 $$
-\operatorname{var}(\hat{f}(x))=\mathbb{E}\left[(\hat{f}(x)-\mathbb{E}[\hat{f}(x)])^{2}\right]
+\operatorname{Var}(\hat{f}(x))=\mathbb{E}\left[(\hat{f}(x)-\mathbb{E}[\hat{f}(x)])^{2}\right]
 $$
 
 Ortalama Kare Hatasını (MSE'yi),  yan, varyans ve indirgenemez hataya bağlayan formül ise şu şekildedir:
