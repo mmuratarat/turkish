@@ -36,7 +36,7 @@ Ancak burada dikkat edilmesi gereken nokta, kitle parametresinin sadece bir tane
 Bir örnekleme dağılımı, kitlenin büyüklüğüne, örneklemin büyüklüğüne ve örneklem seçme yöntemine bağlıdır. Bir istatistiğin örnekleme dağılımını elde etmek için aşağıdaki yol izlenir:
 
 1. Önce çıkarsama yapılacak olan kitle parametresi belirlenir. En sık başvurulan parametreler, kitle ortalaması, kitle varyansı ya da belirli bir özelliğe sahip olan birimlerin kitledeki oranıdır.
-2. $N$ birimlik kitleden $n$ büyüklüğündeki tüm örneklemler seçilir ve ilgilenilen parametreye karşılık gelen örneklem istatistiğinin değeri, her bir örneklem için hesaplanır. Kitle birimleri her seferinde \textbf{yerine konularak örneklem seçiliyorsa}, tüm mümkün örneklem sayısı $N^{n}$ olur. Kitle birimleri \textbf{yerine konulmadan örneklem seçiliyorsa}, tüm mümkün örneklem sayısı $\binom{N}{n}$ olur.
+2. $N$ birimlik kitleden $n$ büyüklüğündeki tüm örneklemler seçilir ve ilgilenilen parametreye karşılık gelen örneklem istatistiğinin değeri, her bir örneklem için hesaplanır. Kitle birimleri her seferinde yerine konularak örneklem seçiliyorsa, tüm mümkün örneklem sayısı $N^{n}$ olur. Kitle birimleri yerine konulmadan örneklem seçiliyorsa, tüm mümkün örneklem sayısı $\binom{N}{n}$ olur.
 3. İkinci adımda örneklemlerden elde edilen istatistiklerin değerleri için sıklıklar hesaplanır. Elde edilen sıklık ya da göreli sıklıkların dağılımı, ilgili istatistiğin örnekleme dağılımı olacaktır.
 
 İkinci şıkta belirtilen tüm olası örneklemlerin sayısı (yerine koyarak ya da yerine koymadan) kitlenin kendisinden daha büyüktür. Bu nedenle örnekleme dağılımının bu şekilde oluşturulması kitlenin kendisini gözlemlemekten daha zor bir iştir. Kitle sonsuz büyüklükte olduğunda bu işlem olanaksızdır. Uygulamada $N$ büyüklüğündeki bir kitleden $n$ büyüklüğündeki tüm örneklemleri seçmek olanaksız olduğundan $k$ sayıda örneklem seçilir. İlgilenilen parametreye karşılık gelen örneklem istatistiğinin değeri her bir örneklem için hesaplanır. Bu şekilde $k$ örneklemin istatistiklerinden oluşan yeni bir örneklem elde edilir. Bu örneklemin dağılımı, örnekleme dağılımı olarak isimlendirilir.
@@ -47,15 +47,15 @@ Bir örnekleme dağılımı, kitlenin büyüklüğüne, örneklemin büyüklüğ
 
 Bu dağılımın ortalaması ve varyansı, yerine koymadan yapılan örnekleme için,
 
-\begin{equation*}
-    \mathrm{E}(\overline{X}) = \mu
-\end{equation*}
+$$
+\mathbb{E}(\overline{X}) = \mu
+$$
 
 ve
 
-\begin{equation*}
+$$
     V(\overline{X})=\sigma_{\overline{\mathrm{X}}}^{2}=\frac{\sigma^{2}}{\mathrm{n}}\left(\frac{N-n}{N-1}\right)
-\end{equation*}
+$$
 
 şeklindedir. Bu formüllerin nasıl bulunduğu [burada](https://philipp-burckhardt.com/finite-population-correction-for-variance-of-sample-mean/) bulunan dökümanda görülebilir.
 
@@ -63,8 +63,8 @@ Benzer şekilde, yerine koyarak yapılan örnekleme için örneklem ortalamasın
 
 $$
 \begin{split}
- \mathrm{E}(\overline{X}) &= \mathrm{E}\left(\dfrac{X_1 + X_2 + \dots + X_n}{n}\right) \\
-  &= \dfrac{1}{n}\, \mathrm{E}(X_1 + X_2 + \dots + X_n) \\
+\mathbb{E}(\overline{X}) &= \mathbb{E}\left(\dfrac{X_1 + X_2 + \dots + X_n}{n}\right) \\
+  &= \dfrac{1}{n}\, \mathbb{E}(X_1 + X_2 + \dots + X_n) \\
   &= \dfrac{1}{n}\, \bigl(\mu + \mu + \dots + \mu\bigr) \\
   &= \dfrac{1}{n}\, n\mu \\
   &= \mu.
