@@ -132,7 +132,7 @@ $$
 Burada, $\mathbb{E}\left((\hat{\theta}-\mathbb{E}(\hat{\theta}))^{2}\right)$ teriminin $\hat{\theta}$ tahmin edicisinin varyansı olduğu kolaylıkla anlaşılabilir. Diğer terim $\mathbb{E}\left((\mathbb{E}(\hat{\theta})-\theta)^{2}\right)$, "en iyi" tahminin gerçek değerden ne kadar uzakta olduğunu ölçer. Yan terimini, $\operatorname{bias}(\hat{\theta})= \mathbb{E}(\mathbb{E}(\hat{\theta})-\theta)$ ile tanımlamak oldukça yaygındır. Bu notasyonu kullanarak
 
 $$
-\mathbb{E}\left((\hat{\theta}-\theta)^{2}\right)=(\operatorname{bias}(\hat{\theta}))^{2}+\operatorname{Var}(\hat{\theta})
+\mathbb{E}\left(\left(\hat{\theta}-\theta \right)^{2}\right)=\left[\operatorname{bias}(\hat{\theta})\right]^{2}+\operatorname{Var}(\hat{\theta})
 $$
 
 elde ederiz.
@@ -149,7 +149,7 @@ Peki, bu bilgi Makine Öğrenmesindeki Yan-Varyans İkilemi (Bias-Variance Trade
 
 # Yan-Varyans İkilemi
 
-Tahmine dayalı modellemede (yukarıdaki şekilde gösterildiği gibi), geçmiş verilere dayalı olarak bir denetimli model eğitir ve ardından önceden görülmemiş verileri tahmin etmek için bu eğitilmiş modeli kullanırız. Bu süreçte, model, hedef değişken (target variable) ile girdi öznitelikleri (input features) arasındaki ilişkiyi öğrenir. Bu ilişki $y = f(x)$ gibi bir fonksiyon ile tanımlanabilir. Bu fonksiyona eşleme fonksiyonu (matching function) denir. 
+Tahmine dayalı modellemede (yukarıdaki şekilde gösterildiği gibi), geçmiş verilere dayalı olarak bir denetimli model eğitir ve ardından önceden görülmemiş verileri tahmin etmek için bu eğitilmiş modeli kullanırız. Bu süreçte, model, hedef değişken (target variable) ile girdi öznitelikleri (input features) arasındaki ilişkiyi öğrenir. Bu ilişki $y=f(x)+\varepsilon$ gibi bir fonksiyon ile tanımlanabilir. Bu fonksiyona eşleme fonksiyonu (matching function) denir. 
 
 Bu durumu kolay anlaşılması açısından bir regresyon örneği ve Ortalama Kare Hata (Mean Squared Error - MSE) maliyet fonksiyonunu (cost function) kullanarak gösterelim. 
 
@@ -230,15 +230,15 @@ $$
 \mathbb{E}\left[(f(x)-\hat{f}(x))^{2}\right]=& \mathbb{E}\left[((f(x)-\mathbb{E}[\hat{f}(x)])-(\hat{f}(x)-\mathbb{E}[\hat{f}(x)]))^{2}\right] \,\,\,\,\,\,\,\,\,\,\, (4)\\
 =& \mathbb{E}\left[(\mathbb{E}[\hat{f}(x)]-f(x))^{2}\right]+\mathbb{E}\left[(\hat{f}(x)-\mathbb{E}[\hat{f}(x)])^{2}\right] -2 \mathbb{E}[(f(x)-\mathbb{E}[\hat{f}(x)])(\hat{f}(x)-\mathbb{E}[\hat{f}(x)])] \,\,\,\,\,\,\,\,\,\,\, (5)\\
 =&(\underbrace{\mathbb{E}[\hat{f}(x)]-f(x)}_{=\operatorname{bias}[\hat{f}(x)]})^{2}+\underbrace{\mathbb{E}\left[(\hat{f}(x)-\mathbb{E}[\hat{f}(x)])^{2}\right]}_{=\operatorname{var}(\hat{f}(x))} - 2(f(x)-\mathbb{E}[\hat{f}(x)]) \mathbb{E}[(\hat{f}(x)-\mathbb{E}[\hat{f}(x)])] \,\,\,\,\,\,\,\,\,\,\, (6)\\
-=& \operatorname{bias}[\hat{f}(x)]^{2}+\operatorname{var}(\hat{f}(x)) -2(f(x)-\mathbb{E}[\hat{f}(x)])(\mathbb{E}[\hat{f}(x)]-\mathbb{E}[\hat{f}(x)]) \,\,\,\,\,\,\,\,\,\,\, (7)\\
-=& \operatorname{bias}[\hat{f}(x)]^{2}+\operatorname{var}(\hat{f}(x))
+=& \operatorname{bias}[\hat{f}(x)]^{2}+\operatorname{Var}(\hat{f}(x)) -2(f(x)-\mathbb{E}[\hat{f}(x)])(\mathbb{E}[\hat{f}(x)]-\mathbb{E}[\hat{f}(x)]) \,\,\,\,\,\,\,\,\,\,\, (7)\\
+=& \operatorname{bias}[\hat{f}(x)]^{2}+\operatorname{Var}(\hat{f}(x))
 \end{aligned}
 $$
 
 Eşitlik (4)'te, parantezin içine $\mathbb{E}[\hat{f}(x)]$ ekliyoruz ve içerisinden $\mathbb{E}[\hat{f}(x)]$ çıkartıyoruz ve Eşitlik (5)'te karenin içerisindeki terimleri genişletiriz. $\mathbb{E}[\hat{f}(x)]-f(x)$ bir sabittir çünkü hem $\mathbb{E}[\hat{f}(x)]$ hem de $f(x)$ sabittir. Bu nedenle, yan değerinin karesine beklenen değer (yani $(\mathbb{E}[\hat{f}(x)]-f(x))^{2}$) uygulamanın herhangi bir etkisi yoktur. Diğer bir deyişle, $\mathbb{E}\left[(\mathbb{E}[\hat{f}(x)]-f(x))^{2}\right] = (\mathbb{E}[\hat{f}(x)]-f(x))^{2}$'dir. Eşitlik (6)'da, $f(x)-\mathbb{E}[\hat{f}(x)]$ terimini beklenen değerden çıkartabiliyoruz çünkü dediğimiz gibi bu terim bir sabittir. Son olarak Eşitlik (7), beklenen değerin doğrusallık özelliği nedeniyle geçerlidir. Sonuç olarak, Eşitlik (8)'de $\mathbb{E}\left[(f(x)-\hat{f}(x))^{2}\right]$'nin yanın karesinin ve varyansın toplamı olduğunu görebiliyoruz. Eşitlik (3) ve (8)'i birleştirdiğimizde, 
 
 $$
-\mathbb{E}\left[(y-\hat{f}(x))^{2}\right]=\operatorname{bias}[\hat{f}(x)]^{2}+\operatorname{var}(\hat{f}(x))+\sigma_{\epsilon}^{2}
+\mathbb{E}\left[(y-\hat{f}(x))^{2}\right]=\operatorname{bias}[\hat{f}(x)]^{2}+\operatorname{Var}(\hat{f}(x))+\sigma_{\epsilon}^{2}
 $$
 
 denklemini elde ederiz.
@@ -283,6 +283,7 @@ Aşırı uyum, eğitim verilerine fazla uyum sağlayarak verileri ezberleyen ço
 
 İndirgenemez hata, herhangi bir model ve bu model için yapılacak parametre seçimi ile azaltılamayan gerçek ilişkideki gürültü terimidir. Hatanın bu kısmını azaltmak için yapılan tek şey, verileri temizlemektir (örneğin, bozuk sensörler gibi veri kaynaklarını düzeltmek veya aykırı değerleri tespit etmek ve bu aykırı değerleri kaldırmak). Tahmine dayalı modellemede sinyal, veriden öğrenilmek istenen gerçek temel örüntü olarak düşünülebilir. Gürültü ise veri setindeki alakasız bilgileri veya rastgeleliği ifade eder.
 
-Eğitim verilerini ezberleyen çok esnek (yüksek kapasiteli / karmaşık model) bir model oluşturma ile eğitim verilerini öğrenemeyen esnek olmayan bir model (düşük kapasiteli) oluşturma arasındaki denge, yan-varyans ikilemi (bias-variance tradeoff) olarak bilinir ve Makine Öğrenmesinde temel bir kavramdır. Başka bir deyişle, varyansı azalttıkça yanı artırma eğilimindesinizdir. Yanı azalttıkça, varyansı artırma eğilimindesinizdir. Genel olarak, amaç, yan ve varyans arasında bir denge olmasını sağlamak için dikkatli model seçerek ve bu modele ince ayar çekerek genel hatayı en aza indiren modeller oluşturmaktır. Bu model yeni bir veri üzerinde iyi bir tahminde bulunmak için yeterince genel, ancak mümkün olduğu kadar çok sinyal öğrenmek için yeterince spesifik olmalıdır. Doğru model ve onu kalibre etmek için sonsuz veri verildiğinde, hem yan hem de varyans terimlerini 0'a indirebilmeliyiz. Ancak, kusurlu modellerin ve sonlu verilerin olduğu bir dünyada durum böyle değildir. 
+
+Eğitim verilerini ezberleyen çok esnek (yüksek kapasiteli / karmaşık) bir model oluşturma ile eğitim verilerini öğrenemeyen esnek olmayan (düşük kapasiteli) bir model oluşturma arasındaki denge, yan-varyans ikilemi (bias-variance tradeoff) olarak bilinir ve Makine Öğrenmesinde temel bir kavramdır. Başka bir deyişle, varyansı azalttıkça yanı artırma eğilimindesinizdir. Yanı azalttıkça, varyansı artırma eğilimindesinizdir. Genel olarak, amaç, yan ve varyans arasında bir denge olmasını sağlamak için dikkatli model seçerek ve bu modele ince ayar çekerek genel hatayı en aza indiren modeller oluşturmaktır. Bu model yeni bir veri üzerinde iyi bir tahminde bulunmak için yeterince genel, ancak mümkün olduğu kadar çok sinyal öğrenmek için yeterince spesifik olmalıdır. Doğru model ve onu kalibre etmek için sonsuz veri verildiğinde, hem yan hem de varyans terimlerini 0'a indirebilmeliyiz. Ancak, kusurlu modellerin ve sonlu verilerin olduğu bir dünyada durum böyle değildir. 
 
 ![](https://github.com/mmuratarat/turkish/blob/master/_posts/images/biasVariance/capacity_vs_error.png?raw=true)
