@@ -13,7 +13,7 @@ Veri modelleri (data models), verilerin nasıl temsil edildiğini açıklar. Ver
 
 NoSQL, başlangıçta ilişkisel-olmayan veritabanlarını tartışmak üzere toplanılan bir buluşma için bir hashtag olarak kullanılmıştır. Bu nedenle, bu tür veritabanları NoSQL olarak isimlendirilmiştir. NoSQL ismi "Not only SQL (Sadece SQL değil)"den gelmektedir. Bunun sebebi birçok NoSQL veri sisteminin ilişkisel modelleri de desteklemesidir.
 
-MongoDB, platformlar-arası, doküman-odaklı (document-oriented) bir veritabanı programıdır. NoSQL veritabanı programı olarak sınıflandırılan MongoDB, isteğe bağlı şemalarla JSON benzeri dokümanlar kullanır. Stackoverflow’un her yıl gerçekleştirdiği anketin 2022 yılındaki sonucuna göre veritabanları sıralamasında MongoDB en üst sıralarda yerini almaktadır - https://lnkd.in/dsWQubUd
+MongoDB, platformlar-arası, doküman-odaklı (document-oriented) bir veritabanı programıdır (www.mongodb.com). NoSQL veritabanı programı olarak sınıflandırılan MongoDB, isteğe bağlı şemalarla JSON benzeri dokümanlar kullanır. Stackoverflow’un her yıl gerçekleştirdiği anketin 2022 yılındaki sonucuna göre veritabanları sıralamasında MongoDB en üst sıralarda yerini almaktadır - https://lnkd.in/dsWQubUd
 
 Bir önceki yazılarımda bir PostgreSQL veritabanını kişisel bilgisayarınıza nasıl yükleyeceğinizi ve bu veritabanı ile etkileşimde kalmak için kullanabileceğiniz Grafik Kullanıcı Arayüzlerinden (Graphical User Interface - kısaca, GUI) bahsettim. https://www.linkedin.com/posts/mmuratarat_postgresql-ve-pgadmin4-grafik-ara-y%C3%BCz%C3%BC-kurulumu-activity-6961967826848878592-oatK?utm_source=linkedin_share&utm_medium=member_desktop_web
 
