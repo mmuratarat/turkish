@@ -26,7 +26,7 @@ My passion resides in machine learning and deep learning algorithms, supervised 
 
 You can find my CV below:
 
-[Full](https://mmuratarat.github.io/files/cv/MMA_Full_CV.pdf){:target="_blank"} (6 Pages)
+[Full](https://mmuratarat.github.io/files/cv/CV.pdf){:target="_blank"}
 
 # Contact me
 If you are interested in collaborating and doing some great work together, please reach out to me via:
@@ -42,7 +42,7 @@ If you are interested in collaborating and doing some great work together, pleas
 </div>
 
 <br>
-**Mustafa Murat ARAT** (M.Sc.)<br>
+**Mustafa Murat ARAT** (Ph.D.)<br>
 Department of Statistics<br>
 Faculty of Science<br>
 Hacettepe University<br>
