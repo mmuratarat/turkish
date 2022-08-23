@@ -98,11 +98,13 @@ Burada, `i = 1, 2, .., 8` ve `j= 1, 2, ..., 8` ve 5 tane değişkenimiz olduğu 
 
 Gower Uzaklığı, yukarıda hesapladığımız skorların ortalamasıdır.
 
-O halde:
+O halde,
 
 $$
 S_{12} = \frac{0.2 + 0.7142857142857143+ 0.9857142857142858 + 0.24 + 0}{5} = 0.4280
 $$
+
+Birinci gözlem ile ikinci gözlem arasındaki Gower Uzaklık ölçümü `0.4280` elde edilmiştir. Dikkat edilirse, el ile bulduğumuz değer, `gower` modülünde bulunan `gower_matrix` fonksiyonunun çıktısı ile aynıdır. Aynı hesaplamalar diğer matris hücreleri için benzer şekilde gerçekleştirilebilir.
 
 # REFERENCES
 
