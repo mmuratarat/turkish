@@ -63,10 +63,10 @@ Veri kümesinde 8 adet satır (diğer bir deyişle 8 farklı gözlem) olduğunda
  
 Elde edilen bu matrisinin elemanlarının nasıl kolaylıkla el ile hesaplanabileceğine bir göz atalım. Tabii ki, bu matrisin tüm elemanlarını el ile hesaplamamıza gerek yok. Sadece yukarıda verilen formülasyonun nasıl çalıştığını görebilmemiz için.
 
-El ile hesaplamaya geçmeden önce  Gower Uzaklığı'nın ihtiyaç duyduğu gibi, nümerik değişkenlerin aralıklarını (yani, $R_k$'ları) hesaplayalım. Bir değişkenin aralığı, o değişkenin maksimum değeri ile minimum değeri arasındaki farktır:
+El ile hesaplamaya geçmeden önce  Gower Uzaklığı'nın ihtiyaç duyduğu gibi, nümerik değişkenlerin aralıklarını (yani, $R_k$'ları) hesaplayalım. Veri kümesindeki nümerik değişkenler `df.select_dtypes('number')` kod satırı ile kolaylıkla elde edilebilir. Bir değişkenin aralığı, o değişkenin maksimum değeri ile minimum değeri arasındaki farktır:
 
  ```python
- df_numeric = df.select_dtypes('number')
+df_numeric = df.select_dtypes('number')
 pd.DataFrame(df_numeric.max() - df_numeric.min(), columns = ['Aralık'])
 ```
 
