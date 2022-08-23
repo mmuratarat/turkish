@@ -57,7 +57,7 @@ pd.DataFrame(gower.gower_matrix(df), index = ['Satır ' + str(i+1) for i in rang
 
  Veri kümesinde 8 adet satır (diğer bir deyişle 8 farklı gözlem) olduğundan, `gower_matrix` fonksiyonunun çıktısı $8 \times 8$ boyutlu bir matris olacaktır. Bu matrisin simetrik olduğu kolaylıkla görülebilir. 
  
-El ile hesaplamaya geçmeden önce  Gower Uzaklığı'nın ihtiyaç duyduğu gibi, nümerik değişkenlerin aralıklarını hesaplayalım. Bir değişkenin aralığı, o değişkenin maksimum değeri ile minimum değeri arasındaki farktır:
+El ile hesaplamaya geçmeden önce  Gower Uzaklığı'nın ihtiyaç duyduğu gibi, nümerik değişkenlerin aralıklarını (yani, $R_k$'ları) hesaplayalım. Bir değişkenin aralığı, o değişkenin maksimum değeri ile minimum değeri arasındaki farktır:
  
  ```python
  df_numeric = df.select_dtypes('number')
