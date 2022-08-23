@@ -13,11 +13,11 @@ Bir uzaklık ölçüsü, bir problem alanında iki nesne arasındaki göreli far
 
 Gower Uzaklığı (Gower's Distance) karışık-tip (mixed-type) değişkenlerden (özniteliklerden) oluşan bir veri kümesindeki iki satır (veya gözlem) arasındaki benzerliği bulmak için kullanılan bir ölçütdür (measure). Gower'ın uzaklık ölçütü, her değişken için farklı olarak $x_i$ ve $x_j$ örnekleri arasındaki uzaklığın bileşenlerini hesaplayarak bunu yapabilir. Öklid Uzaklığı (Euclidean Distance), Manhattan Uzaklığı (Manhattan distance) veya Kosinüs Uzaklığı gibi, Gower Uzaklığı da bir mesafe ölçüsüdür.
 
-Diyelim ki $x_i = (x_{i1}, \dots, x_{ip})$ ve $x_j = (x_{j1}, \dots, x_{jp})$ gibi iki gözlemimiz var ve bu gözlemlerin birbirlerine ne kadar benzer (similar) (veya benzemez (dissimilar)) olduğunu ölçmek istiyoruz.
+Diyelim ki $x_i = (x_{i1}, \dots, x_{ip})$ ve $x_j = (x_{j1}, \dots, x_{jp})$ gibi iki gözlem var ve bu gözlemlerin birbirlerine ne kadar benzer (similar) (veya benzemez (dissimilar)) olduğunu ölçmek istiyoruz.
 
 Bu iki vektördeki girdilerin her biri nicel ise (yani gerçek sayı değerlerini alıyorsa), o zaman Öklid Uzaklığı (Euclidean Distance) veya Manhattan Uzaklığı (Manhattan distance) gibi bir kaç uzaklık ölçütünü bir benzerlik (similarity) veya benzersizlik (dissimilarity) ölçüsü olarak kullanabiliriz. Peki ya elimizdeki veri kümesindeki $p$ değişkenin (özniteliğin) tümü sayısal değilse? Ya bazıları kategorik (categorical) veya ikili (binary) ise?
 
-Gower (1971) (https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.412.4155&rep=rep1&type=pdf) makalesinde tanıtılan **Gower Uzaklığı**, bu durumda kullanılabilecek genel bir benzerlik ölçüsüdür. Her öznitelik $k = 1, \dots, p$ için, bir $s_{ijk} \in [0,1]$ skoru hesaplanır. $x_i$ ve $x_j$, $k$ özniteliği boyunca birbirine yakınsa (birbirine benzerse), $s_{ijk}$ skoru 1'e yakındır. Tersine, $k$ özniteliği boyunca birbirinden uzaklarsa (birbirlerine benzer değilse), $s_{ijk}$ skoru 0'a yakındır.
+Gower (1971) (https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.412.4155&rep=rep1&type=pdf) makalesinde tanıtılan **Gower Uzaklığı**, bu durumda kullanılabilecek genel bir benzerlik ölçüsüdür. Her öznitelik $k = 1, \dots, p$ için, bir $s_{ijk} \in [0,1]$ skoru hesaplanır. $x_i$ ve $x_j$, $k$ özniteliği boyunca birbirine yakınsa (birbirine benzerse), $s_{ijk}$ skoru 0'a yakındır. Tersine, $k$ özniteliği boyunca bu iki gözlem birbirinden uzaklarsa (birbirlerine benzer değilse), $s_{ijk}$ skoru 1'a yakındır.
 
 $s_{ijk}$ skorunun nasıl hesaplandığı, $k$ özniteliğinin tipine bağlıdır. Ayrıca, bir $\delta_{ijk}$ değeri de hesaplanır: eğer $x_i$ ve $x_j$, $k$ özniteliği boyunca karşılaştırılabilirse, o zaman $\delta_{ijk} = 1$. Eğer $x_i$ ve $x_j$, $k$ özniteliği boyunca karşılaştırılamazsa (örneğin, kayıp gözlemler nedeniyle), $\delta_{ijk}$ sıfıra ayarlanır. Gower Uzaklığı ise sadece (bilinen/hesaplanan) skorların ortalamasıdır:
 
@@ -30,7 +30,7 @@ $$
 1. **Nicel değişkenler (sayısal değişkenler)**: $s_{ijk} = \dfrac{|x_{ik} - x_{jk}|}{R_{k}}$, burada {R_k}, popülasyondaki veya örneklemdeli $k$-ıncı özniteliğin aralığıdır (range).
 2. **Nitel değişkenler (kategorik değişkenler)**: Eğer $\{ x_{ik} = x_{jk} \}$ ise, $s_{ijk} = 0$. Eğer $\{ x_{ik} \neq x_{jk} \}$ ise $s_{ijk} = 1$.
 
-Gower Uzaklığını hesaplamak için Python'un gower modülü kullanılabilir. Bu modül her bir satır ile diğer satırlar arasındaki Gower Uzaklığını hesaplayarak size bir matris döndürecektir. Ancak, bu değerlerin nasıl hesaplandığını görmek için el ile çözüm de gösterilmiştir.
+Gower Uzaklığını hesaplamak için Python'un `gower` modülü kullanılabilir (https://pypi.org/project/gower/). Bu modül her bir satır ile diğer satırlar arasındaki Gower Uzaklığını hesaplayarak size bir matris döndürecektir. Ancak, bu değerlerin nasıl hesaplandığını görmek için el ile çözüm de aşağıda gösterilmiştir.
 
 ```python
 import pandas as pd
