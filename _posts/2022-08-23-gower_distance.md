@@ -32,6 +32,8 @@ $$
 
 Gower Uzaklığını hesaplamak için Python'un `gower` modülü kullanılabilir (https://pypi.org/project/gower/). Bu modül her bir satır ile diğer satırlar arasındaki Gower Uzaklığını hesaplayarak size bir matris döndürecektir. Ancak, bu değerlerin nasıl hesaplandığını görmek için el ile çözüm de aşağıda gösterilmiştir.
 
+8 gözlemden ve 5 öznitelikten oluşan bir veri kümesine sahip olduğumuzu varsayalım:
+
 ```python
 import pandas as pd
 import gower
@@ -49,6 +51,8 @@ df
 
 ![](https://github.com/mmuratarat/turkish/blob/master/_posts/images/gower_SS1.png?raw=true)
 
+`gower` modülünde bulunan `gower_matrix` fonksiyonunu kullanarak her bir gözlem ile diğer gözlemler arasındaki Gower Uzaklıkları bir matris olarak hesaplanabilir:
+
 ```python
 pd.DataFrame(gower.gower_matrix(df), index = ['Satır ' + str(i+1) for i in range(df.shape[0])], columns = ['Satır ' + str(i+1) for i in range(df.shape[0])])
 ```
@@ -60,8 +64,6 @@ Veri kümesinde 8 adet satır (diğer bir deyişle 8 farklı gözlem) olduğunda
 Elde edilen bu matrisinin elemanlarının nasıl kolaylıkla el ile hesaplanabileceğine bir göz atalım. Tabii ki, bu matrisin tüm elemanlarını el ile hesaplamamıza gerek yok. Sadece yukarıda verilen formülasyonun nasıl çalıştığını görebilmemiz için.
 
 El ile hesaplamaya geçmeden önce  Gower Uzaklığı'nın ihtiyaç duyduğu gibi, nümerik değişkenlerin aralıklarını (yani, $R_k$'ları) hesaplayalım. Bir değişkenin aralığı, o değişkenin maksimum değeri ile minimum değeri arasındaki farktır:
- 
-8 gözlemden ve 5 öznitelikten oluşan bir veri kümesine sahip olduğumuzu varsayalım:
 
  ```python
  df_numeric = df.select_dtypes('number')
