@@ -61,6 +61,8 @@ Elde edilen bu matrisinin elemanlarının nasıl kolaylıkla el ile hesaplanabil
 
 El ile hesaplamaya geçmeden önce  Gower Uzaklığı'nın ihtiyaç duyduğu gibi, nümerik değişkenlerin aralıklarını (yani, $R_k$'ları) hesaplayalım. Bir değişkenin aralığı, o değişkenin maksimum değeri ile minimum değeri arasındaki farktır:
  
+8 gözlemden ve 5 öznitelikten oluşan bir veri kümesine sahip olduğumuzu varsayalım:
+
  ```python
  df_numeric = df.select_dtypes('number')
 pd.DataFrame(df_numeric.max() - df_numeric.min(), columns = ['Aralık'])
