@@ -27,7 +27,7 @@ $$
 
 Şimdi, her bir öznitelik tipi için skorların nasıl hesaplanacağı hakkında konuşalım. Gower, 3 farklı öznitelik tipi tanımlar:
 
-1. **Nicel değişkenler (sayısal değişkenler)**: $s_{ijk} = \dfrac{\mid x_{ik} - x_{jk} \mid}{R_{k}}$, burada {R_k}, popülasyondaki veya örneklemdeli $k$-ıncı özniteliğin aralığıdır (range).
+1. **Nicel değişkenler (sayısal/nümerik değişkenler)**: $s_{ijk} = \dfrac{\mid x_{ik} - x_{jk} \mid}{R_{k}}$, burada $R_k$, popülasyondaki veya örneklemedeki $k$-ıncı özniteliğin aralığıdır (range).
 2. **Nitel değişkenler (kategorik değişkenler)**: Eğer $\{ x_{ik} = x_{jk} \}$ ise, $s_{ijk} = 0$. Eğer $\{ x_{ik} \neq x_{jk} \}$ ise $s_{ijk} = 1$.
 
 Gower Uzaklığını hesaplamak için Python'un `gower` modülü kullanılabilir (https://pypi.org/project/gower/). Bu modül her bir satır ile diğer satırlar arasındaki Gower Uzaklığını hesaplayarak size bir matris döndürecektir. Ancak, bu değerlerin nasıl hesaplandığını görmek için el ile çözüm de aşağıda gösterilmiştir.
