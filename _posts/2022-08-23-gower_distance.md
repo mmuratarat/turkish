@@ -113,3 +113,4 @@ Birinci gözlem ile ikinci gözlem arasındaki Gower Uzaklık ölçümü `0.4280
 3. https://www.thinkdatascience.com/post/2019-12-16-introducing-python-package-gower/
 4. https://rstudio-pubs-static.s3.amazonaws.com/423873_adfdb38bce8d47579f6dc916dd67ae75.html#fnref2
 5. https://towardsdatascience.com/clustering-on-mixed-type-data-8bbd0a2569c3
+6. https://statisticaloddsandends.wordpress.com/2021/02/23/what-is-gowers-distance/
