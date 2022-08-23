@@ -70,7 +70,7 @@ pd.DataFrame(df_numeric.max() - df_numeric.min(), columns = ['Aralık'])
 
 Burada, `i = 1, 2, .., 8` ve `j= 1, 2, ..., 8` ve 5 tane değişkenimiz olduğu için `k = 1, 2, 3, 4, 5`'tir. 
 
-İlk iki satırı karşılaştıralım. Bu nedenle, `i = 1` ve `j= 2`'dir. Bu nedenle, $s_{1, 2, k}$ değerlerini hesaplamamız gerekmektedir. 
+İlk iki satırın (yani ilk iki gözlemin) birbirine ne kadar benzer olup olmadığını Gower Uzaklığı ile elde edelim. Yani, `0.428000` değerini el ile bulmaya çalışalım. Bu durumda, `i = 1` ve `j= 2`'dir. Bu nedenle, $s_{1, 2, k}$ değerlerini tüm öznitelikler için ($k = 1, 2, 3, 4, 5$) hesaplamamız gerekmektedir. 
 
 #### `age` değişkeni için, yani, $k = 1$
 
