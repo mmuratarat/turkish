@@ -59,7 +59,7 @@ pd.DataFrame(gower.gower_matrix(df), index = ['Satır ' + str(i+1) for i in rang
 
 ![](https://github.com/mmuratarat/turkish/blob/master/_posts/images/gower_SS2.png?raw=true)
 
-Veri kümesinde 8 adet satır (diğer bir deyişle 8 farklı gözlem) olduğundan, `gower_matrix` fonksiyonunun çıktısı $8 \times 8$ boyutlu bir matris olacaktır. Bu matrisin simetrik olduğu kolaylıkla görülebilir. 
+Veri kümesinde 8 adet satır (diğer bir deyişle 8 farklı gözlem) olduğundan, `gower_matrix` fonksiyonunun çıktısı $8 \times 8$ boyutlu bir matris olacaktır. Bu matrisin simetrik olduğu kolaylıkla görülebilir. Bu matrise Uzaklık Matrisi (Distance Matrix) denir.
  
 Elde edilen bu matrisinin elemanlarının nasıl kolaylıkla el ile hesaplanabileceğine bir göz atalım. Tabii ki, bu matrisin tüm elemanlarını el ile hesaplamamıza gerek yok. Sadece yukarıda verilen formülasyonun nasıl çalıştığını görebilmemiz için.
 
