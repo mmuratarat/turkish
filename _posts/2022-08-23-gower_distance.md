@@ -11,7 +11,7 @@ Bir uzaklık ölçütü, bir problem alanında iki nesne arasındaki göreli far
 
 İki örnek (veya veri satırı) arasındaki uzaklığı hesaplarken, bu örneklerin farklı sütunları (değişkenleri veya öznitelikleri) için farklı veri tiplerinin kullanılması mümkündür. Bir örneğin değişkenleri reel değerlere, boole değerlerine, kategorik değerlere ve ordinal (sıra) değerlere sahip olabilir. Her bir farklı değişken için farklı mesafe ölçütleri gerekebilir.
 
-Gower Uzaklığı (Gower's Distance) karışık-tip (mixed-type) değişkenlerden (özniteliklerden) oluşan bir veri kümesindeki iki satır (veya gözlem) arasındaki benzerliği bulmak için kullanılan bir ölçüttür (measure). Gower'ın uzaklık ölçütü, her değişken için farklı olarak $x_i$ ve $x_j$ örnekleri arasındaki uzaklığın bileşenlerini hesaplayarak bunu yapabilir. Öklid Uzaklığı (Euclidean Distance), Manhattan Uzaklığı (Manhattan distance) veya Kosinüs Uzaklığı gibi, Gower Uzaklığı da bir mesafe ölçüsüdür.
+Gower Uzaklığı (Gower's Distance) karışık-tip (mixed-type) değişkenlerden (özniteliklerden) oluşan bir veri kümesindeki iki satır (veya gözlem) arasındaki benzerliği bulmak için kullanılan bir ölçüttür (measure). Gower'ın uzaklık ölçütü, her değişken için farklı olarak $x_i$ ve $x_j$ örnekleri arasındaki uzaklığın bileşenlerini hesaplayarak bunu yapabilir. Öklid Uzaklığı (Euclidean Distance), Manhattan Uzaklığı (Manhattan distance) veya Kosinüs Uzaklığı gibi, Gower Uzaklığı da bir mesafe ölçütüdür.
 
 Diyelim ki $x_i = (x_{i1}, \dots, x_{ip})$ ve $x_j = (x_{j1}, \dots, x_{jp})$ gibi iki gözlem var ve bu gözlemlerin birbirlerine ne kadar benzer (similar) (veya benzemez (dissimilar)) olduğunu ölçmek istiyoruz.
 
