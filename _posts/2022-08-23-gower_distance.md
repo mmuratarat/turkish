@@ -5,7 +5,7 @@ author: "MMA"
 comments: true
 ---
 
-Uzaklık ölçüleri (distance measures) makine öğrenmesinde önemli bir rol oynamaktadır. K-en yakın komşular (K-nearest neighbors) algoritmasının da parçası olduğu denetimli öğrenme (supervised learning) teknikleri; K-ortalamalar (K-means) algoritmasının da parçası olduğu denetimsiz öğrenme (unsupervised learning) teknikleri ve Destek Vektör Makineleri algoritmasının da parçası olduğu çekirdek-tabanlı (kernel-based) yöntemler gibi birçok popüler ve etkili makine öğrenmesi algoritması için temel sağlarlar. Bu nedenle veri tiplerine göre farklı uzaklık ölçüleri seçilmeli ve kullanılmalıdır. 
+Uzaklık ölçütleri (distance measures) makine öğrenmesinde önemli bir rol oynamaktadır. K-en yakın komşular (K-nearest neighbors) algoritmasının da parçası olduğu denetimli öğrenme (supervised learning) teknikleri; K-ortalamalar (K-means) algoritmasının da parçası olduğu denetimsiz öğrenme (unsupervised learning) teknikleri ve Destek Vektör Makineleri algoritmasının da parçası olduğu çekirdek-tabanlı (kernel-based) yöntemler gibi birçok popüler ve etkili makine öğrenmesi algoritması için temel sağlarlar. Bu nedenle veri tiplerine göre farklı uzaklık ölçüleri seçilmeli ve kullanılmalıdır. 
 
 Bir uzaklık ölçüsü, bir problem alanında iki nesne arasındaki göreli farkı özetleyen nesnel bir skordur. En yaygın olarak, iki nesne bir özneyi (bir kişi, araba veya ev gibi) veya bir olayı (satın alma, talep veya teşhis gibi) tanımlayan veri satırlarıdır.
 
