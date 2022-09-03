@@ -9,7 +9,7 @@ Uzaklık ölçütleri (distance measures) makine öğrenmesinde önemli bir rol 
 
 Bir uzaklık ölçütü, bir problem alanında iki nesne arasındaki göreli farkı özetleyen nesnel bir skordur. En yaygın olarak, iki nesne bir özneyi (bir kişi, araba veya ev gibi) veya bir olayı (satın alma, talep veya teşhis gibi) tanımlayan veri satırlarıdır.
 
-İki örnek (veya veri satırı) arasındaki uzaklığı hesaplarken, bu örneklerin farklı sütunları (değişkenleri veya öznitelikleri) için farklı veri tiplerinin kullanılması mümkündür. Bir örneğin değişkenleri reel değerlere, boole değerlerine, kategorik değerlere ve ordinal (sıra) değerlere sahip olabilir. Her bir farklı değişken için farklı mesafe ölçüleri gerekebilir.
+İki örnek (veya veri satırı) arasındaki uzaklığı hesaplarken, bu örneklerin farklı sütunları (değişkenleri veya öznitelikleri) için farklı veri tiplerinin kullanılması mümkündür. Bir örneğin değişkenleri reel değerlere, boole değerlerine, kategorik değerlere ve ordinal (sıra) değerlere sahip olabilir. Her bir farklı değişken için farklı mesafe ölçütleri gerekebilir.
 
 Gower Uzaklığı (Gower's Distance) karışık-tip (mixed-type) değişkenlerden (özniteliklerden) oluşan bir veri kümesindeki iki satır (veya gözlem) arasındaki benzerliği bulmak için kullanılan bir ölçüttür (measure). Gower'ın uzaklık ölçütü, her değişken için farklı olarak $x_i$ ve $x_j$ örnekleri arasındaki uzaklığın bileşenlerini hesaplayarak bunu yapabilir. Öklid Uzaklığı (Euclidean Distance), Manhattan Uzaklığı (Manhattan distance) veya Kosinüs Uzaklığı gibi, Gower Uzaklığı da bir mesafe ölçüsüdür.
 
