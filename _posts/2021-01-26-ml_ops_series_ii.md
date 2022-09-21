@@ -61,8 +61,6 @@ Bu, şablonun tamamındaki en önemli blokdur. Burada üç önemli soruyu cevapl
 2. Bu problem _neden_ önemlidir?
 3. Son kullanıcı _kimdir_? Bu kullanıcıyı tanımlayabilir miyiz?
 
-To create an effective Value Proposition statement, we could use the Geoffrey Moore’s value positioning statement template:
-
 Etkili bir Değer Önerisi ifadesi oluşturmak için [Geoffrey Moore’un değer konumlandırma ifadesi şablonunu](https://the.gt/geoffrey-moore-positioning-statement/){:target="_blank"} kullanabiliriz:
 
 \** **(İhtiyaç veya fırsat) sahibi olan (hedef müşteri) için bizim (ürün / hizmet adı), (fayda) sağlayan (ürün kategorisi)'dir.** \** 
