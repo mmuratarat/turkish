@@ -314,7 +314,7 @@ Bu öğrenme türünün en büyük yararı, eğitim ve test için kullanılan ve
 
 ### Dağıtım Stratejileri
 
-Aşağıda, eğitilmiş modelleri dağıtılabilir hizmetler olarak sarmalamaya yönelik yaygın yöntemleri, yani makine öğrenmesi modellerini Docker Konteynerleri olarak _Bulutta bulunan Sunucularına_ (cloud instances) ve _Sunucusuz Fonksiyonlar_ (serverless function) olarak dağıtmanın yaygın yollarını tartışıyoruz.
+Aşağıda, eğitilmiş modelleri dağıtılabilir hizmetler olarak sarmalamaya yönelik yaygın yöntemleri, yani makine öğrenmesi modellerini Docker Konteynerleri olarak _Bulut Sunucularına_ (cloud instances) ve _Sunucusuz Fonksiyonlar_ (serverless function) olarak dağıtmanın yaygın yollarını tartışıyoruz.
 
 #### Makine Öğrenmesi Modellerini Docker Konteyner olarak Dağıtma
 
