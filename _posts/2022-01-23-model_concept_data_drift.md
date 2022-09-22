@@ -5,7 +5,7 @@ author: "MMA"
 comments: true
 ---
 
-Tahmine dayalı modellemede (yukarıdaki şekilde gösterildiği gibi), geçmiş verilere dayalı olarak bir denetimli model eğitir ve ardından önceden görülmemiş verileri tahmin etmek için bu eğitilmiş modeli kullanırız. Bu süreçte, model, hedef değişken (target variable) ile girdi öznitelikleri (input features) arasındaki ilişkiyi öğrenir. Bu ilişki $y = f(x)$ gibi bir fonksiyon ile tanımlanabilir. Bu fonksiyona eşleme fonksiyonu (matching function) denir. Genellikle, bu eşlemenin statik (sabit) olduğu varsayılır; bu, geçmiş verilerden öğrenilen eşlemenin gelecekte yeni veriler üzerinde de geçerli olduğu ve girdi ve çıktı verileri arasındaki ilişkilerin değişmediği anlamına gelir.
+Tahmine dayalı modellemede (aşağıdaki şekilde gösterildiği gibi), geçmiş verilere dayalı olarak bir denetimli model eğitir ve ardından önceden görülmemiş verileri tahmin etmek için bu eğitilmiş modeli kullanırız. Bu süreçte, model, hedef değişken (target variable) ile girdi öznitelikleri (input features) arasındaki ilişkiyi öğrenir. Bu ilişki $y = f(x)$ gibi bir fonksiyon ile tanımlanabilir. Bu fonksiyona eşleme fonksiyonu (matching function) denir. Genellikle, bu eşlemenin statik (sabit) olduğu varsayılır; bu, geçmiş verilerden öğrenilen eşlemenin gelecekte yeni veriler üzerinde de geçerli olduğu ve girdi ve çıktı verileri arasındaki ilişkilerin değişmediği anlamına gelir.
 
 ![](https://github.com/mmuratarat/turkish/blob/master/_posts/images/cd-lifecycle.png?raw=true)
 
