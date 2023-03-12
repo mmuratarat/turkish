@@ -54,6 +54,8 @@ Cron komutunuz için doğru zamanı ayarlamak için, cron iş operatörleri hakk
 * **Hask (`#`)**. Haftanın gününü (day of the week) belirlemek için, `#` operatöründen sonra 1 ile 5 arasında bir sayı kullanın. Örneğin, `1#2`, ayın ikinci Pazartesi günü anlamına gelir. 
 * **Soru işareti (Question Mark) (`?`)**. "Ayın günü (Day of the month)" ve "haftanın günü (Day of the week)" alanlarına "belirli bir değer yok" girmek için bu operatörü kullanın.
 
+**NOT**: Bir cron işi oluştururken tüm alanların doldurulması gerektiğini unutmayınız! Bir alan belirtmek istemiyorsanız, `*` (yıldız) simgesiyle doldurunuz.
+
 Kullanıcının girilecek mantıksal sayı kümesini bulması gerekmeden cron işlerini zaman aralıklarında programlamak için özel dizgiler (strings) kullanılır. Bunları kullanmak için, bir `@` ve ardından basit bir ifade yazarsınız.
 
 |         **Girdi**         |                        **Tanım**                       | **Karşılığı** |
