@@ -56,7 +56,7 @@ Cron komutunuz için doğru zamanı ayarlamak için, cron iş operatörleri hakk
 
 **NOT**: Bir cron işi oluştururken tüm alanların doldurulması gerektiğini unutmayınız! Bir alan belirtmek istemiyorsanız, `*` (yıldız) simgesiyle doldurunuz.
 
-Kullanıcının girilecek mantıksal sayı kümesini bulması gerekmeden cron işlerini zaman aralıklarında programlamak için özel dizgiler (strings) kullanılır. Bunları kullanmak için, bir `@` ve ardından basit bir ifade yazarsınız.
+Kullanıcının girilecek mantıksal sayı kümesini bulması gerekmeden cron işlerini zaman aralıklarında programlamak için özel dizgiler (strings) kullanılır. Bunları kullanmak için, bir `@` ve ardından basit bir ifade yazarsınız. Standart olmayan önceden tanımlanmış zamanlama tanımları şu şekildedir:
 
 |         **Girdi**         |                        **Tanım**                       | **Karşılığı** |
 |:-------------------------:|:------------------------------------------------------:|:-------------:|
