@@ -58,12 +58,12 @@ Kullanıcının girilecek mantıksal sayı kümesini bulması gerekmeden cron i�
 
 |         **Girdi**         |                        **Tanım**                       | **Karşılığı** |
 |:-------------------------:|:------------------------------------------------------:|:-------------:|
-| @yearly (veya @annually)  |        1 Ocak gece yarısı yılda bir kez çalıştır       |  `0 0 1 1 *`  |
-|         @monthly          | Ayda bir kez, ayın ilk gününün gece yarısında çalıştır |  `0 0 1 * *`  |
-|          @weekly          |    Pazar sabahı gece yarısı haftada bir kez çalıştır   |  `0 0 * * 0`  |
-|  @daily (veya @midnight)  |          Gece yarısı günde bir kez çalıştırın          |  `0 0 * * *`  |
-|          @hourly          |            Saat başında saatte bir çalıştır            |  `0 * * * *`  |
-|          @reboot          |                  Başlangıçta çalıştır                  |       —       |
+| `@yearly` (veya `@annually`)  |        1 Ocak gece yarısı yılda bir kez çalıştır       |  `0 0 1 1 *`  |
+|         `@monthly`          | Ayda bir kez, ayın ilk gününün gece yarısında çalıştır |  `0 0 1 * *`  |
+|         `@weekly`          |    Pazar sabahı gece yarısı haftada bir kez çalıştır   |  `0 0 * * 0`  |
+|  `@daily` (veya `@midnight`)  |          Gece yarısı günde bir kez çalıştırın          |  `0 0 * * *`  |
+|          `@hourly`          |            Saat başında saatte bir çalıştır            |  `0 * * * *`  |
+|          `@reboot`          |                  Başlangıçta çalıştır                  |       —       |
 
 Cron ifadelerini insan tarafından okunabilir açıklamalara dönüştüren bir .NET kitaplığı da kullanabilirsiniz.
 * Github: https://github.com/bradymholt/cron-expression-descriptor
