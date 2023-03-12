@@ -68,3 +68,5 @@ Kullanıcının girilecek mantıksal sayı kümesini bulması gerekmeden cron i�
 Cron ifadelerini insan tarafından okunabilir açıklamalara dönüştüren bir .NET kitaplığı da kullanabilirsiniz.
 * Github: https://github.com/bradymholt/cron-expression-descriptor
 * Bağlantı: https://bradymholt.github.io/cron-expression-descriptor/
+
+NOT: `* * * * *` bir cron zamanlama ifadesi için joker karakteridir, yani cron işiniz haftanın her günü, her ayın her gününün her saatinin her dakikasında çalıştırılmalıdır.
