@@ -65,6 +65,8 @@ Kullanıcının girilecek mantıksal sayı kümesini bulması gerekmeden cron i�
 |          `@hourly`          |            Saat başında saatte bir çalıştır            |  `0 * * * *`  |
 |          `@reboot`          |                  Başlangıçta çalıştır                  |       —       |
 
+
+
 Cron ifadelerini insan tarafından okunabilir açıklamalara dönüştüren bir .NET kitaplığı da kullanabilirsiniz.
 * Github: https://github.com/bradymholt/cron-expression-descriptor
 * Bağlantı: https://bradymholt.github.io/cron-expression-descriptor/
