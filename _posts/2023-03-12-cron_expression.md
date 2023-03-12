@@ -21,7 +21,7 @@ Bir cron işi oluşturmak için önce cron'un sözdizimini (syntax) ve biçimlen
 # │ │ │ │ │                                 7 bazı sistemlerde Pazar olarak da kullanılır) 
 # │ │ │ │ │
 # │ │ │ │ │
-# * * * * * <command to execute>
+# * * * * * <yürütülecek komut>
 ```
 
 Crontab sözdizimi, aşağıdaki olası değerlere sahip beş alandan oluşur:
