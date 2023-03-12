@@ -50,7 +50,7 @@ Cron komutunuz için doğru zamanı ayarlamak için, cron iş operatörleri hakk
 * **Tire (Hyphen) (`-`)**. Bir değerler aralığı belirlemek için bu operatörü kullanın. Örneğin Haziran'dan Eylül'e kadar bir cron işi kurmak istiyorsanız Ay alanına 6-9 yazmak işinizi görecektir.
 * **Ayırıcı (Separator) (`/`)**. Her `n`'inci zaman aralığında çalışmayı belirtmek için bu operatörü kullanın. Örneğin, bir betiğin (script) on iki saatte bir çalışmasını istiyorsanız, Saat (Hour) alanına `*/12` yazın.
 * **Son (Last) (`L`)**. Bu operatör ayın günü (Day of the month) ve haftanın günü (Day of the week) alanlarında kullanılabilir. Örneğin, haftanın günü alanına `3L` yazılması, ayın son Çarşamba günü anlamına gelir.
-* **Hafta içi (Weekday) (`W`)**. Belirli bir zamandan haftanın en yakın gününü belirlemek için bu operatörü kullanın. Örneğin, ayın 1'i Cumartesi ise, ayın günü (Day of the month) alanına `1W` yazmak, komutu bir sonraki Pazartesi (3.) günü çalıştıracaktır.
+* **Haftaiçi (Weekday) (`W`)**. Belirli bir zamandan haftanın en yakın haftaiçi (weekday) gününü belirlemek için bu operatörü kullanın. Örneğin, ayın 1'i Cumartesi ise, ayın günü (Day of the month) alanına `1W` yazmak, komutu bir sonraki Pazartesi günü (yani ayın 3'üncü günü) çalıştıracaktır.
 * **Hask (`#`)**. Haftanın gününü (day of the week) belirlemek için, `#` operatöründen sonra 1 ile 5 arasında bir sayı kullanın. Örneğin, `1#2`, ayın ikinci Pazartesi günü anlamına gelir. 
 * **Soru işareti (Question Mark) (`?`)**. "Ayın günü (Day of the month)" ve "haftanın günü (Day of the week)" alanlarına "belirli bir değer yok" girmek için bu operatörü kullanın.
 
