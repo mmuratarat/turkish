@@ -39,7 +39,7 @@ Alanlardan hiçbirini boş bırakmamalısınız.
 37 17 * * 5 root/backup.sh
 ```
 
-Yukarıdaki örnekte, 37 ve 17, 17:37'yi temsil eder. Ayın günü (Day of the month) ve Ay (Month) alanları için her iki yıldız da olası tüm değerleri belirtir. Bu, tarih veya ay ne olursa olsun görevin tekrarlanması gerektiği anlamına gelir. Son olarak, 5 Cuma gününü temsil eder. Sayı kümesini daha sonra görevin konumu takip eder.
+Yukarıdaki örnekte, 37 ve 17, 17:37'yi temsil eder. Ayın günü (Day of the month) ve Ay (Month) alanları için her iki yıldız da olası tüm değerleri belirtir. Bu, tarih veya ay ne olursa olsun görevin tekrarlanması gerektiği anlamına gelir. Son olarak, 5 Cuma gününü gösterir. Sayı kümesini daha sonra görevin konumu takip eder.
 
 Cron sözdizimini manuel olarak yazmak konusunda emin değilseniz, komutunuz için istediğiniz saat ve tarih için doğru sayıları üretmek üzere [Crontab Generator](https://crontab-generator.org/) veya [Crontab.guru](https://crontab.guru/) gibi ücretsiz araçları kullanabilirsiniz.
 
