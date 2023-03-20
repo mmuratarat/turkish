@@ -1,0 +1,188 @@
+---
+layout: post
+title: "# İnsan Geri Bildirimi ile Pekiştirmeli Öğrenme (Reinforcement Learning with Human Feedback - RLHF)"
+author: "MMA"
+comments: true
+---
+
+* [Genel Bakış](#genel-bakis)
+
+## Genel Bakış {#genel-bakis}
+
+* [İnsan Geri Bildiriminden Pekiştirmeli Öğrenme (Reinforcement Learning from Human Feedback)](https://openai.com/research/learning-from-human-preferences){:target="_blank"} ve ["İnsan tercihlerinden derin pekiştirmeli öğrenme (Deep reinforcement learning from human preferences)"](https://arxiv.org/abs/1706.03741){:target="_blank"}, kavramı tanıtan ilk kaynaklardır.
+* RLHF'nin arkasındaki temel fikir, önceden eğitilmiş bir dil modeli almak ve çıktıları insanların sıralamasını sağlamaktır.
+* RLHF, her iki pekiştirmeli öğrenme algoritmasını insan girdisiyle (human input) birleştirerek modelin öğrenmesine ve performansını artırmasına yardımcı olabilecek insan geri bildirimi ile dil modellerini optimize edebilir.
+* RLHF, insan geri bildirimlerini dahil ederek, dil modellerinin doğal dili daha iyi anlamasına ve üretmesine yardımcı olmanın yanı sıra metin sınıflandırması (text classification) veya dil çevirisi (language translation) gibi belirli görevleri gerçekleştirme becerilerini geliştirmesine yardımcı olabilir.
+* Ek olarak, RLHF, insanların modeli daha adil ve kapsayıcı (inclusive) bir dil kullanımına doğru düzeltmesine ve yönlendirmesine izin vererek dil modellerindeki yanlılık (bias) sorununu hafifletmeye de yardımcı olabilir.
+* Aşağıda RLHF'nin inceliklerini inceleyelim!
+
+## Pekiştirmeli Öğrenme'nin Temelleri
+
+* RLHF'de pekiştirmeli öğrenmenin neden kullanıldığını anlamak için, bu öğrenme türünün masaya ne getirdiğini daha iyi anlamamız gerekmektedir.
+* Pekiştirmeli öğrenme, aşağıda gösterildiği gibi ([kaynak](https://www.youtube.com/watch?v=2MBJOuVq380){:target="_blank"}) bir ajanın (agent) çevre ile etkileşime girdiği temellere sahiptir:
+
+![](https://vinija.ai/toolkit/assets/rlhf/1.png)
+
+* Ajan, tek bir eylemde (action) bulunarak çevre (environment) ile etkileşime girer ve çevre bir durum (status) ve bir ödül (reward) döndürür.
+  * Burada ödül, optimize etmek istediğimiz hedeftir (target).
+  * Ve durum, çevrenin/dünyanın mevcut zaman indeksindeki temsilidir.
+  * Bu durumdan bir eyleme eşleme (matching) gerçekleştirmek için bir politika (policy) kullanılır.
+* Şimdi Büyük Dil Modelleri (Large Language Models - LLM) ile Doğal Dil İşleme (Natural Language Processing - NLP) görevleri için Pekiştirmeli Öğrenmenin nasıl kullanılabileceği hakkında konuşalım.
+* Bir örnek verelim, bir model için mizahı, etikleri ya da güvenliği nasıl kodlarsınız (encoding)?
+* Bunlar, insanların kendi başlarına anladıkları bazı incelikleri içerir, ancak özel kayıp fonksiyonları oluşturarak bir model üzerinde eğitebileceğimiz bir şey değildir.
+* İnsan Geri Bildirimi ile Pekiştirmeli Öğrenme'nin (Reinforcement Learning with Human Feedback - RLHF) devreye girdiği yer burasıdır.
+
+![](https://vinija.ai/toolkit/assets/rlhf/2.png)
+
+Yukarıdaki görüntü ([kaynak](https://www.youtube.com/watch?v=2MBJOuVq380){:target="_blank"}), RLHF modelinin hem bir Dil Modelinden (Language model) hem de insan etiketinden (human annotation) girdileri nasıl aldığını ve her ikisinden de ayrı ayrı daha iyi bir yanıt oluşturduğunu göstermektedir.
+
+## Eğitim
+
+* Önce RLHF'ye üst düzeyde bakarak işe başlayalım ve önce tüm bağlamı ve gerçekleri göz önüne alalım.
+* RLHF, birden çok modelin eğitimini ve farklı dağıtım (deployment) aşamalarını gerektirdiğinden oldukça karmaşık olabilir.
+* GPT-4'e, ChatGPT'e ve InstructGPT'e, (OpenAI tarafından) RLHF ile ince-ayar çekildiğinden (fine-tuning), eğitim adımlarına bakarak daha derine inelim.
+* RLHF, modelleri daha güvenli ve daha doğru hale getirmek ve modelden oluşturulan çıktı metninin güvenli ve kullanıcılarına daha uygun olmasını sağlamak için tasarlanmıştır.
+* YZ ajanı (AI agent), çevrede (environment) rastgele kararlar alarak başlar.
+* Periyodik olarak, bir insan sıralayandırıcısı (human ranker) iki video klip alacak ve mevcut göreve hangi klibin daha uygun olduğuna karar verecek.
+* YZ ajanı aynı anda elindeki görevine ait hedefin bir modelini oluşturacak ve Pekiştirmeli Öğrenme'yi kullanarak bu modeli iyileştirecektir.
+* YZ ajanı davranışı öğrendiğinde, yalnızca emin olmadığı videolar hakkında insanlardan geri bildirim istemeye başlayacak ve böylelikle anlayışını daha da geliştirecektir.
+* Bu döngüsel davranış, [OpenAI'ın websayfasından](https://openai.com/blog/deep-reinforcement-learning-from-human-preferences/){:target="_blank"} alınan aşağıdaki görselde görsel olarak görülebilir:
+
+![](https://vinija.ai/toolkit/assets/rlhf/3.png)
+
+* OpenAI şirketi, müşterilerinin API'lerini kullanarak modele gönderdikleri istemleri (prompts) kullandı ve model için istenen birkaç çıktıyı manuel olarak sıralayarak insan geri bildirimi aldı.
+* OpenAI şirketi, dil modeline ince-ayar çekmek için müşterileri tarafından GPT-3 API aracılığıyla gönderilen istemleri kullandı.
+* İstemler, modelin yüksek kaliteli çıktılar üretmesini sağlamak için insan değerlendiricileri tarafından düzenlendi ve manuel olarak sıralandı.
+* Bu süreç, denetimli öğrenme (supervised learning) olarak bilinir ve burada model, doğruluğunu ve performansını artırmak için etiketli veriler kullanılarak eğitilir.
+* OpenAI şirketi, modele müşteri istemleriyle ince-ayar çekerek, belirli bir isteme yanıt olarak ilgili ve tutarlı metin oluşturması için GPT-3'ü daha etkili hale getirmeyi amaçladı.
+* Görev, YZ ajanına nasıl ters takla atılacağını öğretmek olduğunda, OpenAI, YZ ajanının 900 bitlik geri bildirime ihtiyaç duyduğunu buldu ve bu da bir insan zamanının bir saatinden daha azına denk geliyordu.
+* Bu algoritmanın karşılaştığı zorluk, yalnızca insan geri bildirimi kadar iyi olmasıdır.
+* Neden her zaman RLHF' kullanmadığımızı merak ediyor olabilirsiniz. Pekiştirmeli Öğrenmeyi eğitmek için her zaman insanlara güvenmek zamanla bir darboğaza (bottleneck) dönüştüğü için, Pekiştirmeli öğrenme modelleri zayıf ölçeklenmektedir (scaling). _(Mustafa Murat ARAT: Genel olarak makine öğrenmesinin önemli avantajlarından biri, hesaplama kaynaklarının (computational resources) mevcudiyeti ile ölçeklenebilme yeteneğidir. Bilgisayarlar daha hızlı büyüdükçe ve daha fazla veri elde edilebilir oldukça daha büyük makine öğrenmesi modellerini daha hızlı eğitebilirsiniz. Pekiştirmeli Öğrenme sistemlerini eğitmek için insanlara güvenmek bir darboğaza dönüşür. Bu nedenle çoğu RLHF sistemi, otomatik ve insan tarafından sağlanan ödül sinyallerinin bir kombinasyonuna güvenir. Otomatikleştirilmiş ödül sistemi, RL ajanına temel geri bildirimi sağlar. İnsan olan bir süpervizör, ara sıra ekstra bir ödül/ceza sinyali sağlayarak veya bir ödül modelini (reward model) eğitmek üzere gereken verileri sağlayarak yardımcı olur.)
+
+Pizza pişiren bir robot yapmak istediğinizi varsayalım. Ölçülebilir öğelerden bazılarını otomatikleştirilmiş ödül sistemine entegre edebilirsiniz. (ör. kabuk kalınlığı, sos ve peynir miktarı vb.). Ancak pizzanın lezzetli olduğundan emin olmak için bir insanın damak tadına ihtiyaç duyarsınız ve eğitim sırasında robotun yaptığı pizzalar bu insan tarafından skorlanır.)_
+
+![](https://vinija.ai/toolkit/assets/rlhf/5.png)
+
+* "Verilerin manuel olarak etiketlenmesi yavaş ve pahalıdır, bu nedenle denetimsiz öğrenme, makine öğrenimi araştırmacılarının her zaman uzun süredir aradığı bir hedef olmuştur." [bdtechtalks](https://bdtechtalks.com/2023/01/16/what-is-rlhf/){:target="_blank"}
+* Eğitim sürecini, buradaki [kaynaktan](https://huggingface.co/blog/rlhf){:target="_blank"} referans aldığımız üç adıma ayıracağız.
+
+### Önceden Eğitilmiş Modeller kullanılarak Dil Modeli Oluşturma
+
+* Bildiğimiz gibi, dil modelleri farklı parametrelere sahip çeşitli modeller kullanılarak önceden eğitilmiştir (pre-trained) ve belirli görevler için ince-ayar çekilebilir (fine-tuned).
+* Bunun RLHF ile nasıl ilişkili olduğuna daha fazla bakalım.
+* Bir ödül modeli (reward model) eğitmek için veri üretmek, insan tercihlerini sisteme entegre etmek için gereklidir.
+* Ancak, RLHF eğitimindeki seçeneklerin tasarım uzayı tam olarak araştırılmadığından, RLHF'ye başlamak için hangi modelin en iyi olduğu konusunda net bir cevap yoktur.
+
+![](https://vinija.ai/toolkit/assets/rlhf/4.png)
+
+* Yukarıdaki görüntü ([kaynak](https://huggingface.co/blog/rlhf){:target="_blank"}), bir dil modelinin önceden-eğitiminin (pre-training) iç işleyişini göstermektedir.
+* Endüstri deneyleri, 10 Milyar ila 280 Milyar parametre arasında değişmiştir, ancak endüstride kullanılacak en iyi model boyutu konusunda henüz bir kesin cevap yoktur.
+* Ek olarak, şirketler insanlara mevcut istemlere yanıt yazmaları için para ödemesi yapabilir ve bu veriler daha sonra eğitim için kullanılabilir.
+  * Buradaki dezavantaj, pahalı olabilmesidir.
+  
+### Ödül Modeli
+
+* RLHF'nin en önemli görevi, insan tercihlerine dayalı olarak girdi metnine skaler bir ödül (reward) atayan bir ödül modeli (reward model - RM) oluşturmaktır _(Mustafa Murat ARAT: Denetimsiz öğrenme yoluyla önceden eğitilmiş bir Büyük Dil Modeli (Large Language Model), halihazırda dilin sağlam bir modeline sahip olacak ve tutarlı çıktılar yaratacaktır, ancak bu çıktıların bir kısmı veya çoğu kullanıcıların amaç ve niyetleriyle uyumlu olmayabilir. Bu nedenle, ikinci aşamada Pekiştirmeli Öğrenme sistemi için ikinci bir model olan bir ödül modeli oluşturulur. Bu ödül modeli bir başka Makine öğrenmesi modelidir.)_
+* Bu ödül modeli, uçtan uca bir Dil Modeli veya modüler bir sistem olabilir, ve bu ödül modelinin eğitimi için kullanılabilecek veri kümesi, Dil Modelinden elde edilen metin çıktısı ve bu çıktının insan tarafından sıralanması esnasında verilmiş skorların çiftlerinden oluşur. 
+
+![](https://vinija.ai/toolkit/assets/rlhf/6.png)
+
+* Yukarıdaki görüntü ([kaynak](https://huggingface.co/blog/rlhf){:target="_blank"}), ödül modelinin dahili olarak nasıl çalıştığını gösterir.
+* Yukarıdaki görüntüdeki ödül modeline baktığımızda, amacın, bazı metin sekanslarının (text sequence) girdisinden skaler bir ödül değerine eşlenen bir model elde etmek istediğimizi görebiliriz.
+* Pekiştirmeli öğrenme'nin tek bir skaler değer aldığı ve bu skaleri, çevresi (environment) aracılığıyla zaman içinde optimize ettiği bilinmektedir.
+* Ödül modelinin eğitimi de bir veri kümesiyle başlar, ancak bunun önceden eğitilmiş dil modeli için kullanılan veri kümesinden farklı bir veri kümesi olduğuna dikkat ediniz.
+* Buradaki veri kümesi, daha çok belirli tercihlere odaklanır ve istemlerden (prompts) oluşan bir girdi veri kümesidir.
+* Modelin kullanılacağı belirli bir kullanım durumu için, dil modelinin önceden üzerinde eğitildiği istemlerden çok daha küçük istemler içerir.
+* Dil modeli verilen istem için bir metni üretecek ve ardından bu metin sıralandırılacaktır (ranked). 
+* Çoğu zaman, çeşitli sıralamalar oluşturmak için birden fazla model kullanabilirsiniz ve bunları sıralayan bir insan olabilir.
+* İnsan skorlamasından geri bildirim almak üzere bir ödül modelinin eğitiminin örnek bir arayüzünü, ChatGPT'yi kullandığınızda "çok iyi (thumbs up) 👍🏽 " veya "çok kötü (thumbs down) 👎🏽" simgelerinde görebilirsiniz.
+* Böylelikle model çıktısının sıralamasını kitle kaynaklı (crowd-sources) olarak öğrenir. 
+
+### Dil Modeline, Pekiştirmeli Öğrenme ile İnce-Ayar Çekme
+
+![](https://vinija.ai/toolkit/assets/rlhf/7.png)
+
+* Yukarıdaki görüntü ([kaynak](https://huggingface.co/blog/rlhf){:target="_blank"}), ince-ayar çekmenin ödül modeliyle nasıl çalıştığını açıklamaktadır.
+* Burada istemlerden oluşan veri kümesini alıyoruz (kullanıcının söylediği bir şey veya modelin iyi üretebilmesini istediğimiz bir şey).
+* Ardından, bir istem için ayarlanmış (tuned) bir dil modeli olan Pekiştirmeli Öğrenme Politikasına göre bir çıktı üretilir.
+* Daha sonra, bu çıktı, bir skaler değer üreten ödül modeline gönderilir.
+* Bu süreç bir geri bildirim döngüsünde gerçekleştirilir, böylece zaman içinde güncellemeler yaşanır.
+* Burada kullanılan cezalandırıcı fonksiyonu (penalty function), Kullback-Leibler Iraksamasının (Kullback-Leibler (KL) divergence)'nın bir varyasyonudur.
+* Kullback-Leibler (KL) ıraksaması, iki olasılık dağılımı arasındaki farkın bir ölçüsüdür.
+  * Böylece, RLHF ile KL ıraksamanı, bir ajanın mevcut politikasının olasılık dağılımını, istenilen davranışı temsil eden bir referans dağılımıyla karşılaştırmak için kullanılabilir.
+* Bu, dil modelinin anlamsız sözler üretmesini ve yüksek bir ödül almasını engeller. Yani modeli sadece yüksek ödül kazanmaya odaklamakla kalmaz, bunun sonucunda doğru bir metin üretmesini de sağlar.
+* Ek olarak, RLHF'e Proksimal Politika Optimizasyonu (Proximal Policy Optimization - PPO) ile ince-ayar çekilebilir.
+  * Proksimal Politika Optimizasyonu (Proximal Policy Optimization - PPO), yüksek boyutlu durum (status) ve eylem (action) uzaylarına sahip karmaşık çevrelerdeki (environment) politikaları (policies) verimli bir şekilde optimize etme yeteneği nedeniyle, İnsan Geri Bildirimi ile Pekiştirmeli Öğrenme'ye (RLHF) ince-ayar çekmek için sıklıkla kullanılan popüler bir pekiştirmeli öğrenme algoritmasıdır.
+* PPO, hem insan geri bildiriminden hem de deneme-yanılma keşfinden (exploration) öğrenmesi gereken RLHF ajanları için önemli olan keşif (exploration) ile mevcut bilgiden istifadeyi (exploitation) eğitim esnasında verimli bir şekilde dengeler.
+* PPO'nun RLHF'de kullanılması, ajanı hem insan geri bildiriminden hem de pekiştirmeli öğrenmeden öğrenebildiğinden, daha hızlı ve daha sağlam (robust) öğrenmeyle sonuçlanabilir.
+
+## Yanlılık
+
+* Şimdi asıl sorulacak soru, RLHF'nin modele yanlılık ekleyip ekleyemeyeceğidir.
+* Bu önemlidir, çünkü büyük konuşmalı (conversational) dil modellerinin RLHF tarafından ince ayar çekildiğini ve arama motorundan (Bing) kelime dokümanlarına (Google docs, Notion vb.) kadar çeşitli uygulamalara dahil edildiğini görüyoruz.
+* Yanıt, evet, tıpkı insan girdisine sahip herhangi bir makine öğrenmesi yaklaşımında olduğu gibi, RLHF'nin yanlılık oluşturma potansiyeli vardır.
+* Getirebileceği farklı yanlılık biçimlerine göz atalım:
+* Seçim yanlılığı (Selection Bias):
+  * RLHF, kendi önyargıları ve tercihleri olan insan değerlendiricilerden gelen geri bildirimlere güvenmektedir, bu nedenle ajan, gerçek dünyada karşılaşacağı doğru davranışlara ve sonuçlara maruz kalmayabilir.
+* Onay yanlılığı (Confirmation bias):
+  * İnsan değerlendiricilerin, ajanın performansına dayalı objektif geri bildirim sağlamak yerine, mevcut inançlarını veya beklentilerini doğrulayan geri bildirim sağlama olasılığı daha yüksek olabilir.
+  * Bu, ajanın uzun vadede optimal olmayan veya arzu edilmeyen belirli davranışlar veya sonuçlar için güçlendirilmesine yol açabilir.
+* Değerlendiriciler arası değişkenlik (Inter-rater variability):
+  * Farklı insan değerlendiriciler, ajanın performansının kalitesi hakkında farklı görüşlere veya yargılara sahip olabilir ve bu da ajanın aldığı geri bildirimde tutarsızlığa yol açar.
+  * Bu, ajanı etkili bir şekilde eğitmeyi zorlaştırabilir ve optimal olmayan performansa yol açabilir.
+* Sınırlı geri bildirim (Limited feedback):
+  * İnsan değerlendiriciler, ajanın performansının tüm yönleri hakkında geri bildirim sağlayamayabilir, bu da ajanın öğrenmesinde boşluklara ve belirli durumlarda potansiyel olarak yetersiz performans göstermesine yol açar.
+* Artık RLHF ile mümkün olan farklı yanlılık türlerini gördüğümüze göre, bunları azaltmanın yollarına bakalım:
+* Çeşitli değerlendirici seçimi:
+  * Tıpkı işyerinde olduğu gibi, farklı geçmişlere ve bakış açılarına sahip değerlendiricilerin seçilmesi, geri bildirimdeki yanlılığın azaltılmasına yardımcı olabilir.
+  * Bu, farklı demografik gruplardan, bölgelerden veya sektörlerden değerlendiriciler işe alınarak başarılabilir.
+* Fikir birliği değerlendirmesi:
+  * Birden çok değerlendiricinin aynı görev hakkında geri bildirim sağladığı fikir-birliği (consensus) değerlendirmesini kullanmak, bireysel yanlılıkların etkisini azaltmaya ve geri bildirimin güvenilirliğini artırmaya yardımcı olabilir.
+  * Bu neredeyse değerlendirmeyi 'normalleştirmek' gibidir.
+* Değerlendiricilerin kalibrasyonu:
+  * Değerlendiricilere geri bildirimin nasıl sağlanacağı konusunda eğitim ve rehberlik sağlayarak onları kalibre etmek, geri bildirimin kalitesini ve tutarlılığını artırmaya yardımcı olabilir.
+* Geri bildirim sürecinin değerlendirilmesi:
+  * Geri bildirimin kalitesi ve eğitim sürecinin etkinliği de dahil olmak üzere geri bildirim sürecinin düzenli olarak değerlendirilmesi, mevcut olabilecek yanlılıkların belirlenmesine ve ele alınmasına yardımcı olabilir.
+* Ajanın performansının değerlendirilmesi:
+  * Ajanın performansını çeşitli görevlerde ve farklı ortamlarda düzenli olarak değerlendirmek, bu ajanın belirli örneklere aşırı uyum (overfitting) göstermemesini ve yeni durumlara genelleme yapabilmesini sağlamaya yardımcı olabilir.
+* Geri bildirimi dengelemek:
+  * İnsan değerlendiricilerden gelen geri bildirimleri kendi kendine oynama (self-play) veya uzman gösterileri (expert demonstrations) gibi diğer geri bildirim kaynaklarıyla dengelemek, geri bildirimdeki yanlılığın etkisini azaltmaya ve eğitim verilerinin genel kalitesini iyileştirmeye yardımcı olabilir.
+  
+## Pekiştirmeli Öğrenme ve İnce Ayar Çekmek için Denetimli Öğrenme
+
+Not: Bu bölüm Sebastian Raschka'nın [bu bağlantıdaki](https://www.linkedin.com/posts/sebastianraschka_ai-deeplearning-machinelearning-activity-7036333477658599424-rkSL?utm_source=share&utm_medium=member_desktop){:target="_blank"} gönderisinden esinlenilmiştir ve aşağıdaki görsel de [Sebastian Raschka](https://www.linkedin.com/posts/sebastianraschka_ai-deeplearning-machinelearning-activity-7036333477658599424-rkSL?utm_source=share&utm_medium=member_desktop){:target="_blank"}'ya aittir.
+
+![](https://vinija.ai/toolkit/assets/rlhf/8.png)
+
+* Pekiştirmeli öğrenme, insan geri bildirimi tarafından sağlanan etiketlere (labels) ihtiyaç duyar, bu nedenle, neden bu etiketleri yalnızca Denetimli Öğrenme ile birlikte kullanmadığımız sorusu ortaya çıkıyor.
+* İşte gönderide  bahsedilen 4 neden:
+  1. Denetimli Öğrenme, gerçek etiket ile model çıktısı arasındaki boşluğu azaltmaya odaklanır. Bu da, modelin sadece sıralamaları (ranks) ezberleyeceği ve muhtemelen anlamsız çıktılar üreteceği anlamına gelir, çünkü modelin odak noktası sıralamaları maksimize etmektir.
+    * Daha önce konuştuğumuz gibi, ödül modelinin yaptığı budur ve KL ıraksamasının yardımcı olabileceği yer burasıdır.
+  2. Bu durumda, biri sıralama (rank) ve diğeri çıktı için olmak üzere iki kaybı ortaklaşa eğitsek ne olur? Bu senaryo, ChatGPT veya diğer konuşma modellerinin sahip olduğu her görev için değil, yalnızca Soru ve Cevap (Q and A) görevleri için çalışır.
+  3. GPT'nin kendisi, bir sonraki sözcük tahmini için çapraz entropi (cross-entropy) kaybını kullanır. Bununla birlikte, RLHF ile standart kayıp fonksiyonlarını değil, modelin RLHF'nin kullanıldığı göreve daha iyi hizmet etmesine yardımcı olan amaç fonksiyonları kullanırız, örn. Güven ve Güvenlik (Trust and Safety).
+    * Ek olarak, bir kelimeyi olumsuzlamak metnin anlamını tamamen değiştirebileceğinden, burada en iyi şekilde kullanılmaz.
+  4. "Deneysel olarak bakıldığında, RLHF, denetimli öğrenmeden daha iyi performans gösterme eğilimindedir. Bunun nedeni, denetimli öğrenmenin andaç (token) düzeyinde bir kayıp fonksiyonu kullanması (yani, bir metin pasajı üzerinden toplanabilecek veya ortalaması alınabilecek) ve RL'nin tüm metin pasajını bir bütün olarak hesaba katmasıdır."
+  5. Problem ya denetimli öğrenme ya da RLHF değildir. InstructGPT ve ChatGPT her ikisini de kullanır. Önce denetimli öğrenme ile ince ayar çekilir, ardından RLHF ile bu modeller güncellenir.
+  
+## Kullanım Senaryoları
+
+* Şimdi farklı çalışmaların bu metodolojiyi kendi küçük düzeltmeleri nasıl kullandıklarına bakalım ([kaynak](https://www.youtube.com/watch?v=2MBJOuVq380){:target="_blank"})
+* ChatGPT gibi en yeni Büyük Dil Modelleri, denetimli öğrenme yerine ince ayar çekmek için RLHF'yi kullanma eğilimindedir.
+* Anthropic:
+  * RLHF için kullandıkları ilk politika, yardımseverliği (helpfulness), dürüstlüğü (honesty) ve zararsızlığı (harmlessness) (HHH olarak bilinir) iyileştirmeye yardımcı olan bağlam danıtmasına (context distillation) sahiptir.
+  * Tercih modelin önceden-eğitimi (Preference model pretraining - PMP): ikili sıralamalardan oluşan veri kümesi üzerinde Dil Modeline ince ayar çekme
+* OpenAI InstructGPT, ChatGPT:
+  * RLHF kullanarak öncülük etti
+  * Hem InstructGPT hem de ChatGPT, önce Denetimli Öğrenme yoluyla modele ince ayar çeker, ardından modeli RLHF ile günceller
+  * İnsan tarafından oluşturulan başlangıç Dil Modeli eğitim metni, ardından Pekiştirmeli Öğrenme politikasını bununla eşleşecek şekilde eğitir
+  * Kapsamlı bir şekilde insan etiketlerini (human annotation) kullanır
+  * PPO (Proksimal Politika Optimizasyonu / Proximal Policy Optimization) kullanır
+* DeepMind
+  * PPO kullanmaz, algoritma için PPO yerine Avantaj Aktör Kritik (Advantage Actor Critic - A2C) kullanır
+  * Modelin yapmaması gereken şeyler üzerinde eğitilmesinin yanı sıra, farklı kurallar ve tercihler üzerinde eğitilir.
+  
+## Referanslar
+
+* [İnsan Geri Bildiriminden Pekiştirmeli Öğrenme: Sıfırdan chatGPT'ye](https://www.youtube.com/watch?v=2MBJOuVq380)
+* [İnsan Geri Bildiriminden Pekiştirmeli Öğrenme (RLHF) İllüstrasyonu](https://huggingface.co/blog/rlhf)
+* [Sebastian Raschka'nın LinkedIn gönderisi](https://www.linkedin.com/in/sebastianraschka?miniProfileUrn=urn%3Ali%3Afs_miniProfile%3AACoAAAxqHaUBEa6zzXN--gv-wd8ih0vevPvr9eU&lipi=urn%3Ali%3Apage%3Ad_flagship3_search_srp_all%3Bic8rQnV%2BTHqwI0K2TXBzzg%3D%3D)
