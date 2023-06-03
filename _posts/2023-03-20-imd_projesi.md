@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "İş ve Meslek Danışmanlığı Hizmetlerinin Geliştirilmesi (Improving Job and Vocational Counselling Services)" teknik destek projesi"
+title: "İş ve Meslek Danışmanlığı Hizmetlerinin Geliştirilmesi (Improving Job and Vocational Counselling Services) teknik destek projesi"
 author: "MMA"
 comments: true
 ---
