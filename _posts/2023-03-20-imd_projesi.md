@@ -9,5 +9,4 @@ DAI Global Avusturya liderliğindeki konsorsiyum sorumluluğunda, Avrupa Birliğ
 
 Bölgenin en kalabalık fuarlarından olması beklenen Gemlik #EXPO 2023 Kariyer Fuarı’na 50 seçkin firma oluşturulacak stant alanlarında ve seminer programlarıyla, işgücüyle buluşacak, içinde bulundukları sektör hakkında bilgiler verecek, firmaları ve İnsan Kaynakları politikaları hakkında bilgilendirme yapacaklar.
 
-
 ![](https://github.com/mmuratarat/mmuratarat.github.io/blob/master/_posts/images/Fxn-2LwXsAEM0UH.jpeg?raw=true)
