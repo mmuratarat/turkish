@@ -47,11 +47,11 @@ Bu Hub'da, topluluk tarafından paylaşılan on binlerce açık kaynaklı makine
 
 https://huggingface.co/docs/hub/datasets
 
-Veri kümelerinin yüklenmesi, işlenmesi ve depolanması, özellikle veri kümeleri dizüstü bilgisayarınızın RAM'ine sığamayacak kadar büyüdüğünde, külfetli bir süreç olabilir. Ek olarak, verileri indirmek ve standart bir biçime dönüştürmek için genellikle çeşitli betikler yazmanız gerekmektedir.
+Veri kümelerinin yüklenmesi (loading), işlenmesi (processing) ve depolanması (storing), özellikle veri kümeleri dizüstü bilgisayarınızın RAM'ine sığamayacak kadar büyük olduğunda, külfetli bir süreç olabilir. Ek olarak, verileri indirmek ve standart bir formata dönüştürmek için genellikle çeşitli betikler yazmanız gerekmektedir.
 
 Hugging Face Datasets kütüphanesi, standart bir arayüz sağlayarak bu işlemi basitleştirir. 100'den fazla dilde 50.000 veri kümesi içerir. Bu veri kümelerini Doğal Dil İşleme, Görüntü İşleme ve Ses genelinde çok çeşitli görevler için kullanabilirsiniz. Hub, veri kümelerini bulmayı, indirmeyi ve karşıya yüklemeyi (upload) kolaylaştırır.
 
-Ayrıca akıllı önbelleğe alma (caching) sağlar (böylece kodunuzu her çalıştırdığınızda ön işlemenizi (pre-processing) yeniden yapmak zorunda kalmazsınız) ve bir dosyayı daha verimli bir şekilde modifiye etmek üzere, bu dosyanın içeriğini sanal bellekte depolayan ve birden çok işlemi (processes) etkinleştiren bellek eşleme (memory mapping) adı verilen özel bir mekanizmadan yararlanarak RAM sınırlamalarını önler. 
+Ayrıca akıllı önbelleğe alma (caching) sağlar (böylece kodunuzu her çalıştırdığınızda ön-işlemenizi (pre-processing) yeniden yapmak zorunda kalmazsınız) ve bir dosyayı daha verimli bir şekilde modifiye etmek üzere, bu dosyanın içeriğini sanal bellekte depolayan ve birden çok işlemi (processes) etkinleştiren bellek eşleme (memory mapping) adı verilen özel bir mekanizmadan yararlanarak RAM sınırlamalarını önler. 
 
 Datasets kütüphanesi ayrıca Pandas ve NumPy gibi popüler yazılım çerçeveleri ile birlikte çalışabilir, bu nedenle favori veri düzenleme araçlarınızın rahatlığını bırakmanız gerekmez.
 
