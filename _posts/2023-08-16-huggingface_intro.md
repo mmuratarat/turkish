@@ -146,7 +146,7 @@ data = query({"inputs": "The answer to the universe is [MASK]."})
 https://huggingface.co/docs/tokenizers/index
 https://github.com/huggingface/tokenizers
 
-Veri iletim hattının (data pipeline) her birinin arkasında, ham metni (raw text) andaç (token) adı verilen daha küçük parçalara bölen bir andaçlaştırıcı (tokenizer) adımı vardır. Bir andaç bir sözcük olabilir, sözcüğün bir kısmı olabilir veya  noktalama işaretleri gibi yalnızca karakterler olabilir. Transformer modelleri, bu andaçların sayısal temsilleri üzerinde eğitilmiştir, bu nedenle bu adımı doğru yapmak tüm Doğal Dil İşleme projeleri için oldukça önemlidir!
+Her bir veri iletim hattının (data pipeline) arka planında, ham metni (raw text) andaç (token) adı verilen daha küçük parçalara bölen bir andaçlaştırıcı (tokenizer) adımı vardır. Bir andaç bir sözcük olabilir, sözcüğün bir kısmı olabilir veya noktalama işaretleri gibi yalnızca bir karakter olabilir. Transformer modelleri, bu andaçların sayısal gösterimleri (numerical representations) üzerinde eğitilmiştir, bu nedenle bu adımı doğru yapmak tüm Doğal Dil İşleme projeleri için oldukça önemlidir!
 
 Hugging Face'in Tokenizers kütüphanesi andaçlara ayırmak için bir çok strateji sağlar ve Rust arka ucu sayesinde bir metni andaçlarına ayırmada son derece hızlıdır. Ayrıca, girdilerin normalleştirilmesi ve model çıktılarının gerekli formata dönüştürülmesi gibi tüm ön ve son işleme adımlarıyla da ilgilenir. Tokenizers kütüphanesinin yardımıyla, Transformers kütüphanesi ile önceden eğitilmiş model ağırlıklarını yükleyebildiğimiz gibi bir andaçlaştırıcıyı da kolaylıkla yükleyebiliriz.
 
