@@ -19,7 +19,7 @@ Hugging Face, metin sınıflandırma, duygu analizi, soru yanıtlama ve bunlar g
 
 Kendi göreviniz için sıfırdan bir model eğitmenize bile gerek yok. Yapmanız gereken Hugging-Face ile önceden-eğitilmiş bir modeli yüklemek ve özel göreviniz için modele ince-ayar çekmektedir. Bu kadar basit.
 
-Bu önceden-eğitilmiş modeller, TensorFlow, PyTorch ve JAX gibi farklı derin öğrenme kitaplıkları kullanılarak eğitilmiştir. Her derin öğrenme kütüphanesine aşina olmak zorunda değilsiniz. Hugging Face bu farklılıkları standartlaştırır. Ayrıca, bu modeller de çok büyük olduğundan, HugginFace bu modellerin ağırlıklarını sunucudan yükler.
+Bu önceden-eğitilmiş modeller, TensorFlow (https://www.tensorflow.org/), PyTorch (https://pytorch.org/) ve JAX (https://github.com/google/jax) gibi farklı derin öğrenme kitaplıkları kullanılarak eğitilmiştir. Her derin öğrenme kütüphanesine aşina olmak zorunda değilsiniz. Hugging Face bu farklılıkları standartlaştırır. Ayrıca, bu modeller de çok büyük olduğundan, Hugging Face, kullanmak istediğiniz bu modellerin ağırlıklarını (weights) sunucudan yükler.
 
 Hugging Face'in bu kadar popüler olmasının bir diğer nedeni de kullanım kolaylığıdır. Basit ve kullanıcı dostu bir arayüze sahiptir. Bu, geliştiricilerin NLP'ye hızlı bir şekilde başlamalarını kolaylaştırır. Muhteşem topluluk desteğini de unutmayalım. Hugging Face topluluğu aktif ve destekleyicidir. Topluluk ayrıca önceden-eğitilmiş modelleri paylaşarak kütüphanenin büyümesine katkıda bulunur.
 
