@@ -9,7 +9,7 @@ comments: true
 
 Doğal Dil İşleme (Natural Language Processing - NLP) alanında çalışıyorsanız, Hugging Face'i muhtemelen duymuşsunuzdur.
 
-2016 yılında Fransız girişimciler Clément Delangue, Julien Chaumond ve Thomas Wolf tarafından kurulan Hugging Face (adını popüler bir emoji olan 🤗'den almıştır. Türkçesi: sarılan yüz) bir chatbot şirketi olarak işe başlamış ve daha sonra Doğal Dil İşleme teknolojilerinin açık kaynak sağlayıcısına dönüşmüştür. Birinci kullanım alanı NLP görevleri için olsa da, o zamandan beri ses sınıflandırması ve otomatik konuşma tanıma gibi ses (audio) ile ilgili görevlerde ve görüntü sınıflandırması ve görüntü bölümleme gibi bilgisayarlı görü (computer vision) görevleri için de kullanılmaya başlanmıştır. https://huggingface.co/tasks
+2016 yılında Fransız girişimciler Clément Delangue, Julien Chaumond ve Thomas Wolf tarafından kurulan Hugging Face (adını popüler bir emoji olan 🤗'den almıştır. Türkçesi: sarılan yüz) bir chatbot şirketi olarak işe başlamış ve daha sonra Doğal Dil İşleme teknolojilerinin açık kaynak sağlayıcısına dönüşmüştür. Birinci kullanım alanı NLP görevleri için olsa da, o zamandan beri ses sınıflandırması (audio classification) ve konuşma tanıma (speech recognition) gibi ses (audio) ile ilgili görevlerde ve görüntü sınıflandırma (image classification) ve görüntü bölümleme (image segmentation) gibi bilgisayarlı görü (computer vision) görevleri için de kullanılmaya başlanmıştır. https://huggingface.co/tasks
 
 ![](https://github.com/mmuratarat/turkish/blob/master/_posts/images/huggingface_tasks.png?raw=true)
 
