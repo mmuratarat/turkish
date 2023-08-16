@@ -119,9 +119,9 @@ PyTorch'ta kendi eğitim betiğinizi yazmak zorunda kaldıysanız, dizüstü bil
 
 ### The Inference API
 
-Hugging Face'teki herhangi bir modeli bir üretim ortamına koymak ve bu modelden çıkarsamalar (inferences) yapmak istediğinizi varsayalım. Bunun için Hugging Face'in Inference API'sini kullanabilirsiniz.
+Hugging Face'teki herhangi bir modeli üretim ortamına koymak (yanı dağıtmak) ve bu modelden çıkarsamalar (inferences) yapmak istediğinizi varsayalım. Bunun için Hugging Face'in Inference API'sini kullanabilirsiniz.
 
-Inference Uç Noktaları, tüm Transformers, Sentence-Transformers ve Diffusion görevlerinin yanı sıra Transformers kütüphanesi tarafından tarafından desteklenmeyen özel görevleri de destekler.
+Inference Uç Noktaları (endpoints), tüm Transformers, Sentence-Transformers ve Diffusion görevlerinin yanı sıra Transformers kütüphanesi tarafından desteklenmeyen özel görevleri de destekler.
 
 Bunun nasıl yapılacağına bir göz atalım. İlk adım, hangi modeli çalıştıracağınızı seçmektir. Inference API'nin Python ile nasıl kullanılacağını aşağıdaki kodda inceleyebilirsiniz:
 
