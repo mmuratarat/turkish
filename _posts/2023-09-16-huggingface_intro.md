@@ -55,9 +55,9 @@ Ayrıca akıllı önbelleğe alma (caching) sağlar (böylece kodunuzu her çal�
 
 Datasets kütüphanesi ayrıca Pandas ve NumPy gibi popüler yazılım çerçeveleri ile birlikte çalışabilir, bu nedenle favori veri düzenleme araçlarınızın rahatlığını bırakmanız gerekmez.
 
-##### Model and Dataset cards
+##### Modelerl ve Veri Kümeleri için Kartlar
 
-Hub ayrıca, modellerin ve veri kümelerinin içeriklerini belgelemek ve bunların sizin için doğru olup olmadığı konusunda bilinçli bir karar vermenize yardımcı olmak için model ve veri kümesi kartları (models and datasets cards) sağlar. 
+Hub ayrıca, modellerin ve veri kümelerinin içeriklerini belgelemek ve bunların sizin için doğru olup olmadığı konusunda bilinçli bir karar vermenize yardımcı olmak için model ve veri kümesi kartları (model and dataset cards) sağlar. 
 
 Hub'ın diğer bir güzel özelliği ise herhangi bir modeli doğrudan göreve-özgü etkileşimli widget'lar aracılığıyla deneyebilmenizdir:
 
