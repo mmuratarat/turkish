@@ -744,4 +744,112 @@ trainer.train()
 
 Modelin 5 epoch boyunca eğitilmesi neredeyse 1 saat 51 dakika sürmüştür. Eğitim sonunda, ince-ayar çekilmiş modelin test kümesi üzerindeki performansını yukarıdaki ekran görüntüsünde görebilirsiniz. Oldukça iyi bir sonuç! :)
 
+Malesef ki, Hugging Face'in `transformers` kütüphanesi eğitim kümesi üzerinde her epoch için değerlendirme metriklerini ölçmemektedir. Bunu gerçekleştirmek için, özel bir Geri Çağırma (Callback) fonksiyonu yazabilirsiniz.
 
+Model eğitim sonuçlarını aşağıdaki şekilde elde edebilirsiniz:
+
+```python
+log_history = pd.DataFrame(trainer.state.log_history)
+log_history = log_history.fillna(0)
+log_history = log_history.groupby(['epoch']).sum()
+log_history
+```
+
+![](https://raw.githubusercontent.com/mmuratarat/turkish/864a53b512ce0d4029ccfbc265604ec688ec6010/_posts/images/ksavir_vit_training_logs.png)
+
+Eğitim kümesi üzerindeki kaybı, test kümesi üzerindeki kaybı ve test kümesi üzerindeki doğruluk oranını her epoch için şu şekilde kolaylıkla görsel olarak inceleyebilirsiniz:
+
+```python
+log_history[["loss", "eval_loss", "eval_accuracy"]].plot(subplots=True)
+```
+
+![](https://github.com/mmuratarat/turkish/blob/master/_posts/images/kvasir_vit_model_progress.png?raw=true)
+
+Hugging Face eğitim kümesine ait değerlendirme metriklerini döndürmediği için, en son elde edilen modeli tüm eğitim kümesi üzerinde çalıştırarak tanımladığımız metriklerin değerlerini `evaluate` fonksiyonu ile elde edebiliriz:
+
+```python
+metrics_training = trainer.evaluate(prepared_train)
+metrics_training
+# {'eval_loss': 0.09327180683612823,
+#  'eval_accuracy': 0.9905882352941177,
+#  'eval_f1': 0.990587445420025,
+#  'eval_precision': 0.9906179579903401,
+#  'eval_recall': 0.9905882352941177,
+#  'eval_runtime': 992.092,
+#  'eval_samples_per_second': 6.854,
+#  'eval_steps_per_second': 0.215,
+#  'epoch': 5.0}
+```
+
+**EK NOT**
+
+Eğitim kümesine ait metrikleri elde etmek için diğer bir yöntem `predict` methodunu kullanmaktır. Böylelikle, model tahminlerini alır ve bu tahminleri gerçek etiketlerle karşılaştırabiliriz.
+
+```python
+# Eğitim kümesi üzerinde yapılan tahminler
+y_train_predict = trainer.predict(prepared_train)
+
+# Tahminlere göz atalım
+y_train_predict
+```
+
+Transfer öğrenme görüntü sınıflandırma modeli için tahmin edilen logitler, `predictions` metodu kullanılarak çıkarılabilir:
+
+```python
+# Tahmin edilen logitler
+y_train_logits = y_train_predict.predictions
+
+# İlk 5 görüntüye ait model çıktıları (logitler)
+y_train_logits[:5]
+```
+
+Tek bir görüntü için elde edilen tahminin sekiz sütundan oluştuğunu görüyoruz. İlk sütun, etiket 0 için tahmin edilen logittir ve ikinci sütun, etiket 1 için tahmin edilen logittir ve bu böyle devam etmektedir. logit değerlerinin toplamı 1'e eşit değildir çünkü bu değerler normalleştirilmemiş olasılıklardır (diğer bir deyişle, model çıktısıdır). Çok-sınıflı sınıflandırma (multi-class classification) yaptığımız için Softmax fonksiyonu kullanarak bu değerleri normalleştirebiliriz:
+
+```python
+y_train_probabilities = torch.softmax(y_train_logits, dim = -1)
+```
+
+Softmax'ı uyguladıktan sonra, her görüntü için tahmin edilen olasılığın toplamının 1'e eşit olduğunu görebiliriz:
+
+```python
+# İlk 5 görüntüye ait normalleştirilmiş olasılıklar
+y_train_probabilities[:5]
+```
+
+Tahmin edilen etiketleri elde etmek için, her görüntü için etiketlere karşılık gelen maksimum olasılık indeksini döndürmek üzere numpy kütüphanesinin `argmax` fonksiyonu kullanılır.
+
+```python
+# model tarafından eğitim kümesi üzerinde tahmin edilen etiketler
+y_train_pred_labels = np.argmax(y_train_probabilities, axis=1)
+
+# İlk 5 görüntüye ait tahmin edilen etiketler
+y_train_pred_labels[:5]
+```
+
+Gerçek etiketler `y_train_predict.label_ids` kullanılarak çıkarılabilir.
+
+```python
+# Asıl Etiketler
+y_train_actual_labels = y_train_predict.label_ids
+
+# Eğitim kümesindeki ilk 5 görüntüye ait gerçek etiketler
+y_train_actual_labels[:5]
+```
+
+Artık gerçek etiketleri (actual labels), eğitim kümesi üzerinde model tarafından tahmin edilen etiketler ile karşılaştırabiliriz.
+
+Daha fazla model performans metriği hesaplamak için ilgilenilen metrikleri yüklemek amacıyla `evaluate.load`'u kullanabiliriz. Bu metrikleri zaten yukarıdaki hücrelerin birinde yüklemiştik:
+
+```python
+# Compute accuracy metric
+print(accuracy_metric.compute(predictions=y_train_pred_labels, references=y_train_actual_labels))
+
+# Compute f1 metric
+print(f1_metric.compute(predictions=y_train_pred_labels, references=y_train_actual_labels, average="weighted"))
+
+# Compute precision metric
+print(precision_metric.compute(predictions=y_train_pred_labels, references=y_train_actual_labels, average="weighted"))
+
+# Compute recall metric
+print(recall_metric.compute(predictions=y_train_pred_labels, references=y_train_actual_labels, average="weighted"))
+```
