@@ -66,7 +66,7 @@ Tabii ki, bu kütüphaneler kişisel bilgisayarınızda veya Colab ortamınızda
 !pip install scikit-learn
 ```
 
-Gerekli kütüphaneler yüklendikten ve bu kütüphaneler python ortamına içeri aktarıldıktan sonra, yapmanız gereken işlem Depolama (Storage) alanını ayarlamaktır.
+Gerekli kütüphaneler yüklendikten ve bu kütüphaneler Python ortamına içeri aktarıldıktan sonra, yapmanız gereken işlem Depolama (Storage) alanını ayarlamaktır.
 
 Google Colab'in bir faydası, Google Drive'ınıza bağlanmanıza olanak sağlamasıdr. Böylelikle, elinizdeki veri Drive'da barınırken, kodlarınızı GPU destekli bir Jupyter Not Defterinde çalıştırabilirsiniz.
 
@@ -250,7 +250,7 @@ full_dataset[1000]["image"]
 
 # Model
 
-Burada görüntü sınıflandırma (image classification) gerçekleştireceğiz. Veri kümesinde 8 farklı sınıf var. Bu nedenle çok-sınıflı sınıflandırma (multi-class classification) problemi ile karşı karşıyayız. 
+Burada görüntü sınıflandırma (image classification) görevini gerçekleştireceğiz. Veri kümesinde 8 farklı sınıf var. Bu nedenle çok-sınıflı sınıflandırma (multi-class classification) problemi ile karşı karşıyayız. 
 
 Çok-sınıflı görüntü sınıflandırma problemi için önceden-eğitilmiş (pre-trained) bir modele ihtiyacımız var. HuggingFace Hub'da görüntü sınıflandırma için oldukça fazla önceden-eğitilmiş model bulabilirsiniz - https://huggingface.co/models?pipeline_tag=image-classification&sort=downloads&library=pytorch
 
@@ -289,7 +289,7 @@ Görüntülerin hepsi üç kanallı, yani RGB modundadır. Bu nedenle herhangi b
 
 # Veri kümesini eğitim/test olarak parçalamak
 
-Modeli seçtiğimizde göre ilk olarak yapmamız gereken veri kümesini eğitim (train) ve test olacak şekilde ikiye parçalamak. Bunun için `train_test_split()` fonksiyonunu kullanabilir ve parçalanmanın (splitting) boyutunu belirlemek için `test_size` parametresini belirtebilirsiniz. Burada test kümesinin büyüklüğünü belirlemek için %15 kullandık, yani, 6800 görüntü modeli eğitmek için, geri kalan 1200 görüntü modeli test etmek için kullanılacaktır.
+Modeli seçtiğimizde göre ilk olarak yapmamız gereken veri kümesini eğitim (train) ve test olacak şekilde ikiye parçalamak. Bunun için `train_test_split()` fonksiyonunu kullanabilir ve parçalanmanın (splitting) boyutunu belirlemek için `test_size` parametresini belirtebilirsiniz. Burada test kümesinin büyüklüğünü belirlemek için %15 kullandık, yani, 6800 görüntü, modeli eğitmek için, geri kalan 1200 görüntü, modeli test etmek için kullanılacaktır.
 
 ```python
 dataset = full_dataset.shuffle().train_test_split(test_size=0.15, stratify_by_column = 'label')
@@ -306,7 +306,7 @@ dataset
 # })
 ```
 
-Kolaylıkla anlaşılacağı üzere bir DatasetDict nesnesine sahibiz. Bu bir sözlüktür. Anahtarları `train` ve `test`'tir. Bu anahtarlardaki değerleri (yani veri kümelerini) ayrı ayrı değişkenlere atayalım:
+Kolaylıkla anlaşılacağı üzere bir DatasetDict nesnesine sahibiz. Bu bir sözlüktür. Anahtarları (keys( `train` ve `test`'tir. Bu anahtarlardaki değerleri (yani veri kümelerini) ayrı ayrı değişkenlere atayalım:
 
 ```python
 train_dataset = dataset["train"]
@@ -413,7 +413,7 @@ Kolaylıkla anlaşılacağı üzere, ön işleme adımından sonra 4 boyutlu bir
 
 ![](https://github.com/mmuratarat/turkish/blob/master/_posts/images/image3.jpeg?raw=true)
 
-Burada not edilmesi gereken diğer bir durum `pixel_values` anahtarının sahip olduğu değer, modelin beklediği temel girdi olmasıdır.
+Burada not edilmesi gereken diğer bir durum `pixel_values` anahtarının sahip olduğu değerin, modelin beklediği temel girdi olmasıdır.
 
 Bu ön işleme adımını **tüm veri kümesine** daha verimli bir şekilde uygulamak için, `preprocess` adı verilen bir fonksiyon oluşturalım ve dönüşümleri `map` yöntemini kullanarak gerçekleştirelim:
 
@@ -588,9 +588,9 @@ Artık ince ayara geçmeye hazırız.
 
 # Modele İnce-Ayar Çekme
 
-HuggingFace'in `Trainer` fonksiyonunu kullanarak ince ayar çekeceğiz. `Trainer`, transformer modelleri için PyTorch'ta implement edilmiş, soyut bir eğitim ve değerlendirme döngüsüdür.
+HuggingFace'in `Trainer` fonksiyonunu kullanarak ince ayar çekeceğiz. `Trainer`, transformer modelleri için PyTorch'ta implement edilmiş, soyutlaştırılmış bir eğitim ve değerlendirme döngüsüdür.
 
-Ancak önceden gerçekleştirmemiz gereken birçok işlem vardır.
+Ancak modeli eğitmeye geçmeden önce gerçekleştirmemiz gereken bir kaç işlem daha vardır.
 
 # Değerlendirme Metriklerini Belirleme
 
