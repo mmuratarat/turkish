@@ -26,3 +26,98 @@ Transformer-tabanlı modeller genellikle görevden bağımsız gövde (task-inde
 Ancak, ince ayar, sinir ağının tamamında veya yalnızca katmanlarının bir alt kümesinde yapılabilir; bu durumda, ince ayarı yapılmayan katmanlar "dondurulur (frozen)" (geri yayılım (backpropagation) adımı sırasında güncellenmez).
 
 İşte, bu tutorial'da özel bir veri kümesi (a custom dataset) için önceden eğitilmiş bir modele ince ayar yapacaksınız.
+
+İlk olarak bu tutorial'da kullanaca
+
+# Google Colab'e Giriş
+
+Burada gerçekleştireceğiniz analizleri GPU'ya sahip bir makinede yapmanızda fayda var. Çünkü kullanılacak ViT modeli ve veri kümesi oldukça büyük. Bu nedenle modele ince-ayar çekmek oldukça zaman alabilir. 
+
+İlk olarak bu tutorial'da kullanacağınız tüm Python kütüphanelerini aşağıdaki şekilde içe aktaralım:
+
+```python
+from google.colab import drive
+import os
+import copy
+import numpy as np
+import pandas as pd
+pd.set_option('display.max_columns', None)
+import torch
+from datasets import load_dataset, Image, load_from_disk
+from transformers import (ViTFeatureExtractor,
+                          ViTForImageClassification,
+                          TrainingArguments,
+                          TrainerCallback,
+                          Trainer,
+                          AutoModelForImageClassification,
+                          AutoFeatureExtractor)
+import evaluate
+from huggingface_hub import notebook_login, create_repo
+```
+
+Tabii ki, bu kütüphaneler kişisel bilgisayarınızda veya Colab ortamınızda yoksa, öncelikle bunları yüklemeniz (install) etmeniz gerekmektedir:
+
+```python
+!pip3 install datasets
+!pip install transformers
+!pip install transformers[torch]
+!pip install accelerate -U
+!pip install evaluate
+!pip install scikit-learn
+```
+
+Gerekli kütüphaneler yüklendikten ve bu kütüphaneler python ortamına içeri aktarıldıktan sonra, yapmanız gereken işlem Depolama (Storage) alanını ayarlamaktır.
+
+Google Colab'in bir faydası, Google Drive'ınıza bağlanmanıza olanak sağlamasıdr. Böylelikle, elinizdeki veri Drive'da barınırken, kodlarınızı GPU destekli bir Jupyter Not Defterinde çalıştırabilirsiniz.
+
+Öncelikle Google Drive'ı Colab'a bağlayalım. Google Drive'ınızın tamamını Colab'a bağlamak için `google.colab` kütüphanesindeki `drive` modülünü kullanabilirsiniz:
+
+```python
+drive.mount('/content/gdrive')
+```
+
+Google Hesabınıza erişim izni verdikten sonra Drive'a bağlanabilirsiniz.
+
+Drive bağlandıktan sonra `"Mounted at /content/gdrive"` mesajını alırsınız ve dosya gezgini bölmesinden Drive'ınızın içeriğine göz atabilirsiniz.
+
+Şimdi, Google Colab'in çalışma dizinini (working directory) kontrol edelim:
+
+```python
+!pwd
+# /content
+```
+
+Daha sonra Python'un yerleşik (built-in) kütüphanelerinden olan `os` kütüphanesini kullanarak `project` isimli klasörü Drive'da yaratalım.
+
+```python
+path = "./gdrive/MyDrive/project"
+os.mkdir(path)
+```
+
+Artık `project` klasörüne yarattığımıza göre, geçerli çalışma dizinini (current working directory) bu klasör olarak değiştirelim:
+
+```python
+os.chdir('./gdrive/MyDrive/project')
+```
+
+Artık gerçekleştireceğimiz tüm işlemler bu dizin altında yapılacak, kaydedilecek tüm dosyalar bu dizin altında kaydedilecektir.
+
+# Veri Kümesi
+
+Bilgisayar kullanımıyla hastalıkların otomatik tespiti önemli ancak henüz keşfedilmemiş bir araştırma alanıdır. Bu tür yenilikler tüm dünyada tıbbi uygulamaları iyileştirebilir ve sağlık bakım sistemlerini iyileştirebilir. Bununla birlikte, tıbbi görüntüleri içeren veri kümeleri neredeyse hiç mevcut değildir, bu da yaklaşımların tekrarlanabilirliğini ve karşılaştırılmasını neredeyse imkansız hale getirmektedir.
+
+Bu nedenle burada gastrointestinal (GI) sistemin içerisinden görüntüler içeren bir veri kümesi olan Kvasir'in ikinci versiyonunu (`kvasir-dataset-v2`) kullanıyoruz.
+
+Kvasir veri kümesi yaklaşık 2.3GB büyüklüğündedir ve ücretsiz bir şekilde indirebilir: https://datasets.simula.no/kvasir/
+
+Veri kümesi, her biri 1.000 görüntüye sahip olan 8 sınıftan, yani toplam 8.000 görüntüden oluşmaktadır.
+
+![](https://github.com/mmuratarat/turkish/blob/master/_posts/images/kvasir_v2_examples.png?raw=true)
+
+Bu sınıflar patolojik bulgular (özofajit, polipler, ülseratif kolit), anatomik işaretler (z-çizgisi, pilor, çekum) ve normal ve düzenli bulgular (normal kolon mukozası, dışkı) ve polip çıkarma vakalarından (boyalı ve kaldırılmış polipler, boyalı rezeksiyon kenarları) oluşmaktadır
+
+JPEG görüntüleri ait oldukları sınıfa göre adlandırılan ayrı klasörlerde saklanmaktadır.
+
+Veri seti, $720 \times 576$'dan $1920 \times 1072$ piksele kadar farklı çözünürlükteki görüntülerden oluşur ve içeriğe göre adlandırılmış ayrı klasörlerde sıralanacak şekilde düzenlenmiştir.
+
+Şimdi yukarıdaki websayfasında bulunan ve görüntüleri içeren `kvasir-dataset-v2.zip` isimli zip dosyasını indirelim:
