@@ -1131,3 +1131,19 @@ predicted_class
 ```
 
 Doğru cevap!
+
+# Inference API'sını Kullanarak Görüntünün Sınıf Tahmini
+
+Bilgisayarınızda yerel olarak bir görüntünün sınıfını nasıl tahmin edebileceğinizi yukarıda gördük. Buna ek olarak, Hugging Face'in sağladığı bir kolaylık olan Inference API'sını da kullanabilirsiniz. Tarayıcınız (browser) üzerinden istediğiniz gastrointestinal sistemin içerisinden alınan bir görüntünün tahmini elde edebilirsiniz:
+
+![](https://github.com/mmuratarat/turkish/blob/master/_posts/images/ksavir_vit_hostedinferenceAP_1.png?raw=true)
+
+Tek yapmanız gereken bilgisayarınızdan görüntüyü upload etmek. Şimdi `polyps` sınıfından bir görüntüyü (görüntüyü [buradan](https://github.com/mmuratarat/turkish/blob/master/_posts/images/example_polyps_image.jpg?raw=true) indirebilirsiniz) buraya gönderelim:
+
+![](https://github.com/mmuratarat/turkish/blob/master/_posts/images/ksavir_vit_hostedinferenceAP_2.png?raw=true)
+
+![](https://github.com/mmuratarat/turkish/blob/master/_posts/images/ksavir_vit_hostedinferenceAP_3.png?raw=true)
+
+![](https://github.com/mmuratarat/turkish/blob/master/_posts/images/ksavir_vit_hostedinferenceAP_4.png?raw=true)
+
+Kolaylıkla anlaşılacağı üzere, model, %94.1 olasılıkla bu görüntünün `polyps` sınıfına ait olduğunu tahmin etmiştir!
