@@ -648,11 +648,11 @@ def compute_metrics(eval_pred):
 Dikkat edilirse, `compute` fonksiyonu tahminleri (predictions) ve etiketleri (labels) beklemektedir.
 
 # Eğitim Argümanlarını belirleme
-Yapmamız gereken diğer bir işlem, Eğiticinin (`Trainer`'ın) ihtiyaç duyduğu  argümanları tanımladığımız `TrainingArguments` isimli konfigürasyonu yazmaktır.
+Yapmamız gereken diğer bir işlem, Eğiticinin (`Trainer`'ın) ihtiyaç duyduğu  argümanları tanımladığımız `TrainingArguments` isimli konfigürasyonları yazmaktır.
 
-Bunlar  eğitim parametrelerini (training parameters), kaydetme ayarlarını (saving settings) ve günlüğe kaydetme ayarlarını (logging settings) içerir:
+Bu konfigürasyonlar, eğitim parametrelerini (training parameters), kaydetme ayarlarını (saving settings) ve günlüğe kaydetme ayarlarını (logging settings) içerir:
 
-```
+```python
 # Modelin kaydedileceği dizin
 model_dir = "./model"
 
@@ -696,3 +696,52 @@ training_args = TrainingArguments(
     push_to_hub=False,
     metric_for_best_model = main_metric_for_evaluation)
 ```
+
+Ek, olarak Google Colab üzerinde GPU ile çalıştığımızdan, aşağıdaki gibi tanımlama gerçekleştirdikten sonra model operasyonlarını GPU üzerine yerleştirebiliriz:
+
+```python
+# device, model eğitiminin GPU veya CPU üzerinde gerçekleşip gerçekleşmeyeceğine karar verecek
+device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+# device(type='cuda')
+
+model.to(device)
+```
+
+Daha sonra, görüntüleri yığın büyüklüğü (batch size) kadar yığınlayacak bir `collate` (türkçesi harmanlama'dır) fonksiyonu yazmanız gerekmektedir. `collate` fonksiyonu  çok sayıda veriyle uğraşırken kullanışlıdır. Modele besleyeceğimiz görüntülerden oluşan yığınlar (batches), sözlüklerden oluşan listelerdir, dolayısıyla `collate` yığınlaştırılmış tensörler oluşturmamıza yardımcı olacaktır.
+
+```python
+def collate_fn(batch):
+    return {
+        'pixel_values': torch.tensor([x['pixel_values'] for x in batch]),
+        'labels': torch.tensor([x['label'] for x in batch])
+    }
+```
+
+Artık hazırız! Şimdi bir `Trainer` örneği (instance) yaratalım:
+
+```python
+# Bir Trainer örneği (instance) yarat
+trainer = Trainer(
+    model=model,
+    args=training_args,
+    data_collator=collate_fn,
+    compute_metrics=compute_metrics,
+    train_dataset=prepared_train,
+    eval_dataset=prepared_test,
+    tokenizer=feature_extractor,
+)
+```
+
+Burada, elimizdeki modeli, oluşturduğumuz model argümanlarını, `collate`  fonksiyonunu, ön-işlemeden geçirilmiş eğitim ve test kümelerini ve modele ait öznitelik çıkarıcıyı (feature extractor) kullanırız. 
+
+...ve modeli eğitmeye hazırız:
+
+```python
+trainer.train()
+```
+
+![](https://github.com/mmuratarat/turkish/blob/master/_posts/images/ksavir_vit_training_res.png?raw=true)
+
+Modelin 5 epoch boyunca eğitilmesi neredeyse 1 saat 51 dakika sürmüştür. Eğitim sonunda, ince-ayar çekilmiş modelin test kümesi üzerindeki performansını yukarıdaki ekran görüntüsünde görebilirsiniz. Oldukça iyi bir sonuç! :)
+
+
