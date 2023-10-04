@@ -864,7 +864,7 @@ trainer.save_model(model_dir)
 
 Yukarıdaki kod satırı hem modeli hem de modelle kullanılan öznitelik çıkarıcıyı (feature extractor) model dizinine kayıt edecektir.
 
-Ancak, sadece öznitelik çıkarıyıcı kaydetmek isterseniz `feature_extractor.save_pretrained(model_dir)` kodunu kullanabilirsiniz. Bu kod sadece `preprocessor_config.json` dosyasını kaydedecektir.
+Ancak, sadece öznitelik çıkarıcıyı kaydetmek isterseniz `feature_extractor.save_pretrained(model_dir)` kodunu kullanabilirsiniz. Bu kod sadece `preprocessor_config.json` dosyasını kaydedecektir.
 
 Sonunda ince ayar çekilmiş ViT modeline sahibiz! WOHOO!
 
