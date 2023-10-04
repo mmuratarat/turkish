@@ -884,7 +884,7 @@ trainer.save_metrics("eval", metrics)
 
 Elde ettiğimiz modelin doğruluğu oldukça iyi.
 
-İhtiyaç halinde test kümesinin ince ayar çekilmiş model tarafından tahmin edilen etiketleri de elde edilebiliriz:
+İhtiyaç halinde test kümesinin ince-ayar çekilmiş model tarafından tahmin edilen etiketleri de elde edilebilir:
 
 ```python
 y_test_predict = trainer.predict(prepared_test)
