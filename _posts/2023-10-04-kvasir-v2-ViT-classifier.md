@@ -471,4 +471,129 @@ prepared_test = load_from_disk("./prepared_datasets/test")
 
 Elimizdeki görüntüleri kullanacağımız modelin istediği uygun formata biçimlendirdikten sonra, bir sonraki adım ViT'yi indirip başlatmaktır (initialize).
 
-Burada da, öznitelik çıkarıcıyı (feature extractor) yüklemek (load) için kullandığımız `from_pretrained` yöntemiyle Hugging Face Transformers'ı kullanıyoruz.
+Burada da, öznitelik çıkarıcıyı (feature extractor) yüklemek (load) için kullandığımız `from_pretrained` yöntemiyle Hugging Face'in Transformers kütüphanesini kullanıyoruz.
+
+```python
+num_classes = prepared_train.features["label"].num_classes
+# 8
+
+model = ViTForImageClassification.from_pretrained(model_name,
+                                                  num_labels = num_classes,
+                                                  label2id   = label2id,
+                                                  id2label   = id2label)
+
+#Some weights of ViTForImageClassification were not initialized from the model checkpoint at google/vit-base-patch16-224-in21k and are newly initialized: ['classifier.weight', 'classifier.bias']
+#You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+```
+
+Sınıflandırma için ViT'ye ince ayar çektiğimiz için `ViTForImageClassification` sınıfını kullanıyoruz. Varsayılan olarak bu, yalnızca iki çıktıya sahip bir sınıflandırma başı (classification head) ile modeli başlatır.
+
+Elimizdeki özel veri kümesinde 8 farklı sınıf var, dolayısıyla 8 çıktı ile modeli başlatmak istediğimizi belirtmek isteriz. Bunu, `num_labels` argümanıyla gerçekleştiririz.
+
+Model mimarisinden anlaşılacağı üzere, ViT model 12 adet kodlayıcıdan (encoder) oluşmaktadır. Son katman 8 gizli birime (hidden unit, yani nöron) sahip sınıflandırma katmanıdır.
+
+```python
+model
+# ViTForImageClassification(
+#   (vit): ViTModel(
+#     (embeddings): ViTEmbeddings(
+#       (patch_embeddings): ViTPatchEmbeddings(
+#         (projection): Conv2d(3, 768, kernel_size=(16, 16), stride=(16, 16))
+#       )
+#       (dropout): Dropout(p=0.0, inplace=False)
+#     )
+#     (encoder): ViTEncoder(
+#       (layer): ModuleList(
+#         (0-11): 12 x ViTLayer(
+#           (attention): ViTAttention(
+#             (attention): ViTSelfAttention(
+#               (query): Linear(in_features=768, out_features=768, bias=True)
+#               (key): Linear(in_features=768, out_features=768, bias=True)
+#               (value): Linear(in_features=768, out_features=768, bias=True)
+#               (dropout): Dropout(p=0.0, inplace=False)
+#             )
+#             (output): ViTSelfOutput(
+#               (dense): Linear(in_features=768, out_features=768, bias=True)
+#               (dropout): Dropout(p=0.0, inplace=False)
+#             )
+#           )
+#           (intermediate): ViTIntermediate(
+#             (dense): Linear(in_features=768, out_features=3072, bias=True)
+#             (intermediate_act_fn): GELUActivation()
+#           )
+#           (output): ViTOutput(
+#             (dense): Linear(in_features=3072, out_features=768, bias=True)
+#             (dropout): Dropout(p=0.0, inplace=False)
+#           )
+#           (layernorm_before): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+#           (layernorm_after): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+#         )
+#       )
+#     )
+#     (layernorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+#   )
+#   (classifier): Linear(in_features=768, out_features=8, bias=True)
+# )
+```
+
+Hazırladığınız modelin konfigurasyonuna da kolaylıkla erişebilirsiniz:
+
+```python
+model.config
+# ViTConfig {
+#   "_name_or_path": "google/vit-base-patch16-224-in21k",
+#   "architectures": [
+#     "ViTModel"
+#   ],
+#   "attention_probs_dropout_prob": 0.0,
+#   "encoder_stride": 16,
+#   "hidden_act": "gelu",
+#   "hidden_dropout_prob": 0.0,
+#   "hidden_size": 768,
+#   "id2label": {
+#     "0": "dyed-lifted-polyps",
+#     "1": "dyed-resection-margins",
+#     "2": "esophagitis",
+#     "3": "normal-cecum",
+#     "4": "normal-pylorus",
+#     "5": "normal-z-line",
+#     "6": "polyps",
+#     "7": "ulcerative-colitis"
+#   },
+#   "image_size": 224,
+#   "initializer_range": 0.02,
+#   "intermediate_size": 3072,
+#   "label2id": {
+#     "dyed-lifted-polyps": "0",
+#     "dyed-resection-margins": "1",
+#     "esophagitis": "2",
+#     "normal-cecum": "3",
+#     "normal-pylorus": "4",
+#     "normal-z-line": "5",
+#     "polyps": "6",
+#     "ulcerative-colitis": "7"
+#   },
+#   "layer_norm_eps": 1e-12,
+#   "model_type": "vit",
+#   "num_attention_heads": 12,
+#   "num_channels": 3,
+#   "num_hidden_layers": 12,
+#   "patch_size": 16,
+#   "qkv_bias": true,
+#   "transformers_version": "4.34.0"
+# }
+```
+
+Artık ince ayara geçmeye hazırız.
+
+# Modele İnce-Ayar Çekme
+
+HuggingFace'in `Trainer` fonksiyonunu kullanarak ince ayar çekeceğiz. `Trainer`, transformer modelleri için PyTorch'ta implement edilmiş, soyut bir eğitim ve değerlendirme döngüsüdür.
+
+Ancak önceden gerçekleştirmemiz gereken birçok işlem vardır.
+
+# Değerlendirme Metriklerini Belirleme
+
+İlk olarak modeli değerlendirirken kullanacağımız metrikleri tanımlamamız gerekmektedir. Burada accuracy, f1-skoru, recall ve precision metriklerini tercih ediyoruz ve `evaluate` kütühanesini kullanarak `compute_metrics` isminde bir fonksiyon yazıyoruz - https://huggingface.co/docs/evaluate/index
+
+Hugging Face'in `evaluate` kütüphanesi 100'den fazla değerlendirme metriği içermektedir:
