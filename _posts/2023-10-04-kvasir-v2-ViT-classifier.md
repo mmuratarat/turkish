@@ -597,3 +597,102 @@ Ancak önceden gerçekleştirmemiz gereken birçok işlem vardır.
 İlk olarak modeli değerlendirirken kullanacağımız metrikleri tanımlamamız gerekmektedir. Burada accuracy, f1-skoru, recall ve precision metriklerini tercih ediyoruz ve `evaluate` kütühanesini kullanarak `compute_metrics` isminde bir fonksiyon yazıyoruz - https://huggingface.co/docs/evaluate/index
 
 Hugging Face'in `evaluate` kütüphanesi 100'den fazla değerlendirme metriği içermektedir:
+
+```python
+import evaluate
+# Değerlendir metriklerinin sayısı
+print(f"Hugging Face'te {len(evaluate.list_evaluation_modules())} adet değerlendirme metriği vardır.\n")
+# Hugging Face'te 141 adet değerlendirme metriği vardır.
+```
+
+Bu metriklerin ne olduğu şu şekilde görülebilir:
+
+```python
+# Tüm değerlendirme metriklerini listele
+evaluate.list_evaluation_modules()
+# ['precision',
+#  'code_eval',
+#  'roc_auc',
+#  'cuad',
+#  'xnli',
+#  'rouge',
+#  'pearsonr'
+#   ...
+#  'ybelkada/toxicity',
+#  'ronaldahmed/ccl_win',
+#  'meg/perplexity',
+#  'cakiki/tokens_per_byte',
+#  'lsy641/distinct']
+```
+
+Bu tutorial kapsamında Doğruluk (Accuracy), F1 Skoru (F1 Score) Kesinlik (Precision) ve Duyarlılık (Recall) metriklerini kullanacağız. Bu metrikleri model eğitimi esnasında kullanabilmek için, önce `evaluate` kütüphanesindeki `load` fonksiyonunu kullanarak bu metrikleri yüklemeli (load) ve daha sonra yine `evaluate` kütüphanesindeki `compute` fonksiyonu ile hesaplamaları gerçekleştirmek üzere özel bir fonksiyon yaratmalıyız:
+
+```python
+accuracy_metric = evaluate.load("accuracy")
+f1_metric = evaluate.load("f1")
+precision_metric = evaluate.load("precision")
+recall_metric = evaluate.load("recall")
+
+def compute_metrics(eval_pred):
+    logits, labels = eval_pred
+    preds = np.argmax(logits, axis = -1)
+
+    results = {}
+    results.update(accuracy_metric.compute(predictions=preds, references = labels))
+    results.update(f1_metric.compute(predictions=preds, references = labels, average="weighted"))
+    results.update(precision_metric.compute(predictions=preds, references = labels, average="weighted"))
+    results.update(recall_metric.compute(predictions=preds, references = labels, average="weighted"))
+    return results
+```
+
+Dikkat edilirse, `compute` fonksiyonu tahminleri (predictions) ve etiketleri (labels) beklemektedir.
+
+# Eğitim Argümanlarını belirleme
+Yapmamız gereken diğer bir işlem, Eğiticinin (`Trainer`'ın) ihtiyaç duyduğu  argümanları tanımladığımız `TrainingArguments` isimli konfigürasyonu yazmaktır.
+
+Bunlar  eğitim parametrelerini (training parameters), kaydetme ayarlarını (saving settings) ve günlüğe kaydetme ayarlarını (logging settings) içerir:
+
+```
+# Modelin kaydedileceği dizin
+model_dir = "./model"
+
+# Modelin log'larının kaydedileceği dizin
+output_data_dir = "./outputs"
+
+# Eğitim için gerçekleştirilecek toplam epoch sayısı
+num_train_epochs = 5
+
+# Eğitim için GPU/TPU çekirdeği/CPU başına yığın büyüklüğü (batch size)
+per_device_train_batch_size = 16
+
+# Değerlendirme için GPU/TPU çekirdeği/CPU başına yığın büyüklüğü (batch size)
+per_device_eval_batch_size = 32
+
+# AdamW optimize edici için başlangıç ​​öğrenme oranı
+learning_rate = 2e-5
+
+# 0'dan öğrenme_oranına (learning_rate) kadar doğrusal bir ısınma için kullanılan adım sayısı
+warmup_steps = 500
+
+# AdamW optimize edicideki tüm yan parametreleri ve LayerNorm ağırlıkları hariç tüm katmanlara uygulanacak ağırlık azalması (weight decay)
+weight_decay = 0.01
+
+main_metric_for_evaluation = "accuracy"
+
+training_args = TrainingArguments(
+    output_dir = model_dir,
+    num_train_epochs = num_train_epochs,
+    per_device_train_batch_size = per_device_train_batch_size,
+    per_device_eval_batch_size = per_device_eval_batch_size,
+    warmup_steps = warmup_steps,
+    weight_decay = weight_decay,
+    evaluation_strategy="epoch",
+    save_strategy = "epoch",
+    logging_strategy = "epoch",
+    logging_dir = f"{output_data_dir}/logs",
+    learning_rate = float(learning_rate),
+    load_best_model_at_end = True,
+    remove_unused_columns=False,
+    push_to_hub=False,
+    metric_for_best_model = main_metric_for_evaluation)
+```
