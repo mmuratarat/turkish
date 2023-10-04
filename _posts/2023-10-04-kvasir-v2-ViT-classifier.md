@@ -17,7 +17,7 @@ Aynı mantık derin öğrenme (deep learning) için de geçerlidir. Transfer ö�
 
 Önceden eğitilmiş bir model kullanmanın önemli faydaları vardır. Hesaplama maliyetlerini ve karbon ayak izinizi azaltır ve sıfırdan eğitim almanıza gerek kalmadan son teknoloji ürünü modelleri kullanmanıza olanak tanır
 
-🤗 Hugging Face Transformers, çok çeşitli görevler için (örneğin, doğal dil işleme ve bilgisayarlı görü) önceden eğitilmiş binlerce modele erişim sağlar (https://huggingface.co/models). Önceden eğitilmiş bir model kullandığınızda, onu görevinize özel bir veri kümesi üzerinde eğitirsiniz. Bu, inanılmaz derecede güçlü bir eğitim tekniği olan ince-ayar (fine-tuning) olarak bilinir.
+🤗 Hugging Face'in `transformers` kütüphanesi çok çeşitli görevler için (örneğin, doğal dil işleme ve bilgisayarlı görü) önceden eğitilmiş binlerce modele erişim sağlar (https://huggingface.co/models). Önceden eğitilmiş bir model kullandığınızda, onu görevinize özel bir veri kümesi üzerinde eğitirsiniz. Bu, inanılmaz derecede güçlü bir eğitim tekniği olan ince-ayar (fine-tuning) olarak bilinir.
 
 Transformer-tabanlı modeller genellikle görevden bağımsız gövde (task-independent body) ve göreve özel kafa (task-specific head) olarak ikiye ayrılır. Genellikle görevden bağımsız kısım, Hugging Face tarafından sağlanan ağırlıklara (weights) sahiptir. Bu kısımdaki ağırlıklar dondurulmuştur ve herhangi bir güncellemeye (updates) sahip olmazlar. Göreve özel kafa'da, elinizdeki görev için ihtiyacınız kadar nöron oluşturulur ve sadece bu katmanda eğitim özel veri kümeniz kullanılarak gerçekleştirilir.
 
@@ -336,7 +336,7 @@ ViT modelini kullanarak sınıflandırma gerçekleştirmeden önce Öznitelik Ç
 
 Öznitelik çıkarsama, elimizdeki görüntüleri normalleştirmek (normalizing), yeniden boyutlandırmak (resizing) ve yeniden ölçeklendirmek (rescaling) üzere, görüntülerin "piksel değerlerinin" tensörlerine ön-işleme gerçekleştirmek için kullanılır. 
 
-ViT modeline ait Feature Extractor'ı Hugging Face Transformers kütüphanesinden şu şekilde başlatıyoruz:
+ViT modeline ait Feature Extractor'ı Hugging Face `transformers` kütüphanesinden şu şekilde başlatıyoruz:
 
 ```python
 # modeli içe aktar
@@ -471,7 +471,7 @@ prepared_test = load_from_disk("./prepared_datasets/test")
 
 Elimizdeki görüntüleri kullanacağımız modelin istediği uygun formata biçimlendirdikten sonra, bir sonraki adım ViT'yi indirip başlatmaktır (initialize).
 
-Burada da, öznitelik çıkarıcıyı (feature extractor) yüklemek (load) için kullandığımız `from_pretrained` yöntemiyle Hugging Face'in Transformers kütüphanesini kullanıyoruz.
+Burada da, öznitelik çıkarıcıyı (feature extractor) yüklemek (load) için kullandığımız `from_pretrained` yöntemiyle Hugging Face'in `transformers` kütüphanesini kullanıyoruz.
 
 ```python
 num_classes = prepared_train.features["label"].num_classes
@@ -853,3 +853,281 @@ print(precision_metric.compute(predictions=y_train_pred_labels, references=y_tra
 # Compute recall metric
 print(recall_metric.compute(predictions=y_train_pred_labels, references=y_train_actual_labels, average="weighted"))
 ```
+
+# En İyi Modeli Kaydetme
+
+Artık sonuçlarımızdan memnun olduğumuza göre en iyi modeli kaydedebiliriz.
+
+```
+trainer.save_model(model_dir)
+```
+
+Yukarıdaki kod satırı hem modeli hem de modelle kullanılan öznitelik çıkarıcıyı (feature extractor) model dizinine kayıt edecektir.
+
+Ancak, sadece öznitelik çıkarıyıcı kaydetmek isterseniz `feature_extractor.save_pretrained(model_dir)` kodunu kullanabilirsiniz. Bu kod sadece `preprocessor_config.json` dosyasını kaydedecektir.
+
+Sonunda ince ayar çekilmiş ViT modeline sahibiz! WOHOO!
+
+# Modeli Test Kümesi Üzerinde Değerlendirme
+
+Yukarıdaki adımlara benzer şekilde şimdi test kümesindeki performansını doğrulamamız ve değerlendirme sonuçlarını (evaluation results) kaydetmemiz gerekmektedir.
+
+```python
+metrics = trainer.evaluate(prepared_test)
+trainer.log_metrics("eval", metrics)
+trainer.save_metrics("eval", metrics)
+```
+
+![](https://github.com/mmuratarat/turkish/blob/master/_posts/images/ksavir_vit_test_evaluation_res.png?raw=true)
+
+`save_metrics` fonksiyonu test kümesi üzerinde değerlendirilen modelin sonuçlarını `model_dir` dizininin (bizim örneğimizde `./model` klasörü) altında `eval_results.json` olarak kaydedecektir.
+
+Elde ettiğimiz modelin doğruluğu oldukça iyi.
+
+İhtiyaç halinde test kümesinin ince ayar çekilmiş model tarafından tahmin edilen etiketleri de elde edilebiliriz:
+
+```python
+y_test_predict = trainer.predict(prepared_test)
+y_test_predict
+# PredictionOutput(predictions=array([[-0.5574911 , -0.55256057, -0.44084704, ..., -0.6514604 ,
+#         -0.587717  ,  4.1993985 ],
+#        [ 4.004751  , -0.9422177 , -0.65568745, ..., -0.59566027,
+#         -0.17343669, -0.4465061 ],
+#        [-0.87891173, -1.0014176 ,  2.749767  , ...,  2.7222385 ,
+#         -1.0784245 , -0.91497976],
+#        ...,
+#        [-0.6408027 , -0.6666713 , -0.70249856, ..., -0.46141627,
+#         -0.4458719 , -0.84069437],
+#        [-0.6629647 , -0.72915053, -0.6185216 , ..., -0.6192481 ,
+#         -0.17926458, -0.71570873],
+#        [-0.6530872 , -0.67923456, -0.50120807, ..., -0.61496264,
+#         -0.73776233, -0.31934953]], dtype=float32), label_ids=array([7, 0, 5, ..., 4, 3, 3]), metrics={'test_loss': 0.23830144107341766, 'test_accuracy': 0.9391666666666667, 'test_f1': 0.9390956371766551, 'test_precision': 0.939918876802155, 'test_recall': 0.9391666666666667, 'test_runtime': 313.2723, 'test_samples_per_second': 3.831, 'test_steps_per_second': 0.121})
+```
+
+Transfer öğrenme görüntü sınıflandırma modeli için tahmin edilen logitler, `predictions` metodu kullanılarak çıkarılabilir:
+
+```python
+# Tahmin edilen logitler
+y_test_logits = y_test_predict.predictions
+
+# İlk 5 görüntüye ait model çıktıları (logitler)
+y_test_logits[:5]
+# array([[-0.5574911 , -0.55256057, -0.44084704, -0.43077588, -0.69217765,
+#         -0.6514604 , -0.587717  ,  4.1993985 ],
+#        [ 4.004751  , -0.9422177 , -0.65568745, -0.64027154, -0.7201288 ,
+#         -0.59566027, -0.17343669, -0.4465061 ],
+#        [-0.87891173, -1.0014176 ,  2.749767  , -0.8135734 , -1.0272567 ,
+#          2.7222385 , -1.0784245 , -0.91497976],
+#        [-0.44040072, -0.60538346, -0.6533643 , -0.5478527 , -0.48782963,
+#         -0.50029   ,  4.1607065 , -0.6397783 ],
+#        [-0.66559803, -0.6086572 , -0.5033142 , -0.36208436, -0.53697765,
+#         -0.7260709 , -0.3696426 ,  4.2133403 ]], dtype=float32)
+```
+
+Tek bir görüntü için elde edilen tahminin sekiz sütundan oluştuğunu görüyoruz. İlk sütun, etiket 0 için tahmin edilen logittir ve ikinci sütun, etiket 1 için tahmin edilen logittir ve bu böyle devam etmektedir. logit değerlerinin toplamı 1'e eşit değildir çünkü bu değerler normalleştirilmemiş olasılıklardır (diğer bir deyişle, model çıktısıdır). Çok-sınıflı sınıflandırma (multi-class classification) yaptığımız için Softmax fonksiyonunu kullanarak bu değerleri normalleştirebiliriz:
+
+```python
+y_test_probabilities = torch.softmax(torch.tensor(y_test_logits), dim = 1)
+```
+
+Softmax'ı uyguladıktan sonra, her görüntü için tahmin edilen olasılıkların toplamının 1'e eşit olduğunu görebiliriz:
+
+```python
+# İlk 5 görüntüye ait normalleştirilmiş olasılıklar
+y_test_probabilities[:5]
+# tensor([[0.0081, 0.0081, 0.0091, 0.0092, 0.0071, 0.0074, 0.0079, 0.9431],
+#         [0.9328, 0.0066, 0.0088, 0.0090, 0.0083, 0.0094, 0.0143, 0.0109],
+#         [0.0125, 0.0111, 0.4714, 0.0134, 0.0108, 0.4586, 0.0103, 0.0121],
+#         [0.0094, 0.0080, 0.0076, 0.0085, 0.0090, 0.0089, 0.9408, 0.0077],
+#         [0.0072, 0.0076, 0.0084, 0.0097, 0.0082, 0.0067, 0.0096, 0.9426]])
+```
+
+Tahmin edilen etiketleri elde etmek için, her görüntü için etiketlere karşılık gelen maksimum olasılık indeksini döndürmek üzere NumPy kütüphanesinin `argmax` fonksiyonu kullanılır:
+
+```python
+# model tarafından eğitim kümesi üzerinde tahmin edilen etiketler
+y_test_pred_labels = np.argmax(y_test_probabilities, axis=1)
+
+# İlk 5 görüntüye ait tahmin edilen etiketler
+y_test_pred_labels[:5]
+# tensor([7, 0, 2, 6, 7])
+```
+
+Gerçek etiketler `y_test_predict.label_ids` kullanılarak çıkarılabilir.
+
+```python
+# Asıl Etiketler
+y_test_actual_labels = y_test_predict.label_ids
+
+# Eğitim kümesindeki ilk 5 görüntüye ait gerçek etiketler
+y_test_actual_labels[:5]
+# array([7, 0, 5, 6, 7])
+```
+
+Artık gerçek etiketleri (actual labels), eğitim kümesi üzerinde model tarafından tahmin edilen etiketler ile karşılaştırabiliriz.
+
+Daha fazla model performans metriği hesaplamak için ilgilenilen metrikleri yüklemek amacıyla `evaluate.load`'u kullanabiliriz. Bu metrikleri zaten yukarıdaki hücrelerin birinde yüklemiştik:
+
+```python
+# Compute accuracy metric
+print(accuracy_metric.compute(predictions=y_test_pred_labels, references=y_test_actual_labels))
+
+# Compute f1 metric
+print(f1_metric.compute(predictions=y_test_pred_labels, references=y_test_actual_labels, average="weighted"))
+
+# Compute precision metric
+print(precision_metric.compute(predictions=y_test_pred_labels, references=y_test_actual_labels, average="weighted"))
+
+# Compute recall metric
+print(recall_metric.compute(predictions=y_test_pred_labels, references=y_test_actual_labels, average="weighted"))
+
+# {'accuracy': 0.9391666666666667}
+# {'f1': 0.9390956371766551}
+# {'precision': 0.939918876802155}
+# {'recall': 0.9391666666666667}
+```
+
+Kolaylıkla anlaşılacağı üzere elde edilen sonuçlar, `trainer.evaluate(prepared_test)` kod satırının döndürdüğü sonuçlar ile aynıdır!
+
+# Tek Bir Görüntü Üzerinde Modelin Tahmini
+
+Şimdi de rastgele bir örneğe bakalım. Test veri kümemizdeki bir görseli seçip tahmin edilen etiketin doğru olup olmadığını görebiliriz.
+
+```python
+image = test_dataset["image"][0]
+image
+```
+
+![](https://github.com/mmuratarat/turkish/blob/master/_posts/images/ksavirTestOneImage.png?raw=true)
+
+Bu görüntüye ait asıl etiketi (actual label) bulalım:
+
+```python
+# extract the actual label of the first image of the testing dataset
+actual_label = id2label[str(test_dataset["label"][0])]
+actual_label
+# 'ulcerative-colitis'
+```
+
+Görüntünün bir `ulcerative-colitis` sınıfına ait olduğunu görüyoruz. Şimdi modelimizin ne tahmin ettiğini görelim.
+
+Bunun için modelimizi bir daha yüklüyoruz:
+
+```python
+model_finetuned = ViTForImageClassification.from_pretrained(model_dir)
+feature_extractor_finetuned = ViTFeatureExtractor.from_pretrained(model_dir)
+```
+
+Daha sonra orijinal test görüntüsünü eğittiğimiz modele ait öznitelik çıkarıcıdan (feature extractor) geçiriyoruz ve elde edilen tensörü modelimize besliyoruz.
+
+Burada `no_grad`, yalnızca çıkarsama (inference) yaptığımız için gradyan hesaplamasını devre dışı bırakan bir bağlam yöneticisidir (context manager).
+
+```python
+inputs = feature_extractor_finetuned(image, return_tensors="pt")
+
+with torch.no_grad():
+    logits = model_finetuned(**inputs).logits
+
+logits
+# tensor([[-0.5575, -0.5526, -0.4408, -0.4308, -0.6922, -0.6515, -0.5877,  4.1994]])
+```
+
+Elde edilen tensor her 8 sınıfa ait lojit değerleridir.
+
+Logitler üzerinde NumPy kütüphanesinin `argmax` fonksiyonunu çağırdığımızda, en yüksek olasılığa sahip sınıfın indeksini alırsınız:
+
+```python
+predicted_label = logits.argmax(-1).item()
+predicted_label
+# 7
+
+predicted_class = id2label[str(predicted_label)]
+predicted_class
+# 'ulcerative-colitis'
+```
+
+İnce ayar çekilmiş modelin tahmini de `ulcerative-colitis`! Tam da beklediğimiz gibi!
+
+# İnce Ayar Çekilmiş Modeli Hugging Face Hub'a Push'lamak
+
+Modelimizin değerlendirme aşamasını da tamamladıktan sonra başkaları tarafından kullanılmak üzere Hugging Face'in Hub'ına push'layabiliriz!
+
+```python
+notebook_login()
+```
+
+` notebook_login()` fonksiyonunu çalıştırdıktan sonra sizden bir token oluşturmanızı ve bu oluşturduğunuz token'ı ekrana girmenizi isteyecektir:
+
+![](https://github.com/mmuratarat/turkish/blob/master/_posts/images/huggingface_notebook_login.png?raw=true)
+
+Token oluşturmak için https://huggingface.co/settings/tokens sayfasına gidiniz, `New Token` butonuna tıklayınız. Token ismini (`Name`) giriniz. `Role` olarak da `write` seçmeyi unutmayınız. Çünkü daha sonra Hugging Face Hub'da bir repo oluşturacağız ve bu repoya dosyaları ekleyebilmek için yazma izinlerine (write permissions) sahip olmamız gerekmektedir:
+
+![](https://github.com/mmuratarat/turkish/blob/master/_posts/images/image_huggingface_token_creation.png?raw=true)
+
+Token'ı ilgili boşluğa girip `Login` butonuna bastığınız zaman `Login successful` çıktısını aldığınızdan emin olunuz:
+
+![](https://github.com/mmuratarat/turkish/blob/master/_posts/images/huggingface_login_success.png?raw=true)
+
+Notebook üzerinden Hugging Face ortamına giriş yaptıktan sonra, ilk olarak Hub'da bir depo (respository) oluşturmamız gerekmektedir. `create_repo` fonksiyonuna kullanıcı adınızı ve oluşturacağınız deponun ismini girmeniz istenir:
+
+```python
+create_repo("mmuratarat/kvasir-v2-classifier", private=False)
+# RepoUrl('https://huggingface.co/mmuratarat/kvasir-v2-classifier', endpoint='https://huggingface.co', repo_type='model', repo_id='mmuratarat/kvasir-v2-classifier')
+```
+
+Depoyu oluşturduktan sonra artık Kvasir veri kümesi için ince ayar çektiğimiz Visual Transformer modelini Hub'a gönderebiliriz (push'layabiliriz):
+
+```python
+model_finetuned.push_to_hub("mmuratarat/kvasir-v2-classifier")
+feature_extractor_finetuned.push_to_hub("mmuratarat/kvasir-v2-classifier")
+```
+
+Artık modelimizi herkes kolaylıkla kullanabilir.
+
+Modelin sayfasına https://huggingface.co/mmuratarat/kvasir-v2-classifier bağlantısından ulaşabilirsiniz.
+
+**NOT**: Bu yöntem otomatik olarak bir model kartı yaratmaz. Bu nedenle, başkalarının sizin çalışmanızı kolay anlaması için bir model kartı yaratmayı unutmayınız!
+
+# Hugging Face'in Auto Sınıflarını Kullanarak Hub'daki İnce Ayar Çekilmiş Modele Erişmek
+
+Artık Hugging Face'in Auto sınıflarını kullanabiliriz - https://huggingface.co/docs/transformers/v4.33.3/en/model_doc/auto#auto-classes
+
+Çoğu durumda kullanmak istediğiniz mimari, `from_pretrained()` yöntemine sağladığınız önceden eğitilmiş modelin adından (name) veya yolundan (path) tahmin edilebilir.
+
+Auto sınflar bu işi sizin için yapmak için buradalar; böylelikle, adı/yolu verilen önceden-eğitilmiş (pre-trained) ilgili modeli ve bu modelin önceden-eğitilmiş ağırlıklarını (weights), konfigürasyonlarını (config) ve kelime hazinesini (vocabuları) otomatik olarak alırsınız.
+
+`AutoModelForImageClassification` sınıfı ile elde ettiğimiz modeli Hub'dan istediğimiz zaman çekerek çıkarsamalar yapabiliriz. Ancak girdi görüntülerini önce bir öznitelik çıkarıcıdan geçirmemiz gerekmektedir. Bunu ise `AutoFeatureExtractor` sınıfı ile gerçekleştirebiliriz. Sonuçta eğittiğimiz modelde kullanılan öznitelik çıkarıcı (feature extractor) model ile birlikte `preprocessor_config.json` isimli bir JSON dosyasına kaydedildi ve Hub'a gönderildi.
+
+Buraya not düşülmesi gereken bir başka konu ise, modeli eğitirken kullanılan argümanların da bir JSON dosyası olarak kaydedildiğidir. Bu dosya bir konfigurasyon dosyasıdır ve `config.json` ismiyle bir JSON dosyası ile model dizinin altına kaydedilmiş ve Hub'a gönderilmiştir.
+
+```python
+model = AutoModelForImageClassification.from_pretrained("mmuratarat/kvasir-v2-classifier")
+feature_extractor = AutoFeatureExtractor.from_pretrained("mmuratarat/kvasir-v2-classifier")
+```
+
+Test kümesindeki 582. görüntüyü alalım:
+
+```python
+image = test_dataset["image"][582]
+actual_label = id2label[str(test_dataset["label"][582])]
+actual_label
+# 'normal-z-line'
+```
+
+Bu görüntünün gerçek sınıfı `normal-z-line`'dır.
+
+Şimdi indirdiğimiz modelin tahminin elde edelim:
+
+```python
+inputs = feature_extractor(image, return_tensors="pt")
+
+with torch.no_grad():
+    logits = model(**inputs).logits
+
+predicted_label = logits.argmax(-1).item()
+predicted_class = id2label[str(predicted_label)]
+predicted_class
+# 'normal-z-line'
+```
+
+Doğru cevap!
