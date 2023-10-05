@@ -117,13 +117,15 @@ Veri kümesi, her biri 1.000 görüntüye sahip olan 8 sınıftan, yani toplam 8
 
 ![](https://github.com/mmuratarat/turkish/blob/master/_posts/images/kvasir_v2_examples.png?raw=true)
 
-Bu sınıflar **patolojik bulgular** (özofajit, polipler, ülseratif kolit), **anatomik işaretler** (z-çizgisi, pilor, çekum) ve **normal ve düzenli bulgular** (normal kolon mukozası, dışkı) ve **polip çıkarma vakalarından** (boyalı ve kaldırılmış polipler, boyalı rezeksiyon kenarları) oluşmaktadır
+Görüntülerden oluşan bu koleksiyon, üç önemli anatomik işareti ve üç klinik açıdan önemli bulgu halinde sınıflandırılmıştır. Ayrıca endoskopik polip çıkarılmasıyla ilgili iki kategoride görüntü içermektedir.
+
+Anatomik işaretler arasında z-çizgisi (_z-line_), pilor (_pylorus_), çekum(_çecum_) bulunurken patolojik bulgu özofajit (_esophagitis_), polipler (_polyps_), ülseratif kolit (_ulcerative colitis_) içermektedir. Ek olarak, lezyonların çıkarılmasıyla ilgili çeşitli görüntüler de sunulmaktadur; örneğin boyalı ve kaldırılmış polipler (_dyed and lifted polyps_), boyalı rezeksiyon kenarları (_dyed resection margins_).
 
 JPEG görüntüleri ait oldukları sınıfa göre adlandırılan ayrı klasörlerde saklanmaktadır.
 
 Veri seti, $720 \times 576$'dan $1920 \times 1072$ piksele kadar farklı çözünürlükteki görüntülerden oluşur ve içeriğe göre adlandırılmış ayrı klasörlerde saklanacak şekilde düzenlenmiştir.
 
-Şimdi yukarıdaki websayfasında bulunan ve görüntüleri içeren `kvasir-dataset-v2.zip` isimli zip dosyasını indirelim:
+Şimdi yukarıdaki websayfasında bulunan ve görüntüleri içeren `kvasir-dataset-v2.zip` isimli zip dosyasını `wget` komutu ile `project` dizinine indirelim:
 
 ```python
 !wget https://datasets.simula.no/downloads/kvasir/kvasir-dataset-v2.zip
@@ -148,7 +150,7 @@ Veri seti, $720 \times 576$'dan $1920 \times 1072$ piksele kadar farklı çözü
 
 Bu işlemden sonra `project` klasörünün altında `kvasir-dataset-v2` isimli yeni bir klasör oluşacaktır.
 
-zip dosyasıyla işimiz bittiği için yer kaplamaması için silelim:
+zip dosyasıyla işimiz bittiği için yer kaplamaması için `rm` komutu ile silelim:
 
 ```python
 !rm -rf kvasir-dataset-v2.zip
@@ -160,7 +162,7 @@ Daha sonra, `os` kütüphanesini kullanarak, kolaylık olması açısından `kva
 os.rename('kvasir-dataset-v2', 'image_data')
 ```
 
-Son durumda görüntülerden oluşan veri kümesi yapısı şu şekilde görünecektir:
+Son durumda görüntülerden oluşan veri kümesi yapısı (dataset structure) şu şekilde olacaktır:
 
 ```
 image_data/dyed-lifted-polyps/0a7bdce4-ac0d-44ef-93ee-92dfc8fe0b81.jpg
@@ -173,7 +175,7 @@ image_data/ulcerative-colitis/00a436bc-67ee-4a43-b1a7-25130a2d4e72.jpg
 image_data/ulcerative-colitis/cat/0aacb7fa-19fb-4bd6-9a43-3c0a246e7a58.jpg
 ```
 
-Bu özel (custom) veri kümesini HuggingFace ortamına yüklemek için bir veri kümesinin yapısını (structure) ve içeriğini (content) değiştirmek için birçok araç sağlayan Hugging Face'in `datasets`  modülündeki `load_dataset`  fonksiyonunu kullanabilirsiniz. Bu fonksiyon ya `Dataset` ya da `DatasetDict` döndürecektir:
+Bu özel (custom) veri kümesini HuggingFace ortamına yüklemek üzere bir veri kümesinin yapısını (structure) ve içeriğini (content) değiştirmek için birçok araç sağlayan Hugging Face'in `datasets`  modülündeki `load_dataset`  fonksiyonunu kullanabilirsiniz. Bu fonksiyon ya `Dataset` ya da `DatasetDict` döndürecektir:
 
 ```python
 full_dataset = load_dataset("imagefolder", data_dir="./image_data", split="train")
@@ -184,7 +186,7 @@ full_dataset
 # })
 ```
 
-Veri kümesinde 8000 satır olduğunu (çünkü 8000 görüntü var) ve görüntülerin etiketlerinin (`label`) otomatik oluşturulduğunu kolaylıkla görebilirsiniz.
+Veri kümesinde 8,000 görüntü olduğunu ve görüntülerin etiketlerinin (`label`) otomatik oluşturulduğunu kolaylıkla görebilirsiniz.
 
 ```python
 full_dataset.features
@@ -210,16 +212,16 @@ full_dataset[0]
 
 Görüldüğü üzere, etiketlere otomatik olarak tamsayı atanmıştır. Burada `0` tamsayısına sahip etiketin ismi `dyed-lifted-polyps`'dır.
 
+```python
+full_dataset[0]['label'], labels.names[full_dataset[0]['label']]
+# (0, 'dyed-lifted-polyps')
+```
+
 Bu görüntününün moduna ve etiketine de kolaylıkla erişilebilir:
 
 ```python
 full_dataset[0]['image'].mode
 # 'RGB
-```
-
-```python
-full_dataset[0]['label'], labels.names[full_dataset[0]['label']]
-# (0, 'dyed-lifted-polyps')
 ```
 
 Şimdi etiketler ve bu etiketlere ait id'leri (numaraları) içerisinde tutan iki sözlük (dictionary) oluşturalım:
@@ -259,7 +261,7 @@ Burada görüntü sınıflandırma (image classification) görevini gerçekleşt
 
 Görüntü sınıflandırma için transfer öğrenmenin arkasındaki sezgi, eğer bir model yeterince geniş ve genel bir veri kümesi üzerinde eğitilirse, bu model etkili bir şekilde görsel dünyanın genel bir modeli olarak hizmet edebilir. Daha sonra büyük bir modeli büyük bir veri kümesi üzerinde eğiterek sıfırdan başlamanıza gerek kalmadan bu öğrenilen özellik haritalarından (feature maps) yararlanabilirsiniz.
 
-Birçok görevde bu yaklaşım, hedeflenen verileri kullanarak bir modeli sıfırdan eğitmekten daha iyi sonuçlar vermiştir.
+Birçok görevde kullanabileceğiniz bu yaklaşım, hedeflenen verileri kullanarak bir modeli sıfırdan eğitmekten daha iyi sonuçlar vermektedir.
 
 Artık ihtiyaçlarımıza uyacak şekilde ince ayar yapacağımız temel modelimizi seçebiliriz.
 
@@ -271,7 +273,7 @@ ViT, "An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale
 * ViT-large: 24 katmana, 1024 gizli boyuta ve toplam 307M parametreye sahiptir.
 * ViT-huge: 32 katmanı, 1280 gizli boyutu ve toplam 632M parametresi vardır.
 
-![](https://github.com/mmuratarat/turkish/blob/master/_posts/images/Screenshot%202023-10-04%20at%205.17.43%20PM.png?raw=true)
+![](https://github.com/mmuratarat/turkish/blob/master/_posts/images/vit_architecture.jpg?raw=true)
 
 Bu tutorial için Hugging Face'te bulunan [the google/vit-base-patch16-224-in21k model](https://huggingface.co/google/vit-base-patch16-224-in21k) modelini kullanacağız.
 
@@ -292,7 +294,7 @@ Görüntülerin hepsi üç kanallı, yani RGB modundadır. Bu nedenle herhangi b
 
 # Veri kümesini eğitim/test olarak parçalamak
 
-Modeli seçtiğimizde göre ilk olarak yapmamız gereken veri kümesini eğitim (train) ve test olacak şekilde ikiye parçalamak. Bunun için `train_test_split()` fonksiyonunu kullanabilir ve parçalanmanın (splitting) boyutunu belirlemek için `test_size` parametresini belirtebilirsiniz. Burada test kümesinin büyüklüğünü belirlemek için %15 kullandık, yani, 6800 görüntü, modeli eğitmek için, geri kalan 1200 görüntü, modeli test etmek için kullanılacaktır.
+Modeli seçtiğimizde göre ilk olarak yapmamız gereken veri kümesini eğitim (train) ve test olacak şekilde ikiye parçalamak (splitting). Bunun için Hugging Face'in `train_test_split()` fonksiyonunu(https://huggingface.co/docs/datasets/v2.14.5/en/package_reference/main_classes#datasets.Dataset.train_test_split) kullanabilir ve parçalanmanın (splitting) boyutunu belirlemek için `test_size` argümanı belirtebilirsiniz. Burada test kümesinin büyüklüğünü belirlemek için `test_size` argümanının değeri olarak %15 kullanıyoruz, yani, 6800 görüntü, modeli eğitmek için, geri kalan 1200 görüntü, modeli test etmek için kullanılacaktır.
 
 ```python
 dataset = full_dataset.shuffle().train_test_split(test_size=0.15, stratify_by_column = 'label')
@@ -309,7 +311,7 @@ dataset
 # })
 ```
 
-Kolaylıkla anlaşılacağı üzere bir DatasetDict nesnesine sahibiz. Bu bir sözlüktür. Anahtarları (keys( `train` ve `test`'tir. Bu anahtarlardaki değerleri (yani veri kümelerini) ayrı ayrı değişkenlere atayalım:
+Kolaylıkla anlaşılacağı üzere bir `DatasetDict` nesnesine sahibiz artık. Bu bir sözlüktür. Anahtarları (keys) `train` ve `test`'tir. Bu anahtarlardaki değerleri (yani, veri kümelerini) ayrı ayrı değişkenlere atayalım:
 
 ```python
 train_dataset = dataset["train"]
@@ -333,13 +335,13 @@ test_dataset
 
 Vision Transformer modeli temel olarak iki önemli bileşenden oluşur: bir sınıflandırıcı (classifier) ve bir öznitelik çıkarıcı (feature extractor).
 
-ViT modelini kullanarak sınıflandırma gerçekleştirmeden önce Öznitelik Çıkarıcı (feature extractor) adı verilen bir işlem gerçekleştirmeliyiz. 
+ViT modelini kullanarak sınıflandırma gerçekleştirmeden önce **Öznitelik Çıkarıcı** (Feature Extractor) adı verilen bir işlem gerçekleştirmeliyiz. 
 
-Öznitelik çıkarsama, ses veya görüntü modelleri için girdi özniteliklerinin (input features) hazırlanmasından sorumludur. Bu öznitelik çıkarsama adımını, Doğal Dil İşleme (Natural Language Processing) görevlerindeki Token'laştırma (Tokenizing) adımı olarak düşünebilirsiniz.
+Öznitelik çıkarsama, ses veya görüntü modelleri için girdi özniteliklerinin (input features) hazırlanmasından sorumludur. Bu öznitelik çıkarsama adımını, Doğal Dil İşleme (Natural Language Processing) görevlerindeki Token'laştırma (Tokenizer) adımı olarak düşünebilirsiniz.
 
 Öznitelik çıkarsama, elimizdeki görüntüleri normalleştirmek (normalizing), yeniden boyutlandırmak (resizing) ve yeniden ölçeklendirmek (rescaling) üzere, görüntülerin "piksel değerlerinin" tensörlerine ön-işleme gerçekleştirmek için kullanılır. 
 
-ViT modeline ait Feature Extractor'ı Hugging Face `transformers` kütüphanesinden şu şekilde başlatıyoruz:
+ViT modeline ait Feature Extractor'ı Hugging Face'in `transformers` kütüphanesinden şu şekilde başlatıyoruz:
 
 ```python
 # modeli içe aktar
@@ -372,11 +374,11 @@ feature_extractor
 
 Öznitelik çıkarıcıya ait yapılandırma (configuration), normalleştirme, ölçekleme ve yeniden boyutlandırmanın `true` olarak ayarlandığını göstermektedir.
 
-Sırasıyla `image_mean` ve `image_std`de saklanan ortalama ve standart sapma değerleri kullanılarak üç renk kanalında (RGB) normalleştirme gerçekleştirilir.
+Sırasıyla `image_mean` ve `image_std`de saklanan ortalama ve standart sapma değerleri kullanılarak üç renk kanalında (Red Green Blue - RGB) normalleştirme gerçekleştirilir.
 
 Çıktı boyutu `size` anahtarı ile $224 \times 224$ piksel olarak ayarlanır.
 
-Bir görüntüyü öznitelik çıkarıcıyla işlemeyi tek bir görüntü üzerinde şu şekilde gerçekleştiririz:
+Öznitelik çıkarıcıyla işlemeyi tek bir görüntü üzerinde şu şekilde gerçekleştiririz:
 
 ```python
 example = feature_extractor(train_dataset[0]['image'], return_tensors='pt')
@@ -412,14 +414,13 @@ Oluşacak tensörün boyutu şu şekildedir:
 example['pixel_values'].shape
 ```
 
-Kolaylıkla anlaşılacağı üzere, ön işleme adımından sonra 4 boyutlu bir tensör elde ediliyor. Burada ilk boyut (dimension) yığın büyüklüğünü (batch size), ikinci boyut görüntülerdeki kanal sayısını (number of channels, RGB görüntüler ile çalıştığımız için üç kanal var), üçüncü ve döndüncü boyutlar, sırasıyla görüntülerin yüksekliğini (height) ve genişliğini (width) temsil etmektedir.
+Kolaylıkla anlaşılacağı üzere, ön-işleme adımından sonra 4 boyutlu bir tensör elde edilmektedir. Burada ilk boyut (dimension) yığın büyüklüğünü (batch size), ikinci boyut görüntülerdeki kanal sayısını (number of channels, RGB görüntüler ile çalıştığımız için üç kanal var), üçüncü ve dördüncü boyutlar, sırasıyla görüntülerin yüksekliğini (height) ve genişliğini (width) temsil etmektedir.
 
 ![](https://github.com/mmuratarat/turkish/blob/master/_posts/images/image3.jpeg?raw=true)
 
 Burada not edilmesi gereken diğer bir durum `pixel_values` anahtarının sahip olduğu değerin, modelin beklediği temel girdi olmasıdır.
 
-Bu ön işleme adımını **tüm veri kümesine** daha verimli bir şekilde uygulamak için, `preprocess` adı verilen bir fonksiyon oluşturalım ve dönüşümleri `map` yöntemini kullanarak gerçekleştirelim:
-
+Bu ön-işleme adımını **tüm veri kümesine** daha verimli bir şekilde uygulamak için, `preprocess` adı verilen bir fonksiyon oluşturalım ve dönüşümleri `map` yöntemini kullanarak gerçekleştirelim:
 
 ```python
 def preprocess(examples):
@@ -446,7 +447,7 @@ prepared_test
 # })
 ```
 
-Kolaylıkla görülebileceği üzere artık eğitim ve test kümelerinde artık `'pixel_values'` isimli yeni bir özniteliğe sahibiz.
+Kolaylıkla görülebileceği üzere eğitim ve test kümelerinde artık `'pixel_values'` isimli yeni bir özniteliğe sahibiz.
 
 **EK NOT**
 
@@ -489,7 +490,7 @@ model = ViTForImageClassification.from_pretrained(model_name,
 #You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
 ```
 
-Sınıflandırma için ViT'ye ince ayar çektiğimiz için `ViTForImageClassification` sınıfını kullanıyoruz. Varsayılan olarak bu, yalnızca iki çıktıya sahip bir sınıflandırma başı (classification head) ile modeli başlatır.
+Sınıflandırma için ViT'ye ince-ayar çektiğimiz için `ViTForImageClassification` sınıfını kullanıyoruz. Varsayılan olarak bu, yalnızca iki çıktıya sahip bir sınıflandırma başı (classification head) ile modeli başlatır.
 
 Elimizdeki özel veri kümesinde 8 farklı sınıf var, dolayısıyla 8 çıktı ile modeli başlatmak istediğimizi belirtmek isteriz. Bunu, `num_labels` argümanıyla gerçekleştiririz.
 
@@ -587,19 +588,19 @@ model.config
 # }
 ```
 
-Artık ince ayara geçmeye hazırız.
+Artık ince-ayar çekmeye hazırız!
 
 # Modele İnce-Ayar Çekme
 
-HuggingFace'in `Trainer` fonksiyonunu kullanarak ince ayar çekeceğiz. `Trainer`, transformer modelleri için PyTorch'ta implement edilmiş, soyutlaştırılmış bir eğitim ve değerlendirme döngüsüdür.
+HuggingFace'in `Trainer` fonksiyonunu (https://huggingface.co/docs/transformers/v4.34.0/en/main_classes/trainer#transformers.Trainer) kullanarak ince-ayar çekeceğiz. `Trainer`, transformer modelleri için PyTorch'ta implement edilmiş, soyutlaştırılmış bir eğitim ve değerlendirme döngüsüdür.
 
 Ancak modeli eğitmeye geçmeden önce gerçekleştirmemiz gereken bir kaç işlem daha vardır.
 
 # Değerlendirme Metriklerini Belirleme
 
-İlk olarak modeli değerlendirirken kullanacağımız metrikleri tanımlamamız gerekmektedir. Burada accuracy, f1-skoru, recall ve precision metriklerini tercih ediyoruz ve `evaluate` kütühanesini kullanarak `compute_metrics` isminde bir fonksiyon yazıyoruz - https://huggingface.co/docs/evaluate/index
+İlk olarak modeli değerlendirirken kullanacağımız metrikleri (ölçütleri) tanımlamamız gerekmektedir. Bu metrikleri Hugging Face'in `evaluate` modülünden kolaylıkla yükleyebilirsiniz - https://huggingface.co/docs/evaluate/index
 
-Hugging Face'in `evaluate` kütüphanesi 100'den fazla değerlendirme metriği içermektedir:
+`evaluate` modülü 100'den fazla değerlendirme metriği içermektedir:
 
 ```python
 import evaluate
@@ -651,7 +652,8 @@ def compute_metrics(eval_pred):
 Dikkat edilirse, `compute` fonksiyonu tahminleri (predictions) ve etiketleri (labels) beklemektedir.
 
 # Eğitim Argümanlarını belirleme
-Yapmamız gereken diğer bir işlem, Eğiticinin (`Trainer`'ın) ihtiyaç duyduğu  argümanları tanımladığımız `TrainingArguments` isimli konfigürasyonları yazmaktır.
+
+Yapmamız gereken diğer bir işlem, Eğiticinin (`Trainer`'ın) ihtiyaç duyduğu  argümanları tanımladığımız `TrainingArguments` isimli konfigürasyonları yazmaktır. Hugging Face'in `transformers` kütüphanesi eğitim argümanları olarak bir çok opsiyon sunmaktadır. Uygun olanları alıp, eğitim esnasında tercih edeceğiniz değerleri atayabilirsiniz - https://huggingface.co/docs/transformers/v4.34.0/en/main_classes/trainer#transformers.TrainingArguments
 
 Bu konfigürasyonlar, eğitim parametrelerini (training parameters), kaydetme ayarlarını (saving settings) ve günlüğe kaydetme ayarlarını (logging settings) içerir:
 
@@ -680,6 +682,7 @@ warmup_steps = 500
 # AdamW optimize edicideki tüm yan parametreleri ve LayerNorm ağırlıkları hariç tüm katmanlara uygulanacak ağırlık azalması (weight decay)
 weight_decay = 0.01
 
+# En iyi modeli seçmek için doğruluk oranını kullanalım
 main_metric_for_evaluation = "accuracy"
 
 training_args = TrainingArguments(
@@ -710,7 +713,7 @@ device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 model.to(device)
 ```
 
-Daha sonra, görüntüleri yığın büyüklüğü (batch size) kadar yığınlayacak bir `collate` (türkçesi harmanlama'dır) fonksiyonu yazmanız gerekmektedir. `collate` fonksiyonu  çok sayıda veriyle uğraşırken kullanışlıdır. Modele besleyeceğimiz görüntülerden oluşan yığınlar (batches), sözlüklerden oluşan listelerdir, dolayısıyla `collate` yığınlaştırılmış tensörler oluşturmamıza yardımcı olacaktır.
+Daha sonra, eğitim görüntülerini yığın büyüklüğü (batch size) kadar yığınlayacak bir `collate` (türkçesi harmanlama'dır) fonksiyonu yazmanız gerekmektedir. `collate` fonksiyonu  çok sayıda veriyle uğraşırken kullanışlıdır. Modele besleyeceğimiz görüntülerden oluşan yığınlar (batches), sözlüklerden oluşan listelerdir, dolayısıyla `collate` yığınlaştırılmış tensörler oluşturmamıza yardımcı olacaktır.
 
 ```python
 def collate_fn(batch):
@@ -723,7 +726,6 @@ def collate_fn(batch):
 Artık hazırız! Şimdi bir `Trainer` örneği (instance) yaratalım:
 
 ```python
-# Bir Trainer örneği (instance) yarat
 trainer = Trainer(
     model=model,
     args=training_args,
@@ -735,7 +737,7 @@ trainer = Trainer(
 )
 ```
 
-Burada, elimizdeki modeli, oluşturduğumuz model argümanlarını, `collate`  fonksiyonunu, ön-işlemeden geçirilmiş eğitim ve test kümelerini ve modele ait öznitelik çıkarıcıyı (feature extractor) kullanırız. 
+Burada, elimizdeki modeli, oluşturduğumuz eğitim argümanlarını, `collate`  fonksiyonunu, ön-işlemeden geçirilmiş eğitim ve test kümelerini ve modele ait öznitelik çıkarıcıyı (feature extractor) kullanırız. 
 
 ...ve modeli eğitmeye hazırız:
 
@@ -768,7 +770,7 @@ log_history[["loss", "eval_loss", "eval_accuracy"]].plot(subplots=True)
 
 ![](https://github.com/mmuratarat/turkish/blob/master/_posts/images/kvasir_vit_model_progress.png?raw=true)
 
-Hugging Face eğitim kümesine ait değerlendirme metriklerini döndürmediği için, en son elde edilen modeli tüm eğitim kümesi üzerinde çalıştırarak tanımladığımız metriklerin değerlerini `evaluate` fonksiyonu ile elde edebiliriz:
+Hugging Face eğitim kümesine (training dataset) ait değerlendirme metriklerini döndürmediği için, en son elde edilen modeli tüm eğitim kümesi üzerinde çalıştırarak tanımladığımız metriklerin değerlerini `evaluate` fonksiyonu ile elde edebiliriz:
 
 ```python
 metrics_training = trainer.evaluate(prepared_train)
@@ -796,17 +798,17 @@ y_train_predict = trainer.predict(prepared_train)
 y_train_predict
 ```
 
-Transfer öğrenme görüntü sınıflandırma modeli için tahmin edilen logitler, `predictions` metodu kullanılarak çıkarılabilir:
+Transfer öğrenme görüntü sınıflandırma modeli için tahmin edilen lojitler, `predictions` metodu kullanılarak çıkarılabilir:
 
 ```python
-# Tahmin edilen logitler
+# Tahmin edilen lojitler
 y_train_logits = y_train_predict.predictions
 
-# İlk 5 görüntüye ait model çıktıları (logitler)
+# İlk 5 görüntüye ait model çıktıları (lojitler)
 y_train_logits[:5]
 ```
 
-Tek bir görüntü için elde edilen tahminin sekiz sütundan oluştuğunu görüyoruz. İlk sütun, etiket 0 için tahmin edilen logittir ve ikinci sütun, etiket 1 için tahmin edilen logittir ve bu böyle devam etmektedir. logit değerlerinin toplamı 1'e eşit değildir çünkü bu değerler normalleştirilmemiş olasılıklardır (diğer bir deyişle, model çıktısıdır). Çok-sınıflı sınıflandırma (multi-class classification) yaptığımız için Softmax fonksiyonu kullanarak bu değerleri normalleştirebiliriz:
+Tek bir görüntü için elde edilen tahminin sekiz sütundan oluştuğunu görüyoruz. İlk sütun, etiket 0 için tahmin edilen lojittir ve ikinci sütun, etiket 1 için tahmin edilen lojittir ve bu böyle devam etmektedir. Lojit değerlerinin toplamı 1'e eşit değildir çünkü bu değerler normalleştirilmemiş olasılıklardır (diğer bir deyişle, model çıktısıdır). Çok-sınıflı sınıflandırma (multi-class classification) yaptığımız için Softmax fonksiyonu kullanarak bu değerleri normalleştirebiliriz:
 
 ```python
 y_train_probabilities = torch.softmax(y_train_logits, dim = -1)
@@ -841,7 +843,7 @@ y_train_actual_labels[:5]
 
 Artık gerçek etiketleri (actual labels), eğitim kümesi üzerinde model tarafından tahmin edilen etiketler ile karşılaştırabiliriz.
 
-Daha fazla model performans metriği hesaplamak için ilgilenilen metrikleri yüklemek amacıyla `evaluate.load`'u kullanabiliriz. Bu metrikleri zaten yukarıdaki hücrelerin birinde yüklemiştik:
+Daha fazla model performans metriği hesaplamak için ilgilenilen metrikleri yüklemek amacıyla `evaluate.load`'u kullanabiliriz. Bazı metrikleri zaten yukarıdaki hücrelerin birinde yüklemiştik:
 
 ```python
 # Compute accuracy metric
@@ -867,9 +869,9 @@ trainer.save_model(model_dir)
 
 Yukarıdaki kod satırı hem modeli hem de modelle kullanılan öznitelik çıkarıcıyı (feature extractor) model dizinine kayıt edecektir.
 
-Ancak, sadece öznitelik çıkarıcıyı kaydetmek isterseniz `feature_extractor.save_pretrained(model_dir)` kodunu kullanabilirsiniz. Bu kod sadece `preprocessor_config.json` dosyasını kaydedecektir.
+Ancak, sadece öznitelik çıkarıcıyı kaydetmek isterseniz `feature_extractor.save_pretrained(model_dir)` kodunu kullanabilirsiniz. Bu kod sadece `preprocessor_config.json` dosyasını `model_dir` isimli dizine kaydedecektir.
 
-Sonunda ince ayar çekilmiş ViT modeline sahibiz! WOHOO!
+Sonunda ince ayar çekilmiş ViT modeline sahibiz! 🥳🥳🥳 🎉🎉🎉
 
 # Modeli Test Kümesi Üzerinde Değerlendirme
 
@@ -907,13 +909,13 @@ y_test_predict
 #         -0.73776233, -0.31934953]], dtype=float32), label_ids=array([7, 0, 5, ..., 4, 3, 3]), metrics={'test_loss': 0.23830144107341766, 'test_accuracy': 0.9391666666666667, 'test_f1': 0.9390956371766551, 'test_precision': 0.939918876802155, 'test_recall': 0.9391666666666667, 'test_runtime': 313.2723, 'test_samples_per_second': 3.831, 'test_steps_per_second': 0.121})
 ```
 
-Transfer öğrenme görüntü sınıflandırma modeli için tahmin edilen logitler, `predictions` metodu kullanılarak çıkarılabilir:
+Transfer öğrenme görüntü sınıflandırma modeli için tahmin edilen lojitler, `predictions` metodu kullanılarak çıkarılabilir:
 
 ```python
-# Tahmin edilen logitler
+# Tahmin edilen lojitler
 y_test_logits = y_test_predict.predictions
 
-# İlk 5 görüntüye ait model çıktıları (logitler)
+# İlk 5 görüntüye ait model çıktıları (lojitler)
 y_test_logits[:5]
 # array([[-0.5574911 , -0.55256057, -0.44084704, -0.43077588, -0.69217765,
 #         -0.6514604 , -0.587717  ,  4.1993985 ],
@@ -927,7 +929,7 @@ y_test_logits[:5]
 #         -0.7260709 , -0.3696426 ,  4.2133403 ]], dtype=float32)
 ```
 
-Tek bir görüntü için elde edilen tahminin sekiz sütundan oluştuğunu görüyoruz. İlk sütun, etiket 0 için tahmin edilen logittir ve ikinci sütun, etiket 1 için tahmin edilen logittir ve bu böyle devam etmektedir. logit değerlerinin toplamı 1'e eşit değildir çünkü bu değerler normalleştirilmemiş olasılıklardır (diğer bir deyişle, model çıktısıdır). Çok-sınıflı sınıflandırma (multi-class classification) yaptığımız için Softmax fonksiyonunu kullanarak bu değerleri normalleştirebiliriz:
+Tek bir görüntü için elde edilen tahminin sekiz sütundan oluştuğunu görüyoruz. İlk sütun, etiket 0 için tahmin edilen lojittir ve ikinci sütun, etiket 1 için tahmin edilen lojittir ve bu böyle devam etmektedir. Lojit değerlerinin toplamı 1'e eşit değildir çünkü bu değerler normalleştirilmemiş olasılıklardır (diğer bir deyişle, model çıktısıdır). Çok-sınıflı sınıflandırma (multi-class classification) yaptığımız için Softmax fonksiyonunu kullanarak bu değerleri normalleştirebiliriz:
 
 ```python
 y_test_probabilities = torch.softmax(torch.tensor(y_test_logits), dim = 1)
@@ -945,7 +947,7 @@ y_test_probabilities[:5]
 #         [0.0072, 0.0076, 0.0084, 0.0097, 0.0082, 0.0067, 0.0096, 0.9426]])
 ```
 
-Tahmin edilen etiketleri elde etmek için, her görüntü için etiketlere karşılık gelen maksimum olasılık indeksini döndürmek üzere NumPy kütüphanesinin `argmax` fonksiyonu kullanılır:
+Tahmin edilen etiketleri elde etmek için, her görüntü için etiketlere karşılık gelen maksimum olasılığa sahip indeksi döndürmek üzere NumPy kütüphanesinin `argmax` fonksiyonu kullanılır:
 
 ```python
 # model tarafından eğitim kümesi üzerinde tahmin edilen etiketler
@@ -969,7 +971,7 @@ y_test_actual_labels[:5]
 
 Artık gerçek etiketleri (actual labels), eğitim kümesi üzerinde model tarafından tahmin edilen etiketler ile karşılaştırabiliriz.
 
-Daha fazla model performans metriği hesaplamak için ilgilenilen metrikleri yüklemek amacıyla `evaluate.load`'u kullanabiliriz. Bu metrikleri zaten yukarıdaki hücrelerin birinde yüklemiştik:
+Daha fazla model performans metriği hesaplamak için ilgilenilen metrikleri yüklemek amacıyla `evaluate.load`'u kullanabiliriz. Bazı metrikleri zaten yukarıdaki hücrelerin birinde yüklemiştik:
 
 ```python
 # Compute accuracy metric
@@ -994,7 +996,7 @@ Kolaylıkla anlaşılacağı üzere elde edilen sonuçlar, `trainer.evaluate(pre
 
 # Tek Bir Görüntü Üzerinde Modelin Tahmini
 
-Şimdi de rastgele bir örneğe bakalım. Test veri kümemizdeki bir görseli seçip tahmin edilen etiketin doğru olup olmadığını görebiliriz.
+Şimdi de rastgele bir görüntünün sınıf tahmini (class prediction) elde edelim. Test veri kümemizdeki bir görseli seçip tahmin edilen etiketin doğru olup olmadığını görebiliriz.
 
 ```python
 image = test_dataset["image"][0]
@@ -1037,7 +1039,7 @@ logits
 
 Elde edilen tensor her 8 sınıfa ait lojit değerleridir.
 
-Logitler üzerinde NumPy kütüphanesinin `argmax` fonksiyonunu çağırdığımızda, en yüksek olasılığa sahip sınıfın indeksini alırsınız:
+Lojitler üzerinde NumPy kütüphanesinin `argmax` fonksiyonunu çağırdığımızda, en yüksek olasılığa sahip sınıfın indeksini alırsınız:
 
 ```python
 predicted_label = logits.argmax(-1).item()
