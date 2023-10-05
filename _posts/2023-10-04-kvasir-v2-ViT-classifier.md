@@ -121,7 +121,7 @@ Bu sınıflar **patolojik bulgular** (özofajit, polipler, ülseratif kolit), **
 
 JPEG görüntüleri ait oldukları sınıfa göre adlandırılan ayrı klasörlerde saklanmaktadır.
 
-Veri seti, $720 \times 576$'dan $1920 \times 1072$ piksele kadar farklı çözünürlükteki görüntülerden oluşur ve içeriğe göre adlandırılmış ayrı klasörlerde sıralanacak şekilde düzenlenmiştir.
+Veri seti, $720 \times 576$'dan $1920 \times 1072$ piksele kadar farklı çözünürlükteki görüntülerden oluşur ve içeriğe göre adlandırılmış ayrı klasörlerde saklanacak şekilde düzenlenmiştir.
 
 Şimdi yukarıdaki websayfasında bulunan ve görüntüleri içeren `kvasir-dataset-v2.zip` isimli zip dosyasını indirelim:
 
