@@ -1097,13 +1097,13 @@ Modelin sayfasına https://huggingface.co/mmuratarat/kvasir-v2-classifier bağla
 
 Artık Hugging Face'in Auto sınıflarını kullanabiliriz - https://huggingface.co/docs/transformers/v4.33.3/en/model_doc/auto#auto-classes
 
-Çoğu durumda kullanmak istediğiniz mimari, `from_pretrained()` yöntemine sağladığınız önceden eğitilmiş modelin adından (name) veya yolundan (path) tahmin edilebilir.
+Çoğu durumda kullanmak istediğiniz mimari, `from_pretrained()` metoduna sağladığınız önceden eğitilmiş modelin adından (name) veya yolundan (path) tahmin edilebilir.
 
 Auto sınflar bu işi sizin için yapmak için buradalar; böylelikle, adı/yolu verilen önceden-eğitilmiş (pre-trained) ilgili modeli ve bu modelin önceden-eğitilmiş ağırlıklarını (weights), konfigürasyonlarını (config) ve kelime hazinesini (vocabuları) otomatik olarak alırsınız.
 
-`AutoModelForImageClassification` sınıfı ile elde ettiğimiz modeli Hub'dan istediğimiz zaman çekerek çıkarsamalar yapabiliriz. Ancak girdi görüntülerini önce bir öznitelik çıkarıcıdan geçirmemiz gerekmektedir. Bunu ise `AutoFeatureExtractor` sınıfı ile gerçekleştirebiliriz. Sonuçta eğittiğimiz modelde kullanılan öznitelik çıkarıcı (feature extractor) model ile birlikte `preprocessor_config.json` isimli bir JSON dosyasına kaydedildi ve Hub'a gönderildi.
+`AutoModelForImageClassification` sınıfı ile elde ettiğimiz modeli Hub'dan istediğimiz zaman çekerek çıkarsamalar yapabilirsiniz. Ancak girdi görüntülerini önce bir öznitelik çıkarıcıdan geçirmemiz gerekmektedir. Bunu ise `AutoFeatureExtractor` sınıfı ile gerçekleştirebilirsiniz. Sonuçta eğittiğimiz modelde kullanılan öznitelik çıkarıcı (feature extractor) model ile birlikte `preprocessor_config.json` isimli bir JSON dosyasına kaydedildi ve Hub'a gönderildi.
 
-Buraya not düşülmesi gereken bir başka konu ise, modeli eğitirken kullanılan argümanların da bir JSON dosyası olarak kaydedildiğidir. Bu dosya bir konfigurasyon dosyasıdır ve `config.json` ismiyle bir JSON dosyası ile model dizinin altına kaydedilmiş ve Hub'a gönderilmiştir.
+Buraya not düşülmesi gereken bir başka konu ise, modeli eğitirken kullanılan argümanların da bir JSON dosyası olarak kaydedildiğidir. Bu dosya bir konfigurasyon dosyasıdır ve `config.json` ismiyle bir JSON dosyası şeklinde model dizinin altına kaydedilmiş ve Hub'a gönderilmiştir.
 
 ```python
 model = AutoModelForImageClassification.from_pretrained("mmuratarat/kvasir-v2-classifier")
@@ -1139,7 +1139,7 @@ Doğru cevap!
 
 # Inference API'sını Kullanarak Görüntünün Sınıf Tahmini
 
-Bilgisayarınızda yerel olarak bir görüntünün sınıfını nasıl tahmin edebileceğinizi yukarıda gördük. Buna ek olarak, Hugging Face'in sağladığı bir kolaylık olan Inference API'sını da kullanabilirsiniz. Tarayıcınız (browser) üzerinden istediğiniz gastrointestinal sistemin içerisinden alınan bir görüntünün tahmini elde edebilirsiniz:
+Bilgisayarınızda yerel olarak bir görüntünün sınıfını nasıl tahmin edebileceğinizi yukarıda gördük. Buna ek olarak, Hugging Face'in sağladığı bir kolaylık olan Inference API'sını da kullanabilirsiniz. Tarayıcınız (browser) üzerinden gastrointestinal sistemin içerisinden alınan istediğiniz bir görüntünün tahmini elde edebilirsiniz:
 
 ![](https://github.com/mmuratarat/turkish/blob/master/_posts/images/ksavir_vit_hostedinferenceAP_1.png?raw=true)
 
@@ -1151,4 +1151,4 @@ Tek yapmanız gereken bilgisayarınızdan görüntüyü upload etmek. Şimdi `po
 
 ![](https://github.com/mmuratarat/turkish/blob/master/_posts/images/ksavir_vit_hostedinferenceAP_4.png?raw=true)
 
-Kolaylıkla anlaşılacağı üzere, model, %94.1 olasılıkla bu görüntünün `polyps` sınıfına ait olduğunu tahmin etmiştir!
+Kolaylıkla anlaşılacağı üzere, model, %94.1 olasılıkla bu görüntünün `polyps` sınıfına ait olduğunu doğru bir şekilde tahmin etmiştir!
