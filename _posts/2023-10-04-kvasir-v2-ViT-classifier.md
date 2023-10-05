@@ -106,7 +106,7 @@ Artık gerçekleştireceğimiz tüm işlemler bu dizin altında yapılacak, kayd
 
 Bilgisayar kullanımıyla hastalıkların otomatik tespiti önemli ancak henüz keşfedilmemiş bir araştırma alanıdır. Bu tür yenilikler tüm dünyada tıbbi uygulamaları iyileştirebilir ve sağlık bakım sistemlerini iyileştirebilir. Bununla birlikte, tıbbi görüntüleri içeren veri kümeleri neredeyse hiç mevcut değildir, bu da yaklaşımların tekrarlanabilirliğini ve karşılaştırılmasını neredeyse imkansız hale getirmektedir.
 
-Bu nedenle burada gastrointestinal (GI) sistemin içerisinden görüntüler içeren bir veri kümesi olan Kvasir'in ikinci versiyonunu (`kvasir-dataset-v2`) kullanıyoruz. Bu veri
+Bu nedenle burada, tıp doktorları (deneyimli endoskopistler) tarafından etiketlenmiş ve doğrulanmış, gastrointestinal (gastrointestinal) sistemin içinden görüntülerden oluşan Kvasir veri kümesinin 2. versiyonunu (`kvasir-dataset-v2`) kullanacağız.
 
 Kvasir veri kümesi yaklaşık 2.3GB büyüklüğündedir ve yalnızca araştırma ve eğitim amaçlı kullanılmak suretiyle ücretsizdir: https://datasets.simula.no/kvasir/
 
@@ -114,7 +114,7 @@ Veri kümesi, her biri 1.000 görüntüye sahip olan 8 sınıftan, yani toplam 8
 
 ![](https://github.com/mmuratarat/turkish/blob/master/_posts/images/kvasir_v2_examples.png?raw=true)
 
-Bu sınıflar patolojik bulgular (özofajit, polipler, ülseratif kolit), anatomik işaretler (z-çizgisi, pilor, çekum) ve normal ve düzenli bulgular (normal kolon mukozası, dışkı) ve polip çıkarma vakalarından (boyalı ve kaldırılmış polipler, boyalı rezeksiyon kenarları) oluşmaktadır
+Bu sınıflar **patolojik bulgular** (özofajit, polipler, ülseratif kolit), **anatomik işaretler** (z-çizgisi, pilor, çekum) ve **normal ve düzenli bulgular** (normal kolon mukozası, dışkı) ve **polip çıkarma vakalarından** (boyalı ve kaldırılmış polipler, boyalı rezeksiyon kenarları) oluşmaktadır
 
 JPEG görüntüleri ait oldukları sınıfa göre adlandırılan ayrı klasörlerde saklanmaktadır.
 
