@@ -7,18 +7,15 @@ comments: false
 permalink: /fef210_2425fall/
 ---
 
-[Course Syllabus in English](https://mmuratarat.github.io/turkish/files/fef210_2425fall_syllabus.pdf){:target="_blank"}
-
-## <u>Ders Duyuruları</u>
-- **24 Eylül 2024**. FEF210 - Python ile Veri Analizi dersinin 1. Şubesi İstatistik Bölümü Lab1'de Çarşamba günü 10:40 - 13:30 saatleri arasında gerçekleştirilecektir. Derse katılım zorunludur. 10:40'dan sonra ilk ders arasına kadar derse girmek yasaktır.
+[Course Syllabus in English](https://mmuratarat.github.io/turkish/files/fef210_2425spring_syllabus.pdf){:target="_blank"}
 
 ## <u>Ders Müfredatı</u>
 
 **Eğitmen**: Dr. Mustafa Murat ARAT  \
 **E-posta**: muratarat@hacettepe.edu.tr  \
 **Ofis**: 12 numaralı oda, İstatistik Bölümü, Hacettepe Üniversitesi, Beytepe Kampüsü  \
-**Ofis Saatleri**: Çarşamba günleri / 08:40-10:30  \
-**Ders Günleri ve Saatleri**: Çarşamba günleri / 10:40 – 12:30  \
+**Ofis Saatleri**: Perşembe günleri / 10:40-11:40  \
+**Ders Günleri ve Saatleri**: Salı günleri / 10:40 – 13:30  \
 **Ders Yeri**: İstatistik Bölümü, LAB1, Hacettepe Üniversitesi, Beytepe Kampüsü  \
 **Ders Kredisi**: 5 AKTS  \
 **Ders Web Sayfası**: [https://mmuratarat.github.io/turkish/fef210_2425fall/](https://mmuratarat.github.io/turkish/fef210_2425fall/){:target="_blank"}  \
