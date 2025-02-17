@@ -44,10 +44,10 @@ permalink: /fef210_2425spring/
 * Python programlama dili kullanarak sınıflar tanımlayabilir 
 
 
-**Özel Düzenlemeler**: Özel düzenlemelere ihtiyaç duyan öğrenciler, herhangi bir nedenle en kısa sürede dersin eğitmeni ile iletişime geçmelidir.
+**Özel Düzenlemeler**: Herhangi bir nedenle özel düzenlemelere ihtiyaç duyan öğrenciler,  en kısa sürede dersin sorumlusu ile iletişime geçmelidir.
 
 
-**Devam Politikası**: Tüm öğrenciler, ders saatlerinin en az %70'ine katılmak zorundadır. Eğitmen geldikten sonra (kapı kapandıktan sonra) derse girerseniz veya ders esnasında 5 dakikadan fazla süreyle sınıftan ayrılırsanız, o ders için devamsız olarak işaretleneceksiniz. Tüm devamsızlıklar resmi devamsızlık olarak sayılacaktır. Eğer özel bir mazeretiniz varsa, lütfen bunu çok geç olmadan eğitmene yazılı olarak iletiniz. 
+**Devam Politikası**: Tüm öğrenciler, ders saatlerinin en az %80'ine katılmak zorundadır. Ders sorumlusu geldikten sonra (kapı kapandıktan sonra) derse girerseniz veya ders esnasında 5 dakikadan fazla süreyle sınıftan ayrılırsanız, o ders için devamsız olarak işaretleneceksiniz. Tüm devamsızlıklar resmi devamsızlık olarak sayılacaktır. Eğer özel bir mazeretiniz varsa, lütfen bunu çok geç olmadan eğitmene yazılı olarak iletiniz. 
 
 
 **Sınıf Politikası**: Ders başlamadan önce sınıfta olmanız gerekmektedir. Derse zamanında katılmak için elinizden geleni yapmanız beklenmektedir. Ders başladıktan sonra sınıfa girişe izin verilmemektedir. Tüm cep telefonlarınızı kapatmanız zorunludur. Ders sırasında, başka yerlerde yapılması daha uygun olan tüm aktivitelerden kaçınmalısınız. Ayrıca, derslerle ilgili her türlü soruyu sormaktan çekinmeyiniz! 
