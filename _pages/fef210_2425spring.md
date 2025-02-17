@@ -66,10 +66,13 @@ permalink: /fef210_2425fall/
 
 ## <u>Ders İçeriği (geçici)</u>
 
-**HAFTA 1 (25 EYLÜL 2024)** <br />
-General Introduction
+**HAFTA 1** <br />
+Genel Tanıtım
 
-**HAFTA 2 (2 EKİM 2024)** <br />
+**HAFTA 2** <br />
+Programlama Paradigmaları
+
+**HAFTA 3** <br />
 1 Python’un Temelleri <br />
 1.1. Neden Python? <br />
 1.2. Python’u Yükleme ve Kurulum <br />
@@ -86,7 +89,7 @@ General Introduction
 1.13. print fonksiyonu <br />
 1.14. f-dizgiler <br />
 
-**HAFTA 3 (9 EKİM 2024)** <br />
+**HAFTA 4** <br />
 2 İlkel Veri Tipleri <br />
 2.1. Nümerik Veri Tipi <br />
 2.2. Dizgi Veri Tipi <br />
@@ -94,10 +97,7 @@ General Introduction
 2.4. Tip Çevirme <br />
 2.5. None Veri Tipi <br />
 
-**HAFTA 4 (16 EKİM 2024)** <br />
-İş için şehir dışındayım.
-
-**HAFTA 5 (23 EKİM 2024)** <br />
+**HAFTA 5** <br />
 3 Fonksiyonlar <br />
 3.1. Docstring <br />
 3.2. Return Deyimi <br />
@@ -109,7 +109,7 @@ General Introduction
 3.4. Anonim Fonksiyonlar (Lambda fonksiyonu) <br />
 3.5. args ve kwargs argümanları <br />
 
-**HAFTA 6 (30 EKİM 2024)** <br />
+**HAFTA 6** <br />
 4 Fonksiyonlara Devam <br />
 4.1. İsim Alanları <br />
 4.2. Değişkenlerin Kapsamı <br />
@@ -119,7 +119,7 @@ General Introduction
 4.2.4.	Yerleşik Kapsam <br />
 4.2.5.	LEGB Kuralı <br />
 
-**HAFTA 7 (6 KASIM 2024)** <br />
+**HAFTA 7** <br />
 5 Kontrol Akışı <br />
 5.1. if, elif ve else yapısı <br />
 5.1.1.	 Basit if <br />
@@ -135,7 +135,7 @@ General Introduction
 6.2.3. pass ifadesi <br />
 6.2. while döngüleri <br />
 
-**WEEK 8 (13 KASIM 2024)** <br />
+**WEEK 8** <br />
 7 İlkel ve İlkel Olmayan Veri Yapıları <br />
 7.1. İlkel Olmayan Veri Yapıları <br />
 7.1.1. Demetler ve Demet Metotları <br />
@@ -145,10 +145,10 @@ General Introduction
 7.1.5. Kümeler ve Küme Metotları <br />
 7.2. List, Set, Dict Comprehensions <br />
 
-**HAFTA 9 (20 KASIM 2024)** <br />
+**HAFTA 9** <br />
 ARASINAV
 
-**HAFTA 10 (27 KASIM 2024)** <br />
+**HAFTA 10** <br />
 9 Nesne Tabanlı Programlamlama <br />
 9.1. Prosedürel ve Modüler Programlama <br />
 9.2. Sınıf oluşturma <br />
@@ -158,7 +158,7 @@ ARASINAV
 9.6. Niteliklere Erişim: getattr(), hasattr(), setattr(), delattr() <br />
 9.7. Sınıf Metotları / Örnek Metotları / Statik Metotlar <br />
 
-**HAFTA 11 (4 ARALIK 2024)** <br />
+**HAFTA 11** <br />
 10 Nesne Tabanlı Programlamlama'ya Devam <br />
 10.1. Kapsülleme <br />
 10.2. Polimorfizm <br />
@@ -168,13 +168,13 @@ ARASINAV
 10.6. Miras <br />
 10.7. super() fonksiyonu <br />
 
-**HAFTA 12 (11 ARALIK 2024)** <br />
+**HAFTA 12** <br />
 11 Python’da Hatalar ve İstisnai Durumlar <br />
 12 Sanal Ortamlar <br />
 13 Bazit Dizgi Manipülasyonları  <br />
 
-**HAFTA 13 (18 ARALIK 2024)** <br />
+**HAFTA 13** <br />
 14 NumPy Kütüphanesine Detaylı bir Bakış <br />
 
-**HAFTA 14 (25 ARALIK 2024)** <br />
+**HAFTA 14** <br />
 15 pandas Kütüphanesine Detaylı bir Bakış <br />
