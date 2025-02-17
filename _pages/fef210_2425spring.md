@@ -4,7 +4,7 @@ title: "FEF210 - Python ile Veri Analizi"
 author: MMA
 social: true
 comments: false
-permalink: /fef210_2425fall/
+permalink: /fef210_2425spring/
 ---
 
 [Course Syllabus in English](https://mmuratarat.github.io/turkish/files/fef210_2425spring_syllabus.pdf){:target="_blank"}
